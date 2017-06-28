@@ -2125,13 +2125,14 @@ class Frontend extends CI_Controller
     public function terms(){
         $dataheader['title'] = "Terms";
         $this->load->view('layout/Frontend_header', $dataheader);
-        echo "<div class='banner container'>Under construction...</div>";
+        $this->load->view('Frontend/terms');
+//        echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function privacy(){
         $dataheader['title'] = "Privacy";
         $this->load->view('layout/Frontend_header', $dataheader);
-        echo "<div class='banner container'>Under construction...</div>";
+        $this->load->view('Frontend/privacy');
         $this->load->view('layout/Frontend_footer');
     }
     public function typography(){
