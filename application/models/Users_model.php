@@ -297,7 +297,7 @@ class Users_model extends CI_Model
 
         if ($mobileNumber != "") {
             $sendUrl = $baseUrl . "sendSMS?";
-            $sendData = "to=" . $mobileNumber . "&msg=" . $otp;
+            $sendData = "to=" . $mobileNumber . "&msg=OTP for 1stepshop.in registration is " . $otp;
             $output = self::curlPost($sendUrl, $sendData);
         }
         return $otp;
@@ -325,7 +325,7 @@ class Users_model extends CI_Model
         }
         if ($mobileNumber != "") {
             $sendUrl = $baseUrl . "sendSMS?";
-            $sendData = "to=" . $mobileNumber . "&msg=" . $otp;
+            $sendData = "to=" . $mobileNumber . "&msg=OTP for 1stepshop.in Forgot Password is " . $otp;
             $output = self::curlPost($sendUrl, $sendData);
         }
         return $otp;
