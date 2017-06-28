@@ -1455,6 +1455,20 @@ class Backend extends CI_Controller
             if($adsActive!=$activeStatus){
                 $adsUpdateSql = "UPDATE `tbl_ads` SET `active`='".$activeStatus."' WHERE `adsId` = ".$adsId;
                 $this->Backend_model->runUpdateQuery($adsUpdateSql);
+
+                if($adsActive == "active"){
+                    $adsCode = $adsArray[0]['adsCode'];
+                    $userid = $adsArray[0]['userid'];
+                    $userDataArray = $this->Backend_model->getUsersList($userid, "active", "", "", "", "", "");
+                    if(count($userDataArray)>0){
+                        $mobile = $userDataArray[0]['mobile'];
+                        $sendMessage = "Your 1stepshop.in Ads Code : ". $adsCode ." was activated successfully";
+                        $baseUrl = base_url();
+                        $sendUrl = $baseUrl . "sendSMS?";
+                        $sendData = "to=" . $mobile . "&msg=" . $sendMessage;
+                        $this->users_model->curlPost($sendUrl, $sendData);
+                    }
+                }
             }
         }
         $output = array('status' => "1", 'message' => "Status Successfully Updated");
