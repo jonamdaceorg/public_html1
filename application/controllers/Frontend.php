@@ -949,6 +949,11 @@ class Frontend extends CI_Controller
         $actualPrice = $this->input->get_post('actualPrice');
         $offerPrice = $this->input->get_post('offerPrice');
 
+        if($offerPrice <= 0 || $offerPrice=="")
+        {
+            $offerPrice= $actualPrice;
+        }
+
 
 
         $historyMsg = "";

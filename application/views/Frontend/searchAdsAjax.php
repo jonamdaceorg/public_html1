@@ -60,7 +60,7 @@
                         <h5 class="title"><?php echo $searchData[$i]['adsTitle']; ?></h5>
                         <?php if($isAmountRequired=="Required" ){ ?>
                       <span class="adprice">
-                           <?php if($searchData[$i]['offerPrice'] >0){ ?>
+                            <?php if($searchData[$i]['offerPrice'] >0 && $searchData[$i]['offerPrice'] != $searchData[$i]['actualPrice'] ){ ?>
                               <del>  &#x20B9; <?php echo $searchData[$i]['actualPrice']; ?> ;</del>
                                 &#x20B9; <?php echo $searchData[$i]['offerPrice']; ?> </span>
                           <?php } else {?>

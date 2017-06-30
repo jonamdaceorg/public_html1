@@ -74,7 +74,7 @@
 					<div class="product-details">
 						<?php if($isAmountRequired=="Required" ){ ?>
 							<h4>Price : <strong>
-									<?php if($adsDetails[0]['offerPrice'] >0){ ?>
+									<?php if($adsDetails[0]['offerPrice'] >0 && $adsDetails[0]['offerPrice'] != $adsDetails[0]['actualPrice']){ ?>
                               <del>  &#x20B9; <?php echo $adsDetails[0]['actualPrice']; ?> ;</del>
                                 &#x20B9; <?php echo $adsDetails[0]['offerPrice']; ?> </span>
                           <?php } else {?>
@@ -189,7 +189,7 @@
 							<img src="<?php echo $filename; ?>"/>
 							<?php if($isAmountRequired=="Required" ){ ?>	<span class="price">
 
-								<?php if($similaradsArray[$i]['offerPrice'] >0){ ?>
+								<?php if($similaradsArray[$i]['offerPrice'] >0 && $similaradsArray[$i]['offerPrice'] != $similaradsArray[$i]['actualPrice']){ ?>
                               <del>  &#x20B9; <?php echo $similaradsArray[$i]['actualPrice']; ?> ;</del>
                                 &#x20B9; <?php echo $similaradsArray[$i]['offerPrice']; ?> </span>
                           <?php } else {?>
