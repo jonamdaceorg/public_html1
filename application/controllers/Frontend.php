@@ -1798,13 +1798,13 @@ class Frontend extends CI_Controller
 
             //Get history for user data changes
             if($name!=$userDataArray[0]['name']){
-                $historyMsg .= " Name changed from ".$name. " to ".$userDataArray[0]['name'].", ";
+                $historyMsg .= " Name changed from ".$userDataArray[0]['name']. " to ".$name.", ";
             }
             if($email!=$userDataArray[0]['email']){
-                $historyMsg .= " Email changed from ".$email. " to ".$userDataArray[0]['email'].", ";
+                $historyMsg .= " Email changed from ".$userDataArray[0]['email']. " to ".$email.", ";
             }
             if($address!=$userDataArray[0]['address']){
-                $historyMsg .= " Address changed from ".$address. " to ".$userDataArray[0]['address'].", ";
+                $historyMsg .= " Address changed from ".$userDataArray[0]['address']. " to ".$address.", ";
             }
             if($stateId!=$userDataArray[0]['stateId']){
 

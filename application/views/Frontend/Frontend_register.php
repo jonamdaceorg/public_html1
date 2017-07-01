@@ -148,8 +148,6 @@
 </div>
 <input type="hidden" name="getCommonSelectBoxUrl" id="getCommonSelectBoxUrl" value="<?php echo $getCommonSelectBoxUrl; ?>">
 <script>
-    $("#stateId").select2();
-    $("#districtId").select2();
     function getCommonSelectBox(upperActionId, divId) {
         var getCommonSelectBoxUrl = $("#getCommonSelectBoxUrl").val();
         var postFormData = "upperActionId=" + upperActionId + "&divId=" + divId
