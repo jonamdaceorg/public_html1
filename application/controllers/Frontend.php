@@ -603,7 +603,7 @@ class Frontend extends CI_Controller
                 $getDynamicInputValuesMaster = $this->Backend_model->getDynamicInputValueList("", $dynamicInputId);
                 if ($capturedvariabletype == "Select Box") {
                     if (count($getDynamicInputValuesMaster) > 0) {
-                        $selectBoxString = '<select name="capturedvariablename_' . $capturedVariableId . '" id="capturedvariablename_' . $dynamicInputId . '" class="form-control selectboxWidth select2" onchange="getCommonSelectBox(this.value, \'districtDiv\')"  ><option value="">Select ' . $capturedvariablename . '</option>';
+                        $selectBoxString = '<select name="capturedvariablename_' . $capturedVariableId . '" id="capturedvariablename_' . $dynamicInputId . '" class="form-control selectboxWidth select2 select2new" onchange="getCommonSelectBox(this.value, \'districtDiv\')"  ><option value="">Select ' . $capturedvariablename . '</option>';
                         for ($c = 0; $c < count($getDynamicInputValuesMaster); $c++) {
                             $dynamicInputValue = $getDynamicInputValuesMaster[$c]['dynamicInputValue'];
                             if($existingSelectedValue!="" && $existingSelectedValue!=null && $existingSelectedValue==$dynamicInputValue){

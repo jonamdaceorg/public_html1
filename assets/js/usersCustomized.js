@@ -137,12 +137,13 @@ function posAjaxAndWriteContentToDiv(postUrl, postData, divId){
         data: postData,
         success: function (data) {
             $("#"+divId).html(data);
+            $(".select2new").select2();
         }
     })
 }
 
 function getDynamicFieldsforAdPost(divId, action, adsId, categoryId, subCategoryId){
-
+//alert(2);
     //var categoryId = $("#categoryId").val();
     //var subCategoryId = $("#subCategoryId").val();
     var postData = "categoryId="+categoryId+"&action="+action+"&adsId="+adsId+"&subCategoryId="+subCategoryId;
