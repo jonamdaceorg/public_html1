@@ -260,7 +260,7 @@
 				$.get("categoryAjax",postData,function(data){
 					$("#responsdiv").html(data);
 
-
+					$('#myModal').modal('hide');
 					loadfun();
 				});
 
