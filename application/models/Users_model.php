@@ -838,7 +838,8 @@ class Users_model extends CI_Model
             $dynamicVariableIdList="";
             foreach ($dynamicSearchData as $key => $value) {
                 $dynamicVariableIdList .= "'" . $key . "',";
-               $dynamicSearchCondition.="(capturedVariableId='".$key."' and capturedVariableValue in(".$value.")) and ";
+               //$dynamicSearchCondition.="(capturedVariableId='".$key."' and capturedVariableValue in(".$value.")) and ";
+               $dynamicSearchCondition.="(capturedVariableId='".$key."' and capturedVariableValue in(".$value.")) or ";
            }
             $dynamicVariableIdList = trim($dynamicVariableIdList, ",");
             $dynamicSearchCondition = trim($dynamicSearchCondition, " and");
