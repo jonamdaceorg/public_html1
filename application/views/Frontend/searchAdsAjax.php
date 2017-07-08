@@ -76,6 +76,12 @@
                             <p>Start date : <?php echo $searchData[$i]['startDate']; ?></p>
                             <p>End date : <?php echo $searchData[$i]['endDate']; ?></p>
                             <p>Create At : <?php echo $searchData[$i]['endDate']; ?></p>
+                            <?php if($searchData[$i]['active']=='active'){  ?>
+                            <p id="adsStatusDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="updateactivefun('<?php echo $searchData[$i]['adsId']; ?>','deactive')" class="btn btn-info">Deactive</a> </p>
+                                <?php } else if($searchData[$i]['active']=='deactive'){  ?>
+                                <p id="adsStatusDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="updateactivefun('<?php echo $searchData[$i]['adsId']; ?>','active')" class="btn btn-info">Deactive</a> </p>
+                            <?php } ?>
+
                         <?php } ?>
                         <p class="catpath"><?php echo $searchData[$i]['category']; ?> » <?php echo $searchData[$i]['subCategory']; ?></p>
                         <p><a href="<?php echo base_url(); ?>singleItem/<?php echo $searchData[$i]['adsId']; ?>">View More Details <span class="glyphicon glyphicon-arrow-right"></span></a></p>
@@ -264,6 +270,18 @@
             }
         });
     }
+   function updateactivefun(adsId,action)
+   {
+
+       $.ajax({
+           url : "updateAdsStatus",
+           data : "adsId="+adsId+"&action="+action,
+           method: "GET",
+           success : function(response){
+               $("#adsStatusDivId"+adsId).html(response);
+           }
+       });
+   }
 </script>
 <?php  } else{ ?>
 

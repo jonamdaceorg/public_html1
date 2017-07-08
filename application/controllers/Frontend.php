@@ -2158,4 +2158,29 @@ class Frontend extends CI_Controller
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
+    public function updateAdsStatus()
+    {
+        $adsId = $this->input->get_post('adsId');
+        $adsStatus = $this->input->get_post('adsId');
+
+        if($adsStatus!="" && $adsId!="" ) {
+            $adsUpdateSql = "UPDATE `tbl_ads` SET `active`='" . $adsStatus . "' WHERE `adsId` = " . $adsId;
+            $this->Backend_model->runUpdateQuery($adsUpdateSql);
+
+            $description="ads status update";
+            $title="update ads status";
+
+            echo '<a href="javascript:void(0)" onclick="updateactivefun(/"'. $adsId.'/",/"active/")" class="btn btn-info">Active</a>';
+
+            //History Management Start
+            $createdAt = date("Y-m-d H:i:s");
+            $fromIp = $this->Backend_model->getIpAddress();
+            $pageName = "update ads Status";
+            $pageUrl = 'updateAdsStatus';
+            $userid = $this->session->userdata('userid');
+            $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $title, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
+            $this->users_model->insertHistory($historyArray);
+            //History Management End
+        }
+    }
 }

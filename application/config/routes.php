@@ -140,6 +140,8 @@ $route['privacy'] = 'Frontend/privacy';
 $route['typography'] = 'Frontend/typography';
 $route['popularSearch'] = 'Frontend/popularSearch';
 $route['sitemap'] = 'Frontend/sitemap';
+$route['updateAdsStatus'] = 'Frontend/updateAdsStatus';
+
 
 
 
