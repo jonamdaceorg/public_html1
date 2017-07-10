@@ -1587,7 +1587,7 @@ class Frontend extends CI_Controller
 
                 $uploadPath = 'uploads/files/';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpeg|jpg|png';
                 //$config['max_size']	= '100';
                 //$config['max_width'] = '1024';
                 //$config['max_height'] = '768';
@@ -1761,7 +1761,8 @@ class Frontend extends CI_Controller
                     mkdir($uploadPath, 0777, TRUE);
                 }
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                //$config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpeg|jpg|png';
                 $config['encrypt_name'] = TRUE;
 
                 $this->load->library('upload', $config);

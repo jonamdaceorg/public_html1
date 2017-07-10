@@ -637,7 +637,8 @@ class Users_model extends CI_Model
                             }
 
                             $config['upload_path'] = $uploadPath;
-                            $config['allowed_types'] = 'gif|jpg|png';
+//                            $config['allowed_types'] = 'gif|jpg|png';
+                            $config['allowed_types'] = 'gif|jpeg|jpg|png';
                             $config['encrypt_name'] = TRUE;
                             //$config['max_size']	= '100';
                             //$config['max_width'] = '1024';
