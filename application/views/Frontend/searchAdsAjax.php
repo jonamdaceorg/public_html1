@@ -79,7 +79,7 @@
                             <?php if($searchData[$i]['active']=='active'){  ?>
                             <p id="adsStatusDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="updateactivefun('<?php echo $searchData[$i]['adsId']; ?>','deactive')" class="btn btn-info">Deactive</a> </p>
                                 <?php } else if($searchData[$i]['active']=='deactive'){  ?>
-                                <p id="adsStatusDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="updateactivefun('<?php echo $searchData[$i]['adsId']; ?>','active')" class="btn btn-info">Deactive</a> </p>
+                                <p id="adsStatusDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="updateactivefun('<?php echo $searchData[$i]['adsId']; ?>','active')" class="btn btn-info">Active</a> </p>
                             <?php } ?>
 
                         <?php } ?>
@@ -272,15 +272,17 @@
     }
    function updateactivefun(adsId,action)
    {
-
-       $.ajax({
-           url : "updateAdsStatus",
-           data : "adsId="+adsId+"&action="+action,
-           method: "GET",
-           success : function(response){
-               $("#adsStatusDivId"+adsId).html(response);
-           }
-       });
+       var cnfm = confirm("Are you sure to " +action +"?");
+        if(cnfm) {
+            $.ajax({
+                url: "updateAdsStatus",
+                data: "adsId=" + adsId + "&actionStatus=" + action,
+                method: "GET",
+                success: function (response) {
+                    $("#adsStatusDivId" + adsId).html(response);
+                }
+            });
+        }
    }
 </script>
 <?php  } else{ ?>

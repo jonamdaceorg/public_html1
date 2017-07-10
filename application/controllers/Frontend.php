@@ -2161,16 +2161,24 @@ class Frontend extends CI_Controller
     public function updateAdsStatus()
     {
         $adsId = $this->input->get_post('adsId');
-        $adsStatus = $this->input->get_post('adsId');
+        $adsStatus = $this->input->get_post('actionStatus');
 
         if($adsStatus!="" && $adsId!="" ) {
             $adsUpdateSql = "UPDATE `tbl_ads` SET `active`='" . $adsStatus . "' WHERE `adsId` = " . $adsId;
             $this->Backend_model->runUpdateQuery($adsUpdateSql);
-
-            $description="ads status update";
             $title="update ads status";
+if($adsStatus=="active"){
+    $description="ads(".$adsId.") status update  form deactive to active";
+    echo '<a href="javascript:void(0)" onclick="updateactivefun('. $adsId.',deactive)" class="btn btn-info">Deactive</a>';
 
-            echo '<a href="javascript:void(0)" onclick="updateactivefun(/"'. $adsId.'/",/"active/")" class="btn btn-info">Active</a>';
+
+} else if($adsStatus=="deactive"){
+    $description="ads(".$adsId.") status update  form active to deactive";
+
+    echo '<a href="javascript:void(0)" onclick="updateactivefun('. $adsId.',active)" class="btn btn-info">Active</a>';
+}
+
+
 
             //History Management Start
             $createdAt = date("Y-m-d H:i:s");
