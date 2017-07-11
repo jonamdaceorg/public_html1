@@ -274,6 +274,49 @@ class Users_model extends CI_Model
         return $alreadyExist;
     }
 
+    public function checkUsersLoginCredentialOnlyUsername($userCredentialArray)
+    {
+        $username = $userCredentialArray['username'];
+        $userListArray = array();
+
+        // Select active list from both user and usertype table
+
+        $sql = "SELECT t.userid, t.active, t.userCode FROM tbl_user t  WHERE t.mobile = '" . $username . "' ";
+        $query = $this->db->query($sql);
+        $userList = $query->result_array();
+
+        if (count($userList) > 0) {
+            $userListArray['userid'] = $userList[0]['userid'];
+            $userListArray['active'] = $userList[0]['active'];
+            $userListArray['userCode'] = $userList[0]['userCode'];
+        }
+
+        return $userListArray;
+    }
+
+    public function createFrontendUsersProfileForMigrationWithoutOTP($usersProfileArray)
+    {
+
+        $userNewArray = self::checkUsersLoginCredentialOnlyUsername($usersProfileArray);
+
+        if (count($userNewArray) == 0) {
+            $sql = "INSERT INTO tbl_user (mobile, password, name, email, address, stateId, districtId, countryId, active, createdAt, fromIp) " . "VALUES ( " . $this->db->escape($usersProfileArray['mobile']) . ", " . $this->db->escape($usersProfileArray['password']) . "," . $this->db->escape($usersProfileArray['name']) . "," . $this->db->escape($usersProfileArray['email']) . "," . $this->db->escape($usersProfileArray['address']) . "," . $this->db->escape($usersProfileArray['stateId']) . "," . $this->db->escape($usersProfileArray['districtId']) . "," . $this->db->escape($usersProfileArray['countryId']) . "," . $this->db->escape($usersProfileArray['active']) . "," . $this->db->escape($usersProfileArray['createdAt']) . "," . $this->db->escape($usersProfileArray['fromIp']) . ")";
+            $this->db->query($sql);
+
+            $userId = $this->db->insert_id();
+
+            $userCode = "MEM".sprintf('%04u', $userId);
+            $updateSql = "Update tbl_user set userCode = ".$this->db->escape($userCode) . " Where userid = ".$this->db->escape($userId);
+            $this->db->query($updateSql);
+            $userNewArray['userId'] = "";
+            $userNewArray['userCode'] = "sss";
+        } else {
+            $userNewArray['userId'] = $userNewArray['userid'];
+            $userNewArray['userCode'] =  $userNewArray['userCode'];
+        }
+        return $userNewArray;
+    }
+
     public function getOTPForUserActivation($userId, $fromIp, $mobileNumber, $baseUrl)
     {
         $newdate = new DateTime("now");

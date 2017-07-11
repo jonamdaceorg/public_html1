@@ -2201,4 +2201,177 @@ class Frontend extends CI_Controller
             }
         }
     }
+
+    public function adPost(){
+
+        $sessionUserIdIsset = $this->session->has_userdata('userid');
+
+        $output = $this->session->flashdata('output');
+        $succesMsg = $this->users_model->getSuccessMsg($output);
+        $dataheader['userid'] = "";
+        $dataheader['succesMsg'] = $succesMsg;
+        $dataheader['title'] = "Post an Ad";
+
+        $orderBy = " order by s.state ASC";
+        $stateArray = $this->Backend_model->getStateList("0", "1", $orderBy);
+
+        $actionId = "";
+        $orderBy = " order by orders Asc";
+        $categoryArray = $this->Backend_model->getCategoryList($actionId, $orderBy);
+        $dataheader['categoryArray'] = $categoryArray;
+        $dataheader['stateArray'] = $stateArray;
+        $dataheader['getCommonJsonDataUrl'] = base_url() . "Frontend/getCommonJsonData";
+
+        $this->load->view('layout/Frontend_header', $dataheader);
+        $this->load->view('Frontend/Migration_posting');
+        $this->load->view('layout/Frontend_footer');
+
+    }
+
+    public function createBackendAdPost(){
+
+        $userid = 0;
+        $userCode = "";
+        $mobileNumber = $this->input->get_post('mobileNumber');
+        print_r($_POST);
+        if ($mobileNumber > 0) {
+
+            $password = "Welcome123";
+            $name = $this->input->get_post('name');
+            $email = $this->input->get_post('email');
+
+            $stateId = $this->input->get_post('stateId');
+            $districtId = $this->input->get_post('districtId');
+            if($districtId == null)
+            $districtId = $this->input->get_post('cityId');
+            $address = $this->input->get_post('address');
+            $countryId = "1";
+            $fromIp = $_SERVER['SERVER_ADDR'];
+            $newdate = new DateTime("now");
+            $createdAt = date_format($newdate, "Y-m-d H:i:s");
+            $usersProfileArray = array('mobile' => $mobileNumber, 'username'=> $mobileNumber, 'password' => $password, 'userpassword' => $password, 'name' => $name, 'email' => $email, 'countryId' => $countryId, 'stateId' => $stateId, 'districtId' => $districtId, 'address' => $address, 'active' => 'InActive', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
+            $userCreatedArray = $this->users_model->createFrontendUsersProfileForMigrationWithoutOTP($usersProfileArray);
+
+            $userid = $userCreatedArray['userId'];
+            $userCode = $userCreatedArray['userCode'];
+
+
+            $adsTitle = $this->input->get_post('adsTitle');
+            $description = $this->input->get_post('description');
+            $noOfDaysToActive = $this->input->get_post('noOfDaysToActive');
+            $startDate = $this->input->get_post('startDate');
+            $categoryId = $this->input->get_post('categoryId');
+            $subCategoryId = $this->input->get_post('subCategoryId');
+            $subCategoryId = $this->input->get_post('subCategoryId');
+            $itemId = $this->input->get_post('itemId');
+            $stateId = $this->input->get_post('stateId');
+            $cityId = $this->input->get_post('cityId');
+
+            $latitude = $this->input->get_post('latitude');
+            $longitude = $this->input->get_post('longitude');
+
+            $address = $this->input->get_post('address');
+            $actualPrice = $this->input->get_post('actualPrice');
+            $offerPrice = $this->input->get_post('offerPrice');
+
+            if($offerPrice <= 0 || $offerPrice=="")
+            {
+                $offerPrice= $actualPrice;
+            }
+
+
+
+            $historyMsg = "";
+            if ($adsTitle != "" && $userid > 0 && $categoryId > 0) {
+                $active = "Waiting";
+                $fromIp = $_SERVER['SERVER_ADDR'];
+                $newdate = new DateTime("now");
+                $createdAt = date_format($newdate, "Y-m-d H:i:s");
+
+                if ($startDate == "" || $startDate == null || $startDate == "0000-00-00") {
+                    $startDate = $createdAt;
+                }
+
+                if ($noOfDaysToActive == "" || $noOfDaysToActive == null || $noOfDaysToActive == "0") {
+                    $noOfDaysToActive = 30;
+                }
+
+                $endDate = date("Y-m-d H:i:s", strtotime("+" . $noOfDaysToActive . "days", strtotime($startDate)));
+
+                $countryId = 1;
+//                $stateId=31;
+//                $cityId = 516;
+                $returnAdsCreatedArray = $this->users_model->createFreeAdPost($adsTitle, $description, $noOfDaysToActive, $startDate, $endDate, $categoryId, $subCategoryId, $itemId, $countryId, $stateId, $cityId, $address, $userid, $active, $fromIp, $createdAt,$actualPrice,$offerPrice, $latitude, $longitude);
+                $adsId = 0;
+                $adsCode =0;
+                if($returnAdsCreatedArray!=null){
+                    $adsId = $returnAdsCreatedArray['adsId'];
+                    $adsCode = $returnAdsCreatedArray['adsCode'];
+                }
+                $historyMsg .= "Ads Title : ".$adsTitle." was created At ".$createdAt;
+                $tblAdsExtrasArray = array();
+                $dynamicFieldsforAdPostArray = $this->Backend_model->getDynamicFieldsforAdPost("0", $categoryId, $subCategoryId);
+
+//            echo "<pre>";
+//            print_r($_REQUEST);
+//            echo "</pre>";
+
+//            echo "<pre>";
+//            print_r($dynamicFieldsforAdPostArray);
+//            echo "</pre>";
+                for ($i = 0; $i < count($dynamicFieldsforAdPostArray); $i++) {
+
+                    $capturedVariableId = $dynamicFieldsforAdPostArray[$i]['capturedVariableId'];
+                    $dynamicInputType = $dynamicFieldsforAdPostArray[$i]['dynamicInputType'];
+                    $postKey = 'capturedvariablename_' . $capturedVariableId;
+                    $requestArray = $_REQUEST;
+                    if (array_key_exists($postKey, $requestArray)) {
+                        $capturedVariableValue = $requestArray[$postKey];
+                        if ($dynamicInputType != "Check Box") {
+                            $tblAdsExtrasArray['adsId'] = $adsId;
+                            $tblAdsExtrasArray['capturedVariableId'] = $capturedVariableId;
+                            $tblAdsExtrasArray['capturedVariableValue'] = $capturedVariableValue;
+                            $this->users_model->insertIntoTblAdsExtras($tblAdsExtrasArray);
+
+                        } else {
+                            $tblAdsExtrasArray['adsId'] = $adsId;
+                            $tblAdsExtrasArray['capturedVariableId'] = $capturedVariableId;
+                            for ($n = 0; $n < count($capturedVariableValue); $n++) {
+                                $capturedVariableValueStr = $capturedVariableValue[$n];
+                                $tblAdsExtrasArray['capturedVariableValue'] = $capturedVariableValueStr;
+                                $this->users_model->insertIntoTblAdsExtras($tblAdsExtrasArray);
+                            }
+                        }
+                    }
+                }
+                $postGalleryArray = $_FILES;
+//            echo "<pre>";
+//            print_r($postGalleryArray);
+//            echo "</pre>";
+                //It uplad gallery files
+                $historyMsg .= $this->users_model->uploadMyGalleryFiles($adsId, $userCode, $adsCode, $active, $userid, $historyMsg, "Add");
+
+                $successMsg = "Thank you for posting ad it will be activated within an hour";
+                $output = array('status' => "1", 'message' => $successMsg);
+                $this->session->set_flashdata('output', $output);
+            } else {
+                $successMsg =  "Invalid Data";
+                $output = array('status' => "2", 'message' => $successMsg );
+                $this->session->set_flashdata('output', $output);
+            }
+
+            //History Update Start
+            $createdAt = date("Y-m-d H:i:s");
+            $fromIp = $this->Backend_model->getIpAddress();
+            $action = 'Add';
+            $description = "Response : ".$successMsg.", Description : ".$historyMsg ;
+            $pageName = "Ad Post";
+            $pageUrl = 'posting';
+            $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $action, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
+            $this->users_model->insertHistory($historyArray);
+            //History Update End
+//        redirect(base_url() . "posting");
+        }
+    }
+
 }
