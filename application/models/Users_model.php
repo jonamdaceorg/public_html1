@@ -818,10 +818,10 @@ class Users_model extends CI_Model
         //condition based ads start date and end date end
 
         if ($orderBy == "HTL") {
-            $orderByquery .= " order by ta.offerPrice ";
+            $orderByquery .= " order by ta.offerPrice desc ";
 
         } else if ($orderBy == "LTH") {
-            $orderByquery .= " order by ta.offerPrice desc ";
+            $orderByquery .= " order by ta.offerPrice  ";
         } else {
             $orderByquery .= " order by ta.createdAt desc";
 

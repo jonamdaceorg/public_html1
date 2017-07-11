@@ -2164,32 +2164,41 @@ class Frontend extends CI_Controller
         $adsId = $this->input->get_post('adsId');
         $adsStatus = $this->input->get_post('actionStatus');
 
+
         if($adsStatus!="" && $adsId!="" ) {
-            $adsUpdateSql = "UPDATE `tbl_ads` SET `active`='" . $adsStatus . "' WHERE `adsId` = " . $adsId;
-            $this->Backend_model->runUpdateQuery($adsUpdateSql);
-            $title="update ads status";
-if($adsStatus=="active"){
-    $description="ads(".$adsId.") status update  form deactive to active";
-    echo '<a href="javascript:void(0)" onclick="updateactivefun('. $adsId.',deactive)" class="btn btn-info">Deactive</a>';
+
+            $adsPaginationArray = $this->users_model->getadsList($adsId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+            $adsArray = $adsPaginationArray['resultArrayData'];
+            if (count($adsArray) > 0) {
+                $adsexistActive = $adsArray[0]['active'];
+                if ($adsexistActive == "active" || $adsexistActive == "deactive") {
+
+                    $adsUpdateSql = "UPDATE `tbl_ads` SET `active`='" . $adsStatus . "' WHERE `adsId` = " . $adsId;
+                    $this->Backend_model->runUpdateQuery($adsUpdateSql);
+                    $title = "update ads status";
+                    if ($adsStatus == "active") {
+                        $description = "ads(" . $adsId . ") status update  form deactive to active";
+                        echo '<a href="javascript:void(0)" onclick="updateactivefun(' . $adsId . ',\'deactive\')" class="btn btn-info">Deactive</a>';
 
 
-} else if($adsStatus=="deactive"){
-    $description="ads(".$adsId.") status update  form active to deactive";
+                    } else if ($adsStatus == "deactive") {
+                        $description = "ads(" . $adsId . ") status update  form active to deactive";
 
-    echo '<a href="javascript:void(0)" onclick="updateactivefun('. $adsId.',active)" class="btn btn-info">Active</a>';
-}
+                        echo '<a href="javascript:void(0)" onclick="updateactivefun(' . $adsId . ',\'active\')" class="btn btn-info">Active</a>';
+                    }
 
 
-
-            //History Management Start
-            $createdAt = date("Y-m-d H:i:s");
-            $fromIp = $this->Backend_model->getIpAddress();
-            $pageName = "update ads Status";
-            $pageUrl = 'updateAdsStatus';
-            $userid = $this->session->userdata('userid');
-            $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $title, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
-            $this->users_model->insertHistory($historyArray);
-            //History Management End
+                    //History Management Start
+                    $createdAt = date("Y-m-d H:i:s");
+                    $fromIp = $this->Backend_model->getIpAddress();
+                    $pageName = "update ads Status";
+                    $pageUrl = 'updateAdsStatus';
+                    $userid = $this->session->userdata('userid');
+                    $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $title, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
+                    $this->users_model->insertHistory($historyArray);
+                    //History Management End
+                }
+            }
         }
     }
 }
