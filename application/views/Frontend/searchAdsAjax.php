@@ -91,7 +91,9 @@
                             <span class="date"><a href="<?php echo base_url(); ?>editMyAds/<?php echo $this->users_model->encryptor('encrypt', $searchData[$i]['adsId']); ?>">Edit</a></span>
                             <span class="<?php if($searchData[$i]['active']=='active'){ echo 'text-success'; }else { echo 'text-warning'; }  ?>">
                             <?php echo $searchData[$i]['active']; ?></span>
-                            <p id="bookmarkDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="addToBookMark('<?php echo $searchData[$i]['adsId']; ?>', 'remove')" class="updateMsg"><span class="glyphicon glyphicon-star"></span> Remove from Bookmark</a></p>
+                            <?php if($getListFromPage != "View All My Ads") { ?>
+                                <p id="bookmarkDivId<?php echo $searchData[$i]['adsId']; ?>" ><a href="javascript:void(0)" onclick="addToBookMark('<?php echo $searchData[$i]['adsId']; ?>', 'remove')" class="updateMsg"><span class="glyphicon glyphicon-star"></span> Remove from Bookmark</a></p>
+                            <?php } ?>
                             <span class="date"><?php echo $searchData[$i]['createdAt']; ?></span>
                         <?php } else {  ?>
                             <?php if(!in_array($searchData[$i]['adsId'], $bookmarkArray)){ ?>
