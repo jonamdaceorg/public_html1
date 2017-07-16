@@ -308,8 +308,8 @@ class Users_model extends CI_Model
             $userCode = "MEM".sprintf('%04u', $userId);
             $updateSql = "Update tbl_user set userCode = ".$this->db->escape($userCode) . " Where userid = ".$this->db->escape($userId);
             $this->db->query($updateSql);
-            $userNewArray['userId'] = "";
-            $userNewArray['userCode'] = "sss";
+            $userNewArray['userId'] = $userId;
+            $userNewArray['userCode'] = $userCode;
         } else {
             $userNewArray['userId'] = $userNewArray['userid'];
             $userNewArray['userCode'] =  $userNewArray['userCode'];
