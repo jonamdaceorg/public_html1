@@ -70,11 +70,11 @@
 <!--            </div>-->
             <div class="footer-social-icons">
                 <ul>
-                    <li><a class="facebook" href="#"><span>Facebook</span></a></li>
-                    <li><a class="twitter" href="#"><span>Twitter</span></a></li>
-                    <li><a class="flickr" href="#"><span>Flickr</span></a></li>
-                    <li><a class="googleplus" href="#"><span>Google+</span></a></li>
-                    <li><a class="dribbble" href="#"><span>Dribbble</span></a></li>
+                    <li><a class="twitter" target="_blank" href="https://twitter.com/1stepshop"><span>Twitter</span></a></li>
+                    <li><a class="dribbble" target="_blank" href="https://www.linkedin.com/in/1stepshop-in-770806142/"><span>Linkedin</span></a></li>
+                    <li><a class="facebook" target="_blank" href="https://www.facebook.com/1stepshop.in/"><span>Facebook</span></a></li>
+                    <li><a class="googleplus" target="_blank" href="https://plus.google.com/110477558775619195162"><span>Google+</span></a></li>
+<!--                    <li><a class="dribbble" href="#"><span>Dribbble</span></a></li>-->
                 </ul>
             </div>
             <div class="copyrights">
