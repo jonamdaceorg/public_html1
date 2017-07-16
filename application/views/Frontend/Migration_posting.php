@@ -143,7 +143,7 @@
                             <div class="row">
                                 <div class="col-sm-6 textlabel">No.of Days to Active <span class="redColor">*</span></div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="selectboxWidth" name="noOfDaysToActive" id="noOfDaysToActive" placeholder="No.of days to be displayed on the site..."  required
+                                    <input type="text" class="selectboxWidth" name="noOfDaysToActive" id="noOfDaysToActive" value="30" placeholder="No.of days to be displayed on the site..."  required
                                            data-parsley-name="No.of Days to Active">
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                                 <div class="col-sm-6 textlabel">Start Date <span class="redColor">*</span></div>
                                 <div class="col-sm-6">
                                     <input type="text" placeholder="YYYY-MM-DD" name="startDate" id="startDate" class="selectboxWidth datepicker" required
-                                           data-parsley-name="Start Date">
+                                           data-parsley-name="Start Date" value="<?php echo date_format(new DateTime(), 'Y-m-d'); ?>">
                                 </div>
                             </div>
                         </div>
