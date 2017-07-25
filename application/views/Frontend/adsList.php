@@ -242,7 +242,7 @@
                                 <div class="featured-ad-right">
                                     <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
 
-                                    <p>$ 450</p>
+                                    <p>  &#x20B9; 450</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
@@ -256,7 +256,7 @@
                                 <div class="featured-ad-right">
                                     <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
 
-                                    <p>$ 380</p>
+                                    <p>  &#x20B9; 380</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
@@ -270,7 +270,7 @@
                                 <div class="featured-ad-right">
                                     <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
 
-                                    <p>$ 560</p>
+                                    <p>  &#x20B9; 560</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
