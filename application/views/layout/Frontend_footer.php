@@ -70,10 +70,15 @@
 <!--            </div>-->
             <div class="footer-social-icons">
                 <ul>
-                    <li><a class="twitter" target="_blank" href="https://twitter.com/1stepshop"><span>Twitter</span></a></li>
-                    <li><a class="dribbble" target="_blank" href="https://www.linkedin.com/in/1stepshop-in-770806142/"><span>Linkedin</span></a></li>
-                    <li><a class="facebook" target="_blank" href="https://www.facebook.com/1stepshop.in/"><span>Facebook</span></a></li>
-                    <li><a class="googleplus" target="_blank" href="https://plus.google.com/110477558775619195162"><span>Google+</span></a></li>
+                    <li><a class="iconcss"  target="_blank" href="https://twitter.com/1stepshop"><i class="fa fa-twitter" style=" margin-top: 5px" aria-hidden="true"></i> <span>Twitter</span></a></li>
+                    <li><a class="iconcss"  target="_blank" href="https://www.linkedin.com/in/1stepshop-in-770806142/"><i class="fa fa-linkedin" style="margin-top: 5px" aria-hidden="true"></i> <span>Linkedin</span></a></li>
+                    <li><a class="iconcss"  target="_blank" href="https://www.facebook.com/1stepshop.in/"><i class="fa fa-facebook" style=" margin-top: 5px" aria-hidden="true"></i> <span>Facebook</span></a></li>
+                    <li><a class="iconcss"  target="_blank" href="https://plus.google.com/110477558775619195162"><i class="fa fa-google-plus" style=" margin-top: 5px" aria-hidden="true"></i> <span>Google+</span></a></li>
+
+<!--                    <li><a class="twitter" target="_blank" href="https://twitter.com/1stepshop"><span>Twitter</span></a></li>-->
+<!--                    <li><a class="dribbble" target="_blank" href="https://www.linkedin.com/in/1stepshop-in-770806142/"><span>Linkedin</span></a></li>-->
+<!--                    <li><a class="facebook" target="_blank" href="https://www.facebook.com/1stepshop.in/"><span>Facebook</span></a></li>-->
+<!--                    <li><a class="googleplus" target="_blank" href="https://plus.google.com/110477558775619195162"><span>Google+</span></a></li>-->
 <!--                    <li><a class="dribbble" href="#"><span>Dribbble</span></a></li>-->
                 </ul>
             </div>

@@ -4847,3 +4847,18 @@ body.loading .modal {
     background-color: transparent !important;
     box-shadow: none !important;
 }
+/**  booter icon class ***********/
+.footer-social-icons ul li a.iconcss {
+    color: #979797;
+    background: transparent none repeat scroll 0% 0%;
+    border-radius: 20px;
+    border: 3px solid;
+}
+.footer-social-icons ul li a.iconcss:hover {
+    color:#01A185;
+    transform: translate(0,-10px);
+    -webkit-transform: translate(0,-10px);
+    -o-transform: translate(0,-10px);
+    -moz-transform: translate(0,-10px);
+}
+/* footer icon class end ***/

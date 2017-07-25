@@ -152,7 +152,7 @@ Author URL: http://1stepshop.in
                     if($userid>0) { ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="topnav">
-                        <form role="search" id="headerSearchForm" class="navbar-left app-search pull-left hidden-xs" action="<?php base_url();?>adsList" method="POST">
+                        <form role="search" id="headerSearchForm" class="navbar-left app-search " action="<?php base_url();?>adsList" method="POST">
                             <input type="text" placeholder="Search..." class="form-control input-lg" name="headerSearch" value="<?php if(isset($_REQUEST['searchText'])){
                                 echo $_REQUEST['searchText'];
                             } elseif(isset($_REQUEST['headerSearch'])){
@@ -197,7 +197,7 @@ Author URL: http://1stepshop.in
             <?php } else { ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="topnav">
-                        <form role="search" id="headerSearchForm1"  class="navbar-left app-search pull-left hidden-xs" action="<?php base_url();?>adsList" method="GET">
+                        <form role="search" id="headerSearchForm1"  class="navbar-left app-search " action="<?php base_url();?>adsList" method="GET">
                             <input type="text" placeholder="Search..." class="form-control" name="headerSearch" value="<?php if(isset($_REQUEST['searchText'])){
                                 echo $_REQUEST['searchText'];
                             } elseif(isset($_REQUEST['headerSearch'])){
