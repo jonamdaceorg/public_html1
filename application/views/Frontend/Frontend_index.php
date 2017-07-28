@@ -30,7 +30,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p1.jpg"/>
-                                <span class="price">&#36; 450</span>
+                                <span class="price"> &#x20B9; 450</span>
                             </a>
                             <div class="ad-info">
                                 <h5>There are many variations of passages</h5>
@@ -40,7 +40,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p2.jpg"/>
-                                <span class="price">&#36; 399</span>
+                                <span class="price"> &#x20B9; 399</span>
                             </a>
                             <div class="ad-info">
                                 <h5>Lorem Ipsum is simply dummy</h5>
@@ -50,7 +50,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p3.jpg"/>
-                                <span class="price">&#36; 199</span>
+                                <span class="price"> &#x20B9; 199</span>
                             </a>
                             <div class="ad-info">
                                 <h5>It is a long established fact that a reader</h5>
@@ -60,7 +60,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p4.jpg"/>
-                                <span class="price">&#36; 159</span>
+                                <span class="price"> &#x20B9; 159</span>
                             </a>
                             <div class="ad-info">
                                 <h5>passage of Lorem Ipsum you need to be</h5>
@@ -72,7 +72,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p5.jpg"/>
-                                <span class="price">&#36; 1599</span>
+                                <span class="price"> &#x20B9; 1599</span>
                             </a>
                             <div class="ad-info">
                                 <h5>There are many variations of passages</h5>
@@ -82,7 +82,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p6.jpg"/>
-                                <span class="price">&#36; 1099</span>
+                                <span class="price"> &#x20B9; 1099</span>
                             </a>
                             <div class="ad-info">
                                 <h5>passage of Lorem Ipsum you need to be</h5>
@@ -92,7 +92,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p7.jpg"/>
-                                <span class="price">&#36; 109</span>
+                                <span class="price"> &#x20B9; 109</span>
                             </a>
                             <div class="ad-info">
                                 <h5>It is a long established fact that a reader</h5>
@@ -102,7 +102,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p8.jpg"/>
-                                <span class="price">&#36; 189</span>
+                                <span class="price"> &#x20B9; 189</span>
                             </a>
                             <div class="ad-info">
                                 <h5>Lorem Ipsum is simply dummy</h5>
@@ -114,7 +114,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p9.jpg"/>
-                                <span class="price">&#36; 2599</span>
+                                <span class="price"> &#x20B9; 2599</span>
                             </a>
                             <div class="ad-info">
                                 <h5>Lorem Ipsum is simply dummy</h5>
@@ -124,7 +124,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p10.jpg"/>
-                                <span class="price">&#36; 3999</span>
+                                <span class="price"> &#x20B9; 3999</span>
                             </a>
                             <div class="ad-info">
                                 <h5>It is a long established fact that a reader</h5>
@@ -134,7 +134,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p11.jpg"/>
-                                <span class="price">&#36; 2699</span>
+                                <span class="price"> &#x20B9; 2699</span>
                             </a>
                             <div class="ad-info">
                                 <h5>passage of Lorem Ipsum you need to be</h5>
@@ -144,7 +144,7 @@
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
                                 <img src="<?php echo base_url(); ?>assets/web/images/p12.jpg"/>
-                                <span class="price">&#36; 899</span>
+                                <span class="price"> &#x20B9; 899</span>
                             </a>
                             <div class="ad-info">
                                 <h5>There are many variations of passages</h5>

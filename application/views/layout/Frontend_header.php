@@ -23,6 +23,15 @@ Author URL: http://1stepshop.in
     <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!--//fonts-->
+    <!---google adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-4023821967290117",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!---google adsense end -->
     <!-- js -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/web/js/jquery.min.js"></script>
     <!-- js -->
