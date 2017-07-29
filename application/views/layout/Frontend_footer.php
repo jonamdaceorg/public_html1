@@ -6,19 +6,20 @@
                 <div class="col-md-3 footer-grid">
                     <h4 class="footer-head">Help</h4>
                     <ul>
-                        <li><a href="<?php echo base_url(); ?>howitworks">How it Works</a></li>
+<!--                        <li><a href="--><?php //echo base_url(); ?><!--howitworks">How it Works</a></li>-->
                         <li><a href="<?php echo base_url(); ?>sitemap">Sitemap</a></li>
-                        <li><a href="<?php echo base_url(); ?>faq">Faq</a></li>
-                        <li><a href="<?php echo base_url(); ?>feedback">Feedback</a></li>
-                        <li><a href="<?php echo base_url(); ?>typography">Shortcodes</a></li>
+<!--                        <li><a href="--><?php //echo base_url(); ?><!--faq">Faq</a></li>-->
+                        <li><a href="<?php echo base_url(); ?>contactUs">Feedback</a></li>
+<!--                        <li><a href="--><?php //echo base_url(); ?><!--feedback">Feedback</a></li>-->
+<!--                        <li><a href="--><?php //echo base_url(); ?><!--typography">Shortcodes</a></li>-->
                     </ul>
                 </div>
                 <div class="col-md-3 footer-grid">
                     <h4 class="footer-head">Information</h4>
                     <ul>
-                        <li><a href="<?php echo base_url(); ?>locatinsMap">Locations Map</a></li>
+<!--                        <li><a href="--><?php //echo base_url(); ?><!--locatinsMap">Locations Map</a></li>-->
                         <li><a href="<?php echo base_url(); ?>terms">Terms of Use</a></li>
-                        <li><a href="<?php echo base_url(); ?>popularSearch">Popular searches</a></li>
+<!--                        <li><a href="--><?php //echo base_url(); ?><!--popularSearch">Popular searches</a></li>-->
                         <li><a href="<?php echo base_url(); ?>privacy">Privacy Policy</a></li>
                         <li><a href="<?php echo base_url(); ?>contactUs">Contact Us</a></li>
                     </ul>
