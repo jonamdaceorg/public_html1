@@ -31,10 +31,10 @@
                     </ul>
                     <div class="app-buttons">
                         <div class="app-button">
-                            <a href="#"><img src="<?php echo base_url(); ?>assets/web/images/1.png" alt=""></a>
+<!--                            <a href="#"><img src="--><?php //echo base_url(); ?><!--assets/web/images/1.png" alt=""></a>-->
                         </div>
                         <div class="app-button">
-                            <a href="#"><img src="<?php echo base_url(); ?>assets/web/images/2.png" alt=""></a>
+<!--                            <a href="#"><img src="--><?php //echo base_url(); ?><!--assets/web/images/2.png" alt=""></a>-->
                         </div>
                         <div class="clearfix"> </div>
                     </div>
