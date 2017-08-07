@@ -55,7 +55,7 @@
                     }
 
                     ?>
-                    <img src="<?php echo $filename; ?>" title="" alt=""/>
+                    <img src="<?php echo $filename; ?>" title="" alt="<?php echo $searchData[$i]['file_name']; ?>"/>
                     <section class="list-left">
                         <h5 class="title"><?php echo $searchData[$i]['adsTitle']; ?></h5>
                         <?php if($isAmountRequired=="Required" ){ ?>
@@ -111,7 +111,7 @@
         </div>
     </div>
 </div>
-<!--<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+<!--<div role="tabpanel" class="tab-pane fade" fid="profile" aria-labelledby="profile-tab">
     <div>
         <div id="container">
             <div class="view-controls-list" id="viewcontrols">
