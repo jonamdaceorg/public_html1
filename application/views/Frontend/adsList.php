@@ -184,7 +184,7 @@
                     $('#dLabel').text(labelText);
                     pathchangefun();
                     getDynamicFieldsforAdsSearch('dynamicFieldsForCategoryDiv', arr[0], subCategoryId);
-                    loadsearchData();
+                    loadsearchData(0);
 
                 }
 
@@ -314,16 +314,16 @@
     $("#city").val(value);
 
 
-    loadsearchData();
+    loadsearchData(0);
     pathchangefun();
-    function loadsearchData() {
+    function loadsearchData(page) {
 
 //alert(1);
 //var postData={ categoryId: "1", SubcategoryId: "3" };
         var postData = $("#adsSearchForm").serialize()
 //        alert(postData);
         $.ajax({
-            url: "searchAdsAjax",
+            url: "searchAdsAjax?page="+page,
             data: postData,
             method: "GET",
             success: function (response) {
@@ -334,7 +334,7 @@
 
     }
     $("#adsSearchForm").change(function () {
-        loadsearchData();
+        loadsearchData(0);
     });
     function pathchangefun() {
         // var value=	localStorage.getItem("selectedCity");

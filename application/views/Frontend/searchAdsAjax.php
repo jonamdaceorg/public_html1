@@ -235,7 +235,7 @@
     function photofun(val)
     {
         $("#withphoto").val(val);
-        loadsearchData();
+        loadsearchData(0);
 
     }
     $(document).ready(function () {
