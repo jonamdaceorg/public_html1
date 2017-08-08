@@ -16,7 +16,11 @@ Author URL: http://1stepshop.in
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="1stepshop Responsive web template, Bootstrap Web Templates" />
+
+	<meta name="keywords" content="Classifieds, Free classifieds, Online Classifieds, free online classifieds, free ads , ads, jobs, house, for rent, for, matrimonial ads, events online ads" />
+	
+	<meta name="description" content="Free online classified ads. Sell, Buy, Find - faster and easier: flats, apartments, houses, PG, jobs, IT jobs, BPO jobs, cars, used cars, used bikes, motorcycles, mobiles, computers, tuition.... - 1stepshop.in" /> 
+
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
     <!--fonts-->
