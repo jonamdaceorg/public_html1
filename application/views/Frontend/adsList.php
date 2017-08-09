@@ -191,7 +191,7 @@
             </script>
             <!--- new end ---->
             <ol class="breadcrumb" style="margin-bottom: 5px;" id="pathdir">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>">Home</a></li>
                 <li class="active">All Ads</li>
                 <?php //if(count($searchData)!=null){?>
                 <li class="active"><?php //echo category; ?></li> <?php //}?>
