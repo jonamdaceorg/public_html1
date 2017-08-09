@@ -475,11 +475,11 @@ class Frontend extends CI_Controller
     {
         $sessionUserIdIsset = $this->session->has_userdata('userid');
         $userid = 0;
-        if ($sessionUserIdIsset == 1) {
+        /*if ($sessionUserIdIsset == 1) {
             $userid = $this->session->userdata('userid');
         } else {
             redirect(base_url() . "login");
-        }
+        }*/
 
         $output = $this->session->flashdata('output');
         $succesMsg = $this->users_model->getSuccessMsg($output);
