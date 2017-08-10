@@ -150,5 +150,5 @@ $route['updateAdsStatus'] = 'Frontend/updateAdsStatus';
 //$route['home'] = 'Frontend/home';
 
 
-$route['404_override'] = '';
+$route['404_override'] = 'CustomizedError';
 $route['translate_uri_dashes'] = FALSE;
