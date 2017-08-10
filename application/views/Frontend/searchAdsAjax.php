@@ -55,7 +55,7 @@
                     }
 
                     ?>
-                    <img src="<?php echo $filename; ?>" title="" alt="Loading..."/>
+                    <img src="<?php echo $filename; ?>" title="<?php echo $searchData[$i]['adsTitle']; ?>" alt="<?php echo $searchData[$i]['adsTitle']; ?>"/>
                     <section class="list-left">
                         <h5 class="title"><?php echo $searchData[$i]['adsTitle']; ?></h5>
                         <?php if($isAmountRequired=="Required" ){ ?>

@@ -55,7 +55,7 @@ ul.gallery li.item {
                 <ul class="gallery">
                     <?php if(!empty($files)): foreach($files as $file): ?>
                     <li class="item">
-                        <img src="<?php echo base_url('uploads/files/'.$file['file_name']); ?>" alt="" >
+                        <img src="<?php echo base_url('uploads/files/'.$file['file_name']); ?>" title="gallery image" alt="gallery image" >
                         <p>Uploaded On <?php echo date("j M Y",strtotime($file['created'])); ?></p>
                     </li>
                     <?php endforeach; else: ?>

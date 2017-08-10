@@ -205,7 +205,7 @@
                                             ?>
                                             <div class="col-sm-4">
                                                 <img src="<?php echo $fileFullPath; ?>" style="width: 150px; height: 150px"
-                                                     class="img-thumbnail"><br/>
+                                                     class="img-thumbnail" title="edit ads" alt="edit ads"><br/>
                                                 <select name="updateFileStatus_<?php echo $imgId; ?>" id="updateFileStatus_<?php echo $imgId; ?>" style="width:150px">
                                                     <option value="nochange">No Change</option>
                                                     <option value="deleted">Delete</option>

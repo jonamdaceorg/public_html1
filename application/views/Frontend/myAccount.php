@@ -6,7 +6,7 @@
                 <?php
                     $userProfiles = $this->users_model->getUserProfilePhoto($userArray['userCode'], $userArray['img']);
                 ?>
-                <img src="<?php echo $userProfiles; ?>" alt="">
+                <img src="<?php echo $userProfiles; ?>" title="user profile" alt="user Profile" >
             </div>
             <div class="col-md-8 profile-text">
                 <h6><?php echo $userArray['name']; ?></h6>

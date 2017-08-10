@@ -121,7 +121,7 @@
                                     $userProfiles = $this->users_model->getUserProfilePhoto($userDataArray[0]['userCode'], $userDataArray[0]['img']);
 
                                 ?>
-                                <img src="<?php echo $userProfiles; ?>" alt="" class="img-responsive img" style="height: 150px"/>
+                                <img src="<?php echo $userProfiles; ?>" title="edit profile" alt="edit profile" class="img-responsive img" style="height: 150px"/>
 
                                 <input type="file" class="form-control" id="input01" name="userFile"/>
                             </div>
