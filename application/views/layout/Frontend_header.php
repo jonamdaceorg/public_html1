@@ -222,7 +222,7 @@ Author URL: http://1stepshop.in
                     <li><a href="<?php echo base_url(); ?>login"><span class="fa fa-sign-in"></span>&nbsp;Sign In</a></li>
                     <li><a href="<?php echo base_url(); ?>register"><span class="fa fa-user"></span>&nbsp;Sign up</a></li>
                     <li><div class="banner text-center">
-                            <a href="<?php echo base_url().'posting'; ?>">Post Free Ad</a>
+                            <a href="<?php echo base_url().'adPost'; ?>">Post Free Ad</a>
                         </div>
                     </li>
                     <!--<li class="dropdown">
