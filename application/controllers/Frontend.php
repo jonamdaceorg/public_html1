@@ -133,7 +133,8 @@ class Frontend extends CI_Controller
 
         $this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Frontend_login');
-        $this->load->view('layout/Frontend_login_footer');
+//        $this->load->view('layout/Frontend_login_footer');
+        $this->load->view('layout/Frontend_footer');
 
     }
 
@@ -154,7 +155,8 @@ class Frontend extends CI_Controller
 
         $this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Frontend_register');
-        $this->load->view('layout/Frontend_login_footer');
+//        $this->load->view('layout/Frontend_login_footer');
+        $this->load->view('layout/Frontend_footer');
     }
 
     public function usersRegister()
