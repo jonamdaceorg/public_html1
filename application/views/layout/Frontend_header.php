@@ -113,7 +113,7 @@ Author URL: http://1stepshop.in
                 <span class="icon-bar"></span>
             </button>
 <!--            <a class="navbar-brand brandpadding" href="--><?php //echo base_url(); ?><!--"><img src="--><?php //echo base_url(); ?><!--assets/logo/1stepshop-1.jpg" alt="" class="logoimg"/></a>-->
-            <a class="navbar-brand brandpadding" href="<?php echo base_url(); ?>"><div class="logo"><span class="logoFirstPart">1step</span><span class="logoSecondPart">shop</span></div></a>
+          <h1 title="Free classifieds in business,Free classifieds in India, Classified ads in India, Online Classified Advertising" >  <a class="navbar-brand brandpadding" href="<?php echo base_url(); ?>"><div class="logo"><span class="logoFirstPart">1step</span><span class="logoSecondPart">shop</span></div></a></h1>
 
         </div>
         <?php
