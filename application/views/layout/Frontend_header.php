@@ -18,8 +18,11 @@ Author URL: http://1stepshop.in
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<meta name="keywords" content="Classifieds, Free classifieds, Online Classifieds, free online classifieds, free ads , jobs, house, rent, events online ads,<?php echo $title; ?>" />
-	
-	<meta name="description" content="Free online classified ads. Sell, Buy, Find - faster and easier: flats, apartments, houses, PG, jobs, cars, bikes, motorcycles, mobiles, computers, tuition.- 1stepshop.in, <?php echo $title; ?>" />
+    <?php
+        $titleContent = "Classifieds, Free classifieds, Online Classifieds, free online classifieds, free ads , jobs, house, rent, events online ads, ".$title;
+        $titleContent = substr($titleContent, -155);
+    ?>
+	<meta name="description" content="<?php echo $titleContent; ?>" />
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
