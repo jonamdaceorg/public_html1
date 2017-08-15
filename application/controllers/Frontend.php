@@ -1108,7 +1108,17 @@ class Frontend extends CI_Controller
         //new
         $dataheader['subCategorylist'] = $subCategorylist;
 
-        $dataheader['title'] = "categories";
+//        $dataheader['title'] = "categories";
+        $categoryId = $this->input->get_post("categoryId");
+        $categoriesTitle = "Categories";
+
+        for($i=0; $i<count($categoryArray); $i++){
+            if($categoryArray[$i]['categoryId'] == $categoryId){
+                $categoriesTitle = $categoryArray[$i]['category'];
+                break;
+            }
+        }
+        $dataheader['title'] = $categoriesTitle;
         $this->load->view('layout/Frontend_header', $dataheader);
         //$this->load->view('layout/Frontend_menu');
 
