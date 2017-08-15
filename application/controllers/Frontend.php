@@ -1178,8 +1178,8 @@ class Frontend extends CI_Controller
     public function adsList()
     {
 
-        $dataheader['title'] = "adsList";
-        $this->load->view('layout/Frontend_header', $dataheader);
+//        $dataheader['title'] = "adsList";
+
         //$this->load->view('layout/Frontend_menu');
         $encryptparam= $this->input->get_post('param');
         $param=$this->users_model->encryptor('decrypt',$encryptparam);
@@ -1207,7 +1207,6 @@ class Frontend extends CI_Controller
         $categoryArray = $this->Backend_model->getCategoryList("0", $orderBy);
         $dataheader['categoryArray'] = $categoryArray;
 
-
         $encryptuserparam= $this->input->get_post('userparam');
         $userparam=$this->users_model->encryptor('decrypt',$encryptuserparam);
         $dataheader['userparam'] = $userparam;
@@ -1227,9 +1226,30 @@ class Frontend extends CI_Controller
         $orderBy = " order by s.subCategory Asc";
         $subCategoryArray = $this->Backend_model->getSubCategoryList($actionId, $categoryId, $orderBy);
 
+
+        $categoriesTitle = "Ads List";
+        if($selectedCategoryId!=""){
+            for($i=0; $i<count($categoryArray); $i++){
+                if($categoryArray[$i]['categoryId'] == $selectedCategoryId){
+                    $categoriesTitle .= " - ". $categoryArray[$i]['category'];
+                    break;
+                }
+            }
+        }
+
+        if($selectedSubcategoryId!=""){
+            for($i=0; $i<count($subCategoryArray); $i++){
+                if($subCategoryArray[$i]['subCategoryId'] == $selectedSubcategoryId){
+                    $categoriesTitle .= " - ". $subCategoryArray[$i]['subCategory'];
+                    break;
+                }
+            }
+        }
+
+        $dataheader['title'] = $categoriesTitle;
+
+
         $subCategorylist = array();
-
-
         for ($i = 0; $i < count($subCategoryArray); $i++) {
             $subCategorylist[$subCategoryArray[$i]["categoryId"]]["subCategory"][] = $subCategoryArray[$i]["subCategory"];
             $subCategorylist[$subCategoryArray[$i]["categoryId"]]["subCategoryId"][] = $subCategoryArray[$i]["subCategoryId"];
@@ -1299,8 +1319,7 @@ class Frontend extends CI_Controller
         $dataheader['selectedSubcategoryId'] = $selectedSubcategoryId;
         $dataheader['$selectedcity'] = $selectedcity;
 
-
-
+        $this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/adsList', $dataheader);
         $this->load->view('layout/Frontend_footer');
 
