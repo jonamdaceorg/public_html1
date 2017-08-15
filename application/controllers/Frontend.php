@@ -1118,6 +1118,7 @@ class Frontend extends CI_Controller
                 break;
             }
         }
+	$categoriesTitle=str_replace("&","and",$categoriesTitle);
         $dataheader['title'] = $categoriesTitle;
         $this->load->view('layout/Frontend_header', $dataheader);
         //$this->load->view('layout/Frontend_menu');
@@ -1245,7 +1246,7 @@ class Frontend extends CI_Controller
                 }
             }
         }
-
+	$categoriesTitle=str_replace("&","and",$categoriesTitle);
         $dataheader['title'] = $categoriesTitle;
 
 
