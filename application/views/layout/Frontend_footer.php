@@ -75,7 +75,7 @@
                     <li><a class="iconcss"   href="javascript:void(0)" onclick="gotoLink()"><i class="fa fa-linkedin" style="margin-top: 5px" aria-hidden="true"></i> <span>Linkedin</span></a></li>
                     <li><a class="iconcss"  target="_blank" href="https://www.facebook.com/1stepshop.in/"><i class="fa fa-facebook" style=" margin-top: 5px" aria-hidden="true"></i> <span>Facebook</span></a></li>
                     <li><a class="iconcss"  target="_blank" href="https://plus.google.com/110477558775619195162"><i class="fa fa-google-plus" style=" margin-top: 5px" aria-hidden="true"></i> <span>Google+</span></a></li>
-
+<img src="assets/web/images/p.gif" alt="1stepshopSearch" title="1stepshopSearch" />
 <!--                    <li><a class="twitter" target="_blank" href="https://twitter.com/1stepshop"><span>Twitter</span></a></li>-->
 <!--                    <li><a class="dribbble" target="_blank" href="https://www.linkedin.com/in/1stepshop-in-770806142/"><span>Linkedin</span></a></li>-->
 <!--                    <li><a class="facebook" target="_blank" href="https://www.facebook.com/1stepshop.in/"><span>Facebook</span></a></li>-->
