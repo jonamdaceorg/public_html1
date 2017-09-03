@@ -114,7 +114,7 @@ class Users_model extends CI_Model
 
         // Select active list from both user and usertype table
 
-        $sql = "SELECT t.userid, t.active, t.userCode FROM tbl_user t  WHERE t.mobile = '" . $username . "' and t.password = '" . $password . "' ";
+        $sql = "SELECT t.userid, t.active, t.userCode, t.name, t.mobile, t.email, t.img, t.address, t.lastlogin FROM tbl_user t  WHERE t.mobile = '" . $username . "' and t.password = '" . $password . "' ";
         $query = $this->db->query($sql);
         $userList = $query->result_array();
 
@@ -122,6 +122,12 @@ class Users_model extends CI_Model
             $userListArray['userid'] = $userList[0]['userid'];
             $userListArray['active'] = $userList[0]['active'];
             $userListArray['userCode'] = $userList[0]['userCode'];
+            $userListArray['name'] = $userList[0]['name'];
+            $userListArray['mobile'] = $userList[0]['mobile'];
+            $userListArray['email'] = $userList[0]['email'];
+            $userListArray['img'] = $userList[0]['img'];
+            $userListArray['address'] = $userList[0]['address'];
+            $userListArray['lastlogin'] = $userList[0]['lastlogin'];
         }
 
         return $userListArray;

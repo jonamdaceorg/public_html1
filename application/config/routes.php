@@ -144,8 +144,8 @@ $route['popularSearch'] = 'Frontend/popularSearch';
 $route['sitemap'] = 'Frontend/sitemap';
 $route['updateAdsStatus'] = 'Frontend/updateAdsStatus';
 
-
-
+//Apps Routings
+$route['getLoginFromApps'] = 'Apps/getLoginFromApps';
 
 //$route['home'] = 'Frontend/home';
 
