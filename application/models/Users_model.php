@@ -892,7 +892,7 @@ class Users_model extends CI_Model
                $dynamicSearchCondition.="(capturedVariableId='".$key."' and capturedVariableValue in(".$value.")) or ";
            }
             $dynamicVariableIdList = trim($dynamicVariableIdList, ",");
-            $dynamicSearchCondition = trim($dynamicSearchCondition, " and");
+            $dynamicSearchCondition = trim($dynamicSearchCondition, " or");
 
             $checkCategoryVariable = "SELECT capturedVariableId FROM `tbl_dynamicadsvariablemaster` WHERE `capturedVariableId` in(" . $dynamicVariableIdList . ") and  categoryId=" . $categoryId;
             $checkCategoryexecuteQuery = $this->db->query($checkCategoryVariable);

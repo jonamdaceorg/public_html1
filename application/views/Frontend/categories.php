@@ -21,7 +21,8 @@
 											<select id="basic2" name="citySelectBox" class="show-tick form-control" multiple onchange="changeCity(this.value)">
 																								 <option selected style="display:none;color:#eee;" value="">Select City</option>
 
-												 <?php for($i=0; $i<count($stateArray); $i++){ ?>
+												<option value="">All India</option>
+												  <?php for($i=0; $i<count($stateArray); $i++){ ?>
 												<optgroup label="<?php echo $stateArray[$i]['state'];   ?>">
 													 <?php 
 													 $stateId= $stateArray[$i]['stateId'];
