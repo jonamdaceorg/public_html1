@@ -37,7 +37,7 @@
 <div class="total-ads main-grid-border">
     <div class="container">
         <form name="adsSearchForm" id="adsSearchForm" method="post">
-            <input type="hidden" name="getListFromPage" id="getListFromPage" value="<?php echo $title; ?>"/>
+            <input type="hidden" name="getListFromPage" id="getListFromPage" value="adsList"/>
 
             <div class="select-box">
                 <div class="select-city-for-local-ads ads-list">

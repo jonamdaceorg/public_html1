@@ -844,7 +844,7 @@ class Frontend extends CI_Controller
                                         range: true,
                                         min: 0,
                                         max: 100000,
-                                        values: [ 50, 100000],
+                                        values: [ 0, 100000],
                                         slide: function( event, ui ) {
                                             $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                                             $( "#amountRange" ).val( "" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
