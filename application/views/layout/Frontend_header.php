@@ -34,7 +34,7 @@ Author URL: http://1stepshop.in
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-4023821967290117",
+            google_ad_client: "ca-pub-7553278264646359",
             enable_page_level_ads: true
         });
     </script>
