@@ -128,6 +128,8 @@ class Users_model extends CI_Model
             $userListArray['img'] = $userList[0]['img'];
             $userListArray['address'] = $userList[0]['address'];
             $userListArray['lastlogin'] = $userList[0]['lastlogin'];
+
+            self::updateUsersLastlogin($userList[0]['userid']);
         }
 
         return $userListArray;
