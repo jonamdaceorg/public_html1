@@ -24,7 +24,7 @@
 //print_r($adsDetails);
 ?>
 	<!--single-page-->
-	<div class="single-page main-grid-border">
+<div class="single-page main-grid-border" xmlns="http://www.w3.org/1999/html">
 		<div class="container">
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
 				<li><a href="<?php echo base_url(); ?>">Home</a></li>
@@ -61,6 +61,15 @@
 					  <script defer src="<?php echo base_url(); ?>assets/js/jquery.flexslider.js"></script>
 					<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/flexslider.css" type="text/css" media="screen" />
 
+					<style>
+						.flex-control-thumbs img {
+						height: 100px;
+						}
+						.biseller-column img {
+							height: 300px;
+
+						}
+					</style>
 						<script>
 					// Can also be used with $(document).ready()
 					$(window).load(function() {
@@ -204,7 +213,7 @@
 							<span> <?php echo $similaradsArray[$i]['startDate']; ?></span>
 						</div>
 					</div>
-					<?php if($i%4==0 && $i!=0 && $i!=count($similaradsArray)){?>  </li> <li><?php } ?>
+					<?php if($i%3==0 && $i!=0 && $i!=count($similaradsArray)){?>  </li> <li><?php } ?>
 
 				<?php  } ?>
 
