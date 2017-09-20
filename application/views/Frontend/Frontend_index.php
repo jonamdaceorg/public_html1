@@ -22,7 +22,7 @@
     </div>
 <!--    <div class="trending-ads">-->
 <!--        <div class="container">-->
-<!--            <!-- slider -->-->
+<!--            <!-- slider -->
 <!--            <div class="trend-ads">-->
 <!--                <h2>Trending Ads</h2>-->
 <!--                <ul id="flexiselDemo3">-->
@@ -183,6 +183,6 @@
 <!--                <script type="text/javascript" src="--><?php //echo base_url(); ?><!--assets/web/js/jquery.flexisel.js"></script>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--        <!-- //slider -->-->
+<!--        <!-- //slider -->
 <!--    </div>-->
 </div>
