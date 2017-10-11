@@ -30,15 +30,20 @@ Author URL: http://1stepshop.in
     <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!--//fonts-->
-    <!---google adsense -->
+
+    <!-- google adsense -->
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Ad 1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3670807734353712"
+         data-ad-slot="5757805635"
+         data-ad-format="auto"></ins>
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-7553278264646359",
-            enable_page_level_ads: true
-        });
+        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <!---google adsense end -->
+    <!-- google adsense -->
+
     <!-- js -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/web/js/jquery.min.js"></script>
     <!-- js -->
