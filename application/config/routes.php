@@ -147,6 +147,8 @@ $route['updateAdsStatus'] = 'Frontend/updateAdsStatus';
 //Apps Routings
 $route['getLoginFromApps'] = 'Apps/getLoginFromApps';
 $route['confirmUserAndSendOtpFromApps'] = 'Apps/confirmUserAndSendOtpFromApps';
+$route['updateMyPasswordFromApps'] = 'Apps/updateMyPasswordFromApps';
+$route['getCategoryListFromApps'] = 'Apps/getCategoryListFromApps';
 
 //$route['home'] = 'Frontend/home';
 

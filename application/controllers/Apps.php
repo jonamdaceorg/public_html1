@@ -30,11 +30,56 @@ class Apps extends CI_Controller {
 			$fromIp = $_SERVER['REMOTE_ADDR'];
 			$baseUrl = base_url();
 			$otpText = $this->users_model->getOTPForUserForgotPassword($userId, $mobileNumber, $fromIp, $baseUrl);
-			$output = array('status' => "1", 'message' => $mobileNumber, 'otp'=> $otpText);
+			$output = array('status' => "1", 'message' => $mobileNumber, 'otp'=> $otpText, 'otpUserId'=> $userId);
 		} else {
-			$output = array('status' => "2", 'message' => "Your Mobile Number was not Registered!", 'otp'=>"");
+			$output = array('status' => "2", 'message' => "Your Mobile Number was not Registered!", 'otp'=>"", 'otpUserId'=> '0');
 		}
 
 		print_r(json_encode($output));
+	}
+
+	public function updateMyPasswordFromApps(){
+
+		$mobileNumber = $this->input->get_post('mobileNumber');
+		$otptext = $this->input->get_post('otpText');
+		$password = $this->input->get_post('password');
+		$confirmPassword = $this->input->get_post('confirmPassword');
+		$output = array();
+		if ($mobileNumber != "") {
+			$alreadyExist = $this->users_model->isUserAlreadyExist($mobileNumber);
+			if ($alreadyExist == 1) {
+				if ($otptext != "") {
+					if ($password == $confirmPassword) {
+						$resultArray = $this->users_model->getSuccessMsgOTPUpdated($mobileNumber, $otptext, "forgotpasswordrequest");
+						$successOTPUpdated = $resultArray['successMsg'];
+						$userid = $resultArray['userid'];
+						if ($otptext != "" && $mobileNumber != "" && $successOTPUpdated == "1") {
+							$this->users_model->updateMyPassword($userid, $password);
+							$output = array('status' => "4", 'message' => "Your password has been successfully updated !.");
+						} else {
+							$output = array('status' => "2", 'message' => "Incorrect OTP Details");
+						}
+					} else {
+						$output = array('status' => "2", 'message' => "Mismatch Password Details");
+					}
+				}
+			} else {
+				$output = array('status' => "2", 'message' => "Invalid user Mobile");
+			}
+		} else {
+			$output = array('status' => "2", 'message' => "Please resubmit your forgot Password request!");
+		}
+
+		print_r(json_encode($output));
+
+	}
+
+	public function getCategoryListFromApps(){
+
+		$orderBy = " order by orders Asc";
+		$categoryArray = $this->Backend_model->getCategoryList("0", $orderBy);
+
+		print_r(json_encode($categoryArray));
+
 	}
 }
