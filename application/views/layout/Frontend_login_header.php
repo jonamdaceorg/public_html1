@@ -31,18 +31,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="js/bootstrap-select.js"></script>
 
 
-    <!-- google adsense -->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Ad 1 -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3670807734353712"
-         data-ad-slot="5757805635"
-         data-ad-format="auto"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <!-- google adsense -->
+<!-- infolinks started -->
+<script type="text/javascript">
+var infolinks_pid = 3050491;
+var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+<!-- infolinks end -->
 
     <script>
         $(document).ready(function () {

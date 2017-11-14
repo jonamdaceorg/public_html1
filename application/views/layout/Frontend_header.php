@@ -31,18 +31,13 @@ Author URL: http://1stepshop.in
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!--//fonts-->
 
-    <!-- google adsense -->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Ad 1 -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3670807734353712"
-         data-ad-slot="5757805635"
-         data-ad-format="auto"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <!-- google adsense -->
+<!-- infolinks started -->
+<script type="text/javascript">
+var infolinks_pid = 3050491;
+var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+<!-- infolinks end -->
 
     <!-- js -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/web/js/jquery.min.js"></script>
