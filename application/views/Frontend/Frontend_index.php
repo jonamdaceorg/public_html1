@@ -1,3 +1,16 @@
+<div data-WRID="WRID-151214299972740119" data-widgetType="Push Content"  data-class="affiliateAdsByFlipkart" height="50" width="120"></div>
+<script async src="http://affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+<script type="text/javascript" language="javascript">
+    var aax_size='728x90';
+    var aax_pubname = 'myosssite-21';
+    var aax_src='302';
+</script>
+<script type="text/javascript" language="javascript" src="http://c.amazon-adsystem.com/aax2/assoc.js"></script>
+<a target="_blank"
+   href="https://www.amazon.in/b?_encoding=UTF8&tag=myosssite-21&linkCode=ur2&linkId=31c477316db9a07c98263e6734b6ee53&camp=3638&creative=24630&node=3561110031">Amz
+    1</a>
+<img src="https://ir-in.amazon-adsystem.com/e/ir?t=myosssite-21&l=ur2&o=31" width="1" height="1" border="0" alt=""
+              style="border:none !important; margin:0px !important;"/>
 <!-- content-starts-here -->
 <div class="content">
     <div class="categories">
