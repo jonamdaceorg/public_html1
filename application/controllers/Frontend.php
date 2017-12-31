@@ -1424,6 +1424,7 @@ class Frontend extends CI_Controller
         $getListFromPage = $this->input->get_post('getListFromPage');
         $selectedCategoryId = $this->input->get_post('categoryId');
         $selectedSubcategoryId = $this->input->get_post('SubcategoryId');
+        $returnFormat = $this->input->get_post('rf');
         $categoryId = $selectedCategoryId;
         $subCategoryId = $selectedSubcategoryId;
         $itemId = "";
@@ -1565,7 +1566,11 @@ class Frontend extends CI_Controller
 
         // print_r($searchData);
         // echo"ssss";
-        $this->load->view('Frontend/searchAdsAjax', $dataheader);
+        if($returnFormat == "json"){
+            print_r(json_encode($dataheader));
+        } else {
+            $this->load->view('Frontend/searchAdsAjax', $dataheader);
+        }
 //            echo "<pre>";
 //            print_r($_REQUEST);
 //            echo "</pre>";
