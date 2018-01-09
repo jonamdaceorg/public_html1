@@ -35,7 +35,7 @@
 
 <!-- Products -->
 <div class="total-ads main-grid-border">
-    <div class="container">
+    <div class="">
         <form name="adsSearchForm" id="adsSearchForm" method="post">
             <input type="hidden" name="getListFromPage" id="getListFromPage" value="adsList"/>
 

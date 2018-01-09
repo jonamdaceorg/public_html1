@@ -25,7 +25,7 @@
 ?>
 	<!--single-page-->
 <div class="single-page main-grid-border" xmlns="http://www.w3.org/1999/html">
-		<div class="container">
+		<div class="">
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
 				<li><a href="<?php echo base_url(); ?>">Home</a></li>
 				<li><a href="javascript:void(0)" onclick="loadCityBasedSearch('<?php echo  $adsDetails[0]['cityId'] ?>')"><?php echo  $adsDetails[0]['city'] ?></a></li>
@@ -171,7 +171,7 @@
 	</div>
 
 <div class="trending-ads">
-	<div class="container">
+	<div class="">
 		<!-- slider -->
 		<div class="trend-ads">
 			<h2>Similar Ads</h2>

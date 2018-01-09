@@ -1,10 +1,10 @@
 <!-- content-starts-here -->
 <div class="content">
     <div class="categories">
-        <div class="container">
+        <div class="">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12">zz
                         <div data-WRID="WRID-151214299972740119" data-widgetType="Push Content"  data-class="affiliateAdsByFlipkart" height="50" width="120"></div>
                         <script async src="http://affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
                         <script type="text/javascript" language="javascript">
