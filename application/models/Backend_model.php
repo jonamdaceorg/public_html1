@@ -38,6 +38,57 @@ class Backend_model extends CI_Model
         $this->db->query($sql);
     }
 
+    //Ads Banner Master Update, delete, create Action
+    public function updateAdBannerMaster($adBannerDetailsArray)
+    {
+        $bannerTitle = $adBannerDetailsArray['bannerTitle'];
+        $description = $adBannerDetailsArray['description'];
+        $bannerType = $adBannerDetailsArray['bannerType'];
+        $bannerImage = $adBannerDetailsArray['bannerImage'];
+        $bannerImageUrl = $adBannerDetailsArray['bannerImageUrl'];
+        $bannerAdsCode = $adBannerDetailsArray['bannerAdsCode'];
+        $bannerLinkURL = $adBannerDetailsArray['bannerLinkURL'];
+        $typeOfPosition = $adBannerDetailsArray['typeOfPosition'];
+        $startDate = $adBannerDetailsArray['startDate'];
+        $endDate = $adBannerDetailsArray['endDate'];
+        $height = $adBannerDetailsArray['height'];
+        $width = $adBannerDetailsArray['width'];
+        $adBannerId = $adBannerDetailsArray['adBannerId'];
+        $isMobileView = $adBannerDetailsArray['isMobileView'];
+
+        $sql = "UPDATE tbl_adbanner set title = " . $this->db->escape($bannerTitle) . ", isMobileView = " . $this->db->escape($isMobileView) . ", description = " . $this->db->escape($description) . " , bannerType = " . $this->db->escape($bannerType) . " , bannerImage = " . $this->db->escape($bannerImage) . " , bannerImageUrl = " . $this->db->escape($bannerImageUrl) . " , adsCode = " . $this->db->escape($bannerAdsCode) . " , bannerLinkURL = " . $this->db->escape($bannerLinkURL) . ", typeOfPosition = " . $this->db->escape($typeOfPosition) . ", startDate = " . $this->db->escape($startDate) . " , endDate= " . $this->db->escape($endDate) . ", width= " . $this->db->escape($width) . ", height= " . $this->db->escape($height) . " where adBannerId = " . $this->db->escape($adBannerId);
+        return $this->db->query($sql);
+    }
+
+    public function deleteAdBannerMaster($adBannerDetailsArray)
+    {
+        $active = "deleted";
+        $sql = "UPDATE tbl_adbanner set active = " . $this->db->escape($active) . " where adBannerId = " . $this->db->escape($adBannerDetailsArray['adBannerId']);
+        return $this->db->query($sql);
+    }
+
+    public function createAdBannerMaster($adBannerDetailsArray)
+    {
+        $bannerTitle = $adBannerDetailsArray['bannerTitle'];
+        $description = $adBannerDetailsArray['description'];
+        $bannerType = $adBannerDetailsArray['bannerType'];
+        $bannerImage = $adBannerDetailsArray['bannerImage'];
+        $bannerImageUrl = $adBannerDetailsArray['bannerImageUrl'];
+        $bannerAdsCode = $adBannerDetailsArray['bannerAdsCode'];
+        $bannerLinkURL = $adBannerDetailsArray['bannerLinkURL'];
+        $typeOfPosition = $adBannerDetailsArray['typeOfPosition'];
+        $startDate = $adBannerDetailsArray['startDate'];
+        $endDate = $adBannerDetailsArray['endDate'];
+        $height = $adBannerDetailsArray['height'];
+        $width = $adBannerDetailsArray['width'];
+        $isMobileView = $adBannerDetailsArray['isMobileView'];
+        $noOfDaysToActive = "";
+
+        $active = "active";
+        $sql = "INSERT INTO tbl_adbanner ( title, description, startDate, endDate, noOfDaysToActive, isMobileView, typeOfPosition, height, width, bannerType, bannerLinkURL, bannerImage, bannerImageUrl, adsCode, active, fromIp, createdAt ) VALUES (" . $this->db->escape($bannerTitle) . "," . $this->db->escape($description) . "," . $this->db->escape($startDate) . "," . $this->db->escape($endDate) . "," . $this->db->escape($noOfDaysToActive) . "," . $this->db->escape($isMobileView) . "," . $this->db->escape($typeOfPosition) . "," . $this->db->escape($height) . "," . $this->db->escape($width) . "," . $this->db->escape($bannerType) . "," . $this->db->escape($bannerLinkURL) . "," . $this->db->escape($bannerImage) . "," . $this->db->escape($bannerImageUrl) . "," . $this->db->escape($bannerAdsCode) . "," . $this->db->escape($active) . "," . $this->db->escape($adBannerDetailsArray['fromIp']) . "," . $this->db->escape($adBannerDetailsArray['createdAt']) . ")";
+        $this->db->query($sql);
+    }
+
     //Sub category Master Update, delete, create Action
     public function updateSubCategoryMaster($CategoryDetailsArray)
     {

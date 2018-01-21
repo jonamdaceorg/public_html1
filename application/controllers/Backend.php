@@ -382,6 +382,7 @@ class Backend extends CI_Controller
         $actionId = $this->input->get_post("actionId");
         $actionType = $this->input->get_post("actionType");
         $categoryArray = array();
+        $adBannerArray = array();
         $subCategoryArray = array();
         $itemArray = array();
         $countryArray = array();
@@ -398,7 +399,12 @@ class Backend extends CI_Controller
                 $categoryArray = $this->Backend_model->getCategoryList($actionId, $orderBy);
             }
         }
-
+        if ($title == "Ad Banner Master") {
+            if ($actionType == "Edit") {
+                $orderBy = " order by adBannerId DESC";
+                $adBannerArray = $this->Backend_model->getAdBannerList($actionId, $orderBy, '');
+            }
+        }
         if ($title == "Sub Category Master") {
             $orderBy = " order by categoryId DESC";
             $categoryArray = $this->Backend_model->getCategoryList("0", $orderBy);
@@ -539,6 +545,8 @@ class Backend extends CI_Controller
         }
 
         $dataheader['categoryArray'] = $categoryArray;
+        $dataheader['adBannerArray'] = $adBannerArray;
+
         $dataheader['subCategoryArray'] = $subCategoryArray;
         $dataheader['itemArray'] = $itemArray;
         $dataheader['countryArray'] = $countryArray;
@@ -579,7 +587,9 @@ class Backend extends CI_Controller
 
         $createdAt = date("Y-m-d H:i:s");
         $fromIp = $this->Backend_model->getIpAddress();
-
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
         if ($submit == "Category Master") {
 
             $category = $this->input->post('category');
@@ -613,6 +623,50 @@ class Backend extends CI_Controller
             }
             $this->session->set_flashdata('output', $output);
             redirect(base_url() . "Backend/categoryMaster");
+
+        } else if ($submit == "Ad Banner Master") {
+
+            $bannerTitle = $this->input->post('bannerTitle');
+            $description = $this->input->post('description');
+            $bannerType = $this->input->post('bannerType');
+            $bannerImage = $this->input->post('bannerImage');
+            $bannerImageUrl = $this->input->post('bannerImageUrl');
+            $bannerAdsCode = $this->input->post('bannerAdsCode');
+            $bannerLinkURL = $this->input->post('bannerLinkURL');
+            $typeOfPosition = $this->input->post('typeOfPosition');
+            $startDate = $this->input->post('startDate');
+            $endDate = $this->input->post('endDate');
+            $height = $this->input->post('height');
+            $width = $this->input->post('width');
+            $isMobileView = $this->input->post('isMobileView');
+
+            $adBannerDetailsArray = array('bannerTitle' => $bannerTitle,'isMobileView' => $isMobileView,'description'=>$description,'bannerType'=>$bannerType, 'bannerImage'=>$bannerImage, 'bannerImageUrl'=>$bannerImageUrl, 'bannerAdsCode'=>$bannerAdsCode, 'bannerLinkURL'=>$bannerLinkURL, 'typeOfPosition'=> $typeOfPosition, 'startDate'=>$startDate, 'endDate'=>$endDate, 'height'=>$height, 'width'=>$width, 'adBannerId' => $actionId, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
+
+            $output = array('status' => "3", 'message' => "Invalid Request");
+            if ($actionType == "Edit" && $actionId != "0" && $actionId != "" && $actionId != null) {
+                $insertSuccess = $userTypeArray = $this->Backend_model->updateAdBannerMaster($adBannerDetailsArray); //For Create Brand
+                if ($insertSuccess == 1) {
+                    $output = array('status' => "1", 'message' => "Successfully updated");
+                } else {
+                    $output = array('status' => "2", 'message' => "Invalid update");
+                }
+            } else if ($actionType == "Delete" && $actionId != "0" && $actionId != "" && $actionId != null) {
+                $deletetSuccess = $userTypeArray = $this->Backend_model->deleteAdBannerMaster($adBannerDetailsArray); //For Update Brand
+                if ($deletetSuccess == 1) {
+                    $output = array('status' => "1", 'message' => "Successfully deleted");
+                } else {
+                    $output = array('status' => "2", 'message' => "Please try again later");
+                }
+            } else if ($actionType == "Add" || $actionType == "") {
+                $updateSuccess = $userTypeArray = $this->Backend_model->createAdBannerMaster($adBannerDetailsArray); //For Update Brand
+                if ($updateSuccess == 1) {
+                    $output = array('status' => "1", 'message' => "Successfully created");
+                } else {
+                    $output = array('status' => "2", 'message' => "Please try again later");
+                }
+            }
+            $this->session->set_flashdata('output', $output);
+            redirect(base_url() . "Backend/adBannerMaster");
 
         } else if ($submit == "Sub Category Master") {
             $categoryId = $this->input->post('categoryId');

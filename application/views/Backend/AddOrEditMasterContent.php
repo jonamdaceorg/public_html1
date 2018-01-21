@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-            <?php } else if ($title == "Sub Category Master") {
+            <?php }/* else if ($title == "Sub Category Master") {
                 $subcategory = "";
                 $categoryId = "";
 
@@ -130,7 +130,296 @@
                         </div>
                     </div>
                 </div>
-            <?php } else if ($title == "Item Master") {
+            <?php } */else if ($title == "Ad Banner Master") {
+            $bannerTitle = "";
+            $description = "";
+            $bannerType = "";
+            $bannerImage = "";
+            $bannerImageUrl = "";
+            $bannerAdsCode = "";
+            $bannerLinkURL = "";
+            $typeOfPosition = "";
+            $startDate = "";
+            $endDate = "";
+            $height = "";
+            $width = "";
+            $isMobileView = "";
+            $noOfDaysToActive = "";
+
+            if (count($adBannerArray) > 0) {
+
+                    $adBannerDetailsArray = $adBannerArray[0];
+
+                    $bannerTitle = $adBannerDetailsArray['title'];
+                    $description = $adBannerDetailsArray['description'];
+                    $bannerType = $adBannerDetailsArray['bannerType'];
+                    $bannerImage = $adBannerDetailsArray['bannerImage'];
+                    $bannerImageUrl = $adBannerDetailsArray['bannerImageUrl'];
+                    $bannerAdsCode = $adBannerDetailsArray['adsCode'];
+                    $bannerLinkURL = $adBannerDetailsArray['bannerLinkURL'];
+                    $typeOfPosition = $adBannerDetailsArray['typeOfPosition'];
+                    $startDate = $adBannerDetailsArray['startDate'];
+                    $endDate = $adBannerDetailsArray['endDate'];
+                    $height = $adBannerDetailsArray['height'];
+                    $width = $adBannerDetailsArray['width'];
+                    $isMobileView = $adBannerDetailsArray['isMobileView'];
+                    $noOfDaysToActive = "";
+
+
+                }
+                ?>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Banner Title</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="bannerTitle" name="bannerTitle" required
+                                   data-parsley-name="Banner title" placeholder="Banner title" value="<?php echo $bannerTitle; ?>"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Description</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id="description" name="description" required
+                                   data-parsley-name="description" placeholder="Description" ><?php echo $description; ?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Ad Banner Type</label>
+                        <div class="col-sm-6">
+                            <select name="bannerType" id="bannerType" class="form-control" parsley-trigger="change"
+                                    required onchange="loadBannerImageDiv(this.value)">
+                                <option value="">Select Banner Type</option>
+                                <option value="bannerImage" <?php if($bannerType == "bannerImage"){ echo "selected"; } ?>>Banner Image upload</option>
+                                <option value="bannerImageUrl" <?php if($bannerType == "bannerImageUrl"){ echo "selected"; } ?> >Banner Image URL</option>
+                                <option value="bannerAdsCode" <?php if($bannerType == "bannerAdsCode"){ echo "selected"; } ?> >Banner Ads Code</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="bannerImageDiv">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Banner Image</label>
+                        <div class="col-sm-6">
+                            <input type="file" class="form-control" id="bannerImage" name="bannerImage"
+                                   data-parsley-name="bannerImage" placeholder="Banner Image" value="<?php echo $bannerImage; ?>"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="bannerImageUrlDiv">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Banner ImageUrl</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="bannerImageUrl" name="bannerImageUrl"
+                                   data-parsley-name="bannerImageUrl" placeholder="Banner ImageUrl" value="<?php echo $bannerImageUrl; ?>"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="bannerAdsCodeDiv">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Banner Ads Code</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id="bannerAdsCode" name="bannerAdsCode"
+                                   data-parsley-name="bannerAdsCode" placeholder="Banner Ads Code" ><?php echo $bannerAdsCode; ?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Banner Link URL</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="bannerLinkURL" name="bannerLinkURL" required
+                                   data-parsley-name="bannerLinkURL" placeholder="Banner Link URL" value="<?php echo $bannerLinkURL; ?>"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Type Of Position</label>
+                        <div class="col-sm-6">
+                            <select name="typeOfPosition" id="typeOfPosition" class="form-control" parsley-trigger="change"
+                                    required>
+                                <option value="">Select Type Of Position</option>
+                                <option value="Top" <?php if($typeOfPosition == "Top"){ echo "selected"; } ?> >Top</option>
+                                <option value="Bottom" <?php if($typeOfPosition == "Bottom"){ echo "selected"; } ?> >Bottom</option>
+                                <option value="Left" <?php if($typeOfPosition == "Left"){ echo "selected"; } ?> >Left</option>
+                                <option value="Right" <?php if($typeOfPosition == "Right"){ echo "selected"; } ?>>Right</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Date</label>
+                        <div class="col-sm-6">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="startDate" name="startDate" required
+                                               data-parsley-name="startDate" placeholder="start Date" value="<?php echo $startDate; ?>"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="endDate" name="endDate" required
+                                               data-parsley-name="endDate" placeholder="end Date" value="<?php echo $endDate; ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Dimension</label>
+                        <div class="col-sm-6">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="height" name="height" required
+                                               data-parsley-name="height" placeholder="height" value="<?php echo $height; ?>"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="width" name="width" required
+                                               data-parsley-name="width" placeholder="width" value="<?php echo $width; ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <div class="row">-->
+<!--                        <label class="col-sm-3 control-label">No Of Days Active</label>-->
+<!--                        <div class="col-sm-6">-->
+<!--                            <input type="text" class="form-control" id="noOfDaysToActive" name="noOfDaysToActive" required-->
+<!--                                   data-parsley-name="noOfDaysToActive" placeholder="no Of Days To Active" value="--><?php //echo $catgory; ?><!--"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Is MobileView</label>
+                        <div class="col-sm-6">
+                            <div class="checkBoxRow radio-info radio-inline">
+                                <input type="radio" value="Yes" name="isMobileView" <?php if($isMobileView=="Yes"){ echo "checked"; } ?>>
+                                <label for="isMobileView"> Yes </label>
+                            </div>
+                            <div class="checkBoxRow radio-warning  radio-inline">
+                                <input type="radio" value="No" name="isMobileView" <?php if($isMobileView=="No"){ echo "checked"; } ?>>
+                                <label for="isMobileView"> No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-9 m-t-15">
+                            <button type="submit" value="<?php echo $title; ?>" id="submit" name="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-default waves-effect m-l-5">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('#startDate').datepicker({
+                        format: 'yyyy-mm-dd'
+
+                    });
+                    $('#endDate').datepicker({
+                        format: 'yyyy-mm-dd'
+
+                    });
+                    $("#bannerType").select2();
+                    $("#typeOfPosition").select2();
+                    loadBannerImageDiv("");
+                    function loadBannerImageDiv(bannerType){
+                        if(bannerType == "") {
+                            $("#bannerImageDiv").hide();
+                            $("#bannerImageUrlDiv").hide();
+                            $("#bannerAdsCodeDiv").hide();
+                        } else if(bannerType == "bannerImage"){
+                            $("#bannerImageDiv").show();
+                            $("#bannerImageUrlDiv").hide();
+                            $("#bannerAdsCodeDiv").hide();
+                        } else if(bannerType == "bannerImageUrl"){
+                            $("#bannerImageDiv").hide();
+                            $("#bannerImageUrlDiv").show();
+                            $("#bannerAdsCodeDiv").hide();
+                        } else if(bannerType == "bannerAdsCode"){
+                            $("#bannerImageDiv").hide();
+                            $("#bannerImageUrlDiv").hide();
+                            $("#bannerAdsCodeDiv").show();
+                        }
+                    }
+
+                </script>
+
+
+
+            <?php if (count($adBannerArray) > 0) { ?>
+                <script>
+                    loadBannerImageDiv("<?php echo $bannerType; ?>");
+                </script>
+
+            <?php } ?>
+            <?php } else if ($title == "Sub Category Master") {
+            $subcategory = "";
+            $categoryId = "";
+
+            if (count($subCategoryArray) > 0) {
+                $subcategory = $subCategoryArray[0]['subCategory'];
+                $categoryId = $subCategoryArray[0]['categoryId'];
+            }
+
+            ?>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Category</label>
+                        <div class="col-sm-6">
+                            <select name="categoryId" id="categoryId" class="form-control" parsley-trigger="change"
+                                    required>
+                                <option value="">Select Category</option>
+                                <?php for ($c = 0; $c < count($categoryArray); $c++) { ?>
+                                    <option
+                                        value="<?php echo $categoryArray[$c]['categoryId']; ?>" <?php if ($categoryId == $categoryArray[$c]['categoryId']) {
+                                        echo "selected";
+                                    } ?> ><?php echo $categoryArray[$c]['category']; ?></option>
+                                <?php } ?>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Sub Category</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="subcategory" name="subcategory" required
+                                   data-parsley-name="category" placeholder="Sub Category"
+                                   value="<?php echo $subcategory; ?>"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-9 m-t-15">
+                            <button type="submit" value="<?php echo $title; ?>" id="submit" name="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-default waves-effect m-l-5">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <?php }else if ($title == "Item Master") {
                 $item = "";
                 $subCategoryId = "";
                 $categoryId = "";
