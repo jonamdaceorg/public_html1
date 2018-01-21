@@ -23,6 +23,7 @@
                     <li class="has-submenu">
                         <a href="#"><i class="md md-pages"></i>Masters </a>
                         <ul class="submenu">
+                            <li><a href="<?php echo base_url(); ?>Backend/adBannerMaster">Ad Banner </a></li>
                             <li><a href="<?php echo base_url(); ?>Backend/categoryMaster">Category </a></li>
                             <li><a href="<?php echo base_url(); ?>Backend/subCategoryMaster">Sub Category </a></li>
                             <li><a href="<?php echo base_url(); ?>Backend/itemMaster">Item </a></li>

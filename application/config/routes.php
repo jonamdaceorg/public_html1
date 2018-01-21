@@ -56,6 +56,7 @@ $route['manage'] = 'Backend/manage';
 $route['checkLogin'] = 'Backend/checkLogin';
 $route['dashboard'] = 'Backend/dashboard';
 
+$route['adBannerMaster'] = 'Backend/adBannerMaster';
 $route['categoryMaster'] = 'Backend/categoryMaster';
 $route['subCategoryMaster'] = 'Backend/subCategoryMaster';
 $route['membershipPackageMaster'] = 'Backend/membershipPackageMaster';

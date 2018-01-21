@@ -7,7 +7,63 @@
  */
 ?>
 
-<?php if($title == "Category Master"){ ?>
+<?php if($title == "Ad Banner Master"){ ?>
+    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive example"
+           cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Sno</th>
+            <th>Banner title</th>
+            <th>Description</th>
+            <th>Position</th>
+            <th>Banner Type</th>
+            <th>Mobile View</th>
+            <th>Days to Active</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php for ($i = 0; $i < count($adBannerArray); $i++) { ?>
+            <tr>
+                <?php $adBannerId = $adBannerArray[$i]['adBannerId']; ?>
+                <td><?php echo $i + 1; ?></td>
+                <td>
+                    <?php echo substr($adBannerArray[$i]['title'], 0, 50);
+                        if(strlen($adBannerArray[$i]['title']) > 50)
+                            echo "...";
+                    ?>
+                </td>
+                <td>
+                    <?php echo substr($adBannerArray[$i]['description'], 0, 50);
+                        if(strlen($adBannerArray[$i]['description']) > 50)
+                            echo "...";
+                    ?>
+                </td>
+                <td><?php echo $adBannerArray[$i]['typeOfPosition']; ?></td>
+                <td><?php echo $adBannerArray[$i]['bannerType']; ?></td>
+                <td><?php echo $adBannerArray[$i]['isMobileView']; ?></td>
+                <td><?php echo $adBannerArray[$i]['noOfDaysToActive']; ?></td>
+                <td><?php echo $adBannerArray[$i]['startDate']; ?></td>
+                <td><?php echo $adBannerArray[$i]['endDate']; ?></td>
+                <td>
+                    <button class="btn btn-icon waves-effect waves-light btn-primary m-b-5" type="button" onclick="getAddOrEditModalContent('actionType=Edit&actionId=<?php echo $adBannerId; ?>&title=<?php echo $title; ?>', '<?php echo $AddOrEditMasterContent; ?>')">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-icon waves-effect waves-light btn-danger m-b-5" type="button" onclick="deleteMaster('<?php echo $title; ?>','submit=<?php echo $title; ?>&actionType=Delete&actionId=<?php echo $adBannerId; ?>','<?php echo $deletUrl; ?>')">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+
+<?php } else if($title == "Category Master"){ ?>
     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive example"
            cellspacing="0" width="100%">
         <thead>

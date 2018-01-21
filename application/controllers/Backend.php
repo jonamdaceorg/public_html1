@@ -179,6 +179,23 @@ class Backend extends CI_Controller
         $this->load->view('layout/Backend_footer');
     }
 
+    public function adBannerMaster()
+    {
+
+        $dataheader['title'] = "Ad Banner Master";
+        $sessionUserTypeIdIsset = $this->session->has_userdata('usertypeid');
+        if ($sessionUserTypeIdIsset != 1) {
+            redirect(base_url() . "Backend/logout");
+        }
+
+        $dataheader['getMastersListUrl'] = base_url() . "Backend/getMastersList";
+
+        $this->load->view('layout/Backend_header', $dataheader);
+        $this->load->view('layout/Backend_menu');
+        $this->load->view('Backend/Backend_adBannerMaster');
+        $this->load->view('layout/Backend_footer');
+    }
+
     public function getMastersList()
     {
         $dataheader['title'] = "Master List";
@@ -192,6 +209,7 @@ class Backend extends CI_Controller
 
 
         $categoryArray = array();
+        $adBannerArray = array();
         $subCategoryArray = array();
         $itemArray = array();
         $countryArray = array();
@@ -213,6 +231,9 @@ class Backend extends CI_Controller
         } else if ($title == "Category Master") {
             $orderBy = " order by orders ASC";
             $categoryArray = $this->Backend_model->getCategoryList($actionId, $orderBy);
+        }  else if ($title == "Ad Banner Master") {
+            $orderBy = " order by adBannerId DESC";
+            $adBannerArray = $this->Backend_model->getAdBannerList($actionId, $orderBy, 'active');
         } else if ($title == "Sub Category Master") {
             $categoryId = "0";
             $orderBy = " order by s.subCategory ASC";
@@ -297,6 +318,7 @@ class Backend extends CI_Controller
 
         $dataheader['getGenerateExcel'] = $getGenerateExcel;
         $dataheader['categoryArray'] = $categoryArray;
+        $dataheader['adBannerArray'] = $adBannerArray;
         $dataheader['countryArray'] = $countryArray;
         $dataheader['stateArray'] = $stateArray;
         $dataheader['districtArray'] = $districtArray;

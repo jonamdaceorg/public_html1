@@ -20,7 +20,7 @@ class Backend_model extends CI_Model
         $isAmountRequired = $CategoryDetailsArray['isAmountRequired'];
         $isOfferAmountRequired = $CategoryDetailsArray['isOfferAmountRequired'];
 
-        $sql = "UPDATE tbl_category set category = " . $this->db->escape($CategoryDetailsArray['category']) . " , isAmountRequired= ".$this->db->escape($isAmountRequired).", isOfferAmountRequired= ".$this->db->escape($isOfferAmountRequired).", orders= ".$this->db->escape($orders)." where categoryId = " . $this->db->escape($CategoryDetailsArray['categoryId']);
+        $sql = "UPDATE tbl_category set category = " . $this->db->escape($CategoryDetailsArray['category']) . " , isAmountRequired= " . $this->db->escape($isAmountRequired) . ", isOfferAmountRequired= " . $this->db->escape($isOfferAmountRequired) . ", orders= " . $this->db->escape($orders) . " where categoryId = " . $this->db->escape($CategoryDetailsArray['categoryId']);
         return $this->db->query($sql);
     }
 
@@ -34,7 +34,7 @@ class Backend_model extends CI_Model
     public function createCategoryMaster($CategoryDetailsArray)
     {
         $active = "active";
-        $sql = "INSERT INTO tbl_category (category, isAmountRequired,isOfferAmountRequired, orders, active,createdAt,fromIp) " . "VALUES (" . $this->db->escape($CategoryDetailsArray['category']) . ","  . $this->db->escape($CategoryDetailsArray['isAmountRequired']) . ",". $this->db->escape($CategoryDetailsArray['isOfferAmountRequired']) . ","  . $this->db->escape($CategoryDetailsArray['orders']) . "," . $this->db->escape($active) . "," . $this->db->escape($CategoryDetailsArray['createdAt']) . "," . $this->db->escape($CategoryDetailsArray['fromIp']) . ")";
+        $sql = "INSERT INTO tbl_category (category, isAmountRequired,isOfferAmountRequired, orders, active,createdAt,fromIp) " . "VALUES (" . $this->db->escape($CategoryDetailsArray['category']) . "," . $this->db->escape($CategoryDetailsArray['isAmountRequired']) . "," . $this->db->escape($CategoryDetailsArray['isOfferAmountRequired']) . "," . $this->db->escape($CategoryDetailsArray['orders']) . "," . $this->db->escape($active) . "," . $this->db->escape($CategoryDetailsArray['createdAt']) . "," . $this->db->escape($CategoryDetailsArray['fromIp']) . ")";
         $this->db->query($sql);
     }
 
@@ -69,7 +69,7 @@ class Backend_model extends CI_Model
         }
 //        $sql = $sql . " order by categoryId ".$orderBy;
         //Order By condition
-        if($orderBy!=null && $orderBy!=""){
+        if ($orderBy != null && $orderBy != "") {
             $sql = $sql . $orderBy;
         }
 
@@ -79,6 +79,38 @@ class Backend_model extends CI_Model
 
         return $categoryArray;
     }
+
+    public function getAdBannerList($actionId, $orderBy, $active)
+    {
+        $adBannerArray = array();
+        $sql = "SELECT * FROM `tbl_adbanner` t ";
+
+        $condition = "";
+        if ($actionId != "" && $actionId != null && $actionId != "0" && $actionId != 0) {
+            $condition .= " and t.adBannerId = '" . $actionId . "' ";
+        }
+        if ($active != "" && $active != null) {
+            $condition .= " and t.active = '" . $active . "' ";
+        }
+
+        if($condition != ""){
+            $condition = trim($condition, ' and ');
+
+            $condition = " WHERE " . $condition;
+        }
+        $sql .= $condition;
+
+        if ($orderBy != null && $orderBy != "") {
+            $sql = $sql . $orderBy;
+        }
+
+        $adBannerArrayQuery = $this->db->query($sql);
+
+        $adBannerArray = $adBannerArrayQuery->result_array();
+
+        return $adBannerArray;
+    }
+
     public function getReportAboutAdsList($actionId, $orderBy)
     {
         $categoryArray = array();
@@ -88,7 +120,7 @@ class Backend_model extends CI_Model
         }
 //        $sql = $sql . " order by categoryId ".$orderBy;
         //Order By condition
-        if($orderBy!=null && $orderBy!=""){
+        if ($orderBy != null && $orderBy != "") {
             $sql = $sql . $orderBy;
         }
 
@@ -111,7 +143,7 @@ class Backend_model extends CI_Model
             $sql .= " and s.categoryId = '" . $categoryId . "' ";
         }
 //        $sql = $sql . " order by s.subCategoryId desc";
-        if($orderBy!=null && $orderBy!=""){
+        if ($orderBy != null && $orderBy != "") {
             $sql = $sql . $orderBy;
         }
         $userQuery = $this->db->query($sql);
@@ -127,18 +159,21 @@ class Backend_model extends CI_Model
         $sql = "UPDATE tbl_item set item = " . $this->db->escape($ItemDetailsArray['item']) . ", subCategoryId = " . $this->db->escape($ItemDetailsArray['subCategoryId']) . ", categoryId = " . $this->db->escape($ItemDetailsArray['categoryId']) . " where itemId = " . $this->db->escape($ItemDetailsArray['itemId']);
         return $this->db->query($sql);
     }
+
     public function deleteItemMaster($ItemDetailsArray)
     {
         $active = "deleted";
         $sql = "UPDATE tbl_item set active = " . $this->db->escape($active) . " where itemId = " . $this->db->escape($ItemDetailsArray['itemId']);
         return $this->db->query($sql);
     }
+
     public function createItemMaster($ItemDetailsArray)
     {
         $active = "active";
         $sql = "INSERT INTO tbl_item (`item`, `categoryId`, `subCategoryId`, `active`, `createdAt`, `fromIp`) " . "VALUES (" . $this->db->escape($ItemDetailsArray['item']) . ", " . $this->db->escape($ItemDetailsArray['categoryId']) . "," . $this->db->escape($ItemDetailsArray['subCategoryId']) . "," . $this->db->escape($active) . "," . $this->db->escape($ItemDetailsArray['createdAt']) . "," . $this->db->escape($ItemDetailsArray['fromIp']) . ")";
         $this->db->query($sql);
     }
+
     public function getItemList($actionId, $categoryId, $subCategoryId)
     {
         $sql = "SELECT i.itemId, i.item, i.subCategoryId, i.categoryId, i.active, i.fromIp, i.createdAt, c.category, s.subCategory FROM tbl_item i Left JOIN  `tbl_subcategory` s on i.subCategoryId=s.subCategoryId Left JOIN tbl_category c on c.categoryId = s.categoryId WHERE i.active = 'active' ";
@@ -211,7 +246,7 @@ class Backend_model extends CI_Model
         if ($countryId != "" && $countryId != null && $countryId != "0" && $countryId != 0) {
             $sql .= " and s.countryId = '" . $countryId . "' ";
         }
-        if($orderBy!=null && $orderBy!=""){
+        if ($orderBy != null && $orderBy != "") {
             $sql = $sql . $orderBy;
         }
 
@@ -259,7 +294,7 @@ class Backend_model extends CI_Model
         if ($stateId != "" && $stateId != null && $stateId != "0" && $stateId != 0) {
             $sql .= " and s.stateId = '" . $stateId . "' ";
         }
-        if($orderBy!="" && $orderBy!=null){
+        if ($orderBy != "" && $orderBy != null) {
             $sql = $sql . $orderBy;
         }
 
@@ -378,7 +413,8 @@ class Backend_model extends CI_Model
     //Reporting master end
 
     // Start Dynamic Ads Variable Master
-    public function getDynamicFieldsforAdPost($actionId, $categoryId, $subCategoryId){
+    public function getDynamicFieldsforAdPost($actionId, $categoryId, $subCategoryId)
+    {
         $sql = "SELECT t.capturedVariableId ,t.isSearchable,t.searchType, t.capturedvariablename, t.categoryId, t.subCategoryId, t.active, t.fromIp, t.createdAt, c.category, s.subCategory, dim.dynamicInputType, dim.dynamicInputName, dim.dynamicInputId FROM `tbl_dynamicadsvariablemaster` t LEFT JOIN tbl_category c on c.categoryId=t.categoryId LEFT JOIN tbl_subcategory s on s.subCategoryId=t.subCategoryId LEFT JOIN tbl_dynamicinputmaster dim on dim.dynamicInputId=t.dynamicInputId WHERE t.active = 'active' ";
         // ." and t.subCategoryId = ".$this->db->escape($subCategoryId)
 
@@ -396,7 +432,8 @@ class Backend_model extends CI_Model
         return $dynamicAdsVariableList;
     }
 
-    public function getDynamicAdsVariableList($actionId, $categoryId, $subCategoryId){
+    public function getDynamicAdsVariableList($actionId, $categoryId, $subCategoryId)
+    {
         $sql = "SELECT t.isSearchable,t.searchType,t.capturedVariableId, t.capturedvariablename, t.dynamicInputId, t.categoryId, t.subCategoryId, t.active, t.fromIp, t.createdAt, c.category, s.subCategory, dim.dynamicInputType, dim.dynamicInputName FROM `tbl_dynamicadsvariablemaster` t LEFT JOIN tbl_category c on c.categoryId=t.categoryId LEFT JOIN tbl_subcategory s on s.subCategoryId=t.subCategoryId  LEFT JOIN tbl_dynamicinputmaster dim on dim.dynamicInputId=t.dynamicInputId WHERE t.active = 'active' ";
         if ($actionId != "" && $actionId != null && $actionId != "0" && $actionId != 0) {
             $sql .= " and t.capturedVariableId = '" . $actionId . "' ";
@@ -413,32 +450,38 @@ class Backend_model extends CI_Model
         $dynamicAdsVariableList = $userQuery->result_array();
         return $dynamicAdsVariableList;
     }
-    public function createDynamicFields($dynamicFieldsArray){
+
+    public function createDynamicFields($dynamicFieldsArray)
+    {
         $searchType = $dynamicFieldsArray['searchType'];
         $isSearchable = $dynamicFieldsArray['isSearchable'];
-        if($isSearchable=="No"){
+        if ($isSearchable == "No") {
             $searchType = "";
         }
-        $sql = "INSERT INTO tbl_dynamicadsvariablemaster (dynamicInputId, capturedvariablename, categoryId, subCategoryId, isSearchable, searchType, active, createdAt, fromIp) " . "VALUES (" . $this->db->escape($dynamicFieldsArray['dynamicInputId']). ",". $this->db->escape($dynamicFieldsArray['capturedvariablename']). "," . $this->db->escape($dynamicFieldsArray['categoryId']) . "," . $this->db->escape($dynamicFieldsArray['subCategoryId']) . "," . $this->db->escape($isSearchable) . "," . $this->db->escape($searchType). "," . $this->db->escape($dynamicFieldsArray['active']) . "," . $this->db->escape($dynamicFieldsArray['createdAt']) . "," . $this->db->escape($dynamicFieldsArray['fromIp']) . ")";
+        $sql = "INSERT INTO tbl_dynamicadsvariablemaster (dynamicInputId, capturedvariablename, categoryId, subCategoryId, isSearchable, searchType, active, createdAt, fromIp) " . "VALUES (" . $this->db->escape($dynamicFieldsArray['dynamicInputId']) . "," . $this->db->escape($dynamicFieldsArray['capturedvariablename']) . "," . $this->db->escape($dynamicFieldsArray['categoryId']) . "," . $this->db->escape($dynamicFieldsArray['subCategoryId']) . "," . $this->db->escape($isSearchable) . "," . $this->db->escape($searchType) . "," . $this->db->escape($dynamicFieldsArray['active']) . "," . $this->db->escape($dynamicFieldsArray['createdAt']) . "," . $this->db->escape($dynamicFieldsArray['fromIp']) . ")";
         $successMsg = $this->db->query($sql);
         $capturedVariableId = $this->db->insert_id();
 
         return $successMsg;
     }
-    public function updateDynamicFields($dynamicFieldsArray){
+
+    public function updateDynamicFields($dynamicFieldsArray)
+    {
         $searchType = $dynamicFieldsArray['searchType'];
         $isSearchable = $dynamicFieldsArray['isSearchable'];
-        if($isSearchable=="No"){
+        if ($isSearchable == "No") {
             $searchType = "";
         }
 
-        $sql = "UPDATE tbl_dynamicadsvariablemaster set dynamicInputId= ".$this->db->escape($dynamicFieldsArray['dynamicInputId']).", isSearchable= ".$this->db->escape($isSearchable).", searchType= ".$this->db->escape($searchType).",  capturedvariablename= ".$this->db->escape($dynamicFieldsArray['capturedvariablename']).", categoryId=".$this->db->escape($dynamicFieldsArray['categoryId'])." , subCategoryId=".$this->db->escape($dynamicFieldsArray['subCategoryId'])." WHERE capturedVariableId=".$this->db->escape($dynamicFieldsArray['capturedVariableId']);
+        $sql = "UPDATE tbl_dynamicadsvariablemaster set dynamicInputId= " . $this->db->escape($dynamicFieldsArray['dynamicInputId']) . ", isSearchable= " . $this->db->escape($isSearchable) . ", searchType= " . $this->db->escape($searchType) . ",  capturedvariablename= " . $this->db->escape($dynamicFieldsArray['capturedvariablename']) . ", categoryId=" . $this->db->escape($dynamicFieldsArray['categoryId']) . " , subCategoryId=" . $this->db->escape($dynamicFieldsArray['subCategoryId']) . " WHERE capturedVariableId=" . $this->db->escape($dynamicFieldsArray['capturedVariableId']);
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function deleteDynamicFields($dynamicFieldsArray){
+
+    public function deleteDynamicFields($dynamicFieldsArray)
+    {
         $active = "deleted";
-        $sql = "UPDATE tbl_dynamicadsvariablemaster set active=".$this->db->escape($active)." WHERE capturedVariableId=".$this->db->escape($dynamicFieldsArray['capturedVariableId']);
+        $sql = "UPDATE tbl_dynamicadsvariablemaster set active=" . $this->db->escape($active) . " WHERE capturedVariableId=" . $this->db->escape($dynamicFieldsArray['capturedVariableId']);
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
@@ -446,8 +489,9 @@ class Backend_model extends CI_Model
 
     //Start dynamic ads variable values master
 
-    public function getDynamicAdsVariableValuesMaster($capturedVariableId){
-        $sql = "SELECT * FROM `tbl_dynamicadsvariablemaster` WHERE capturedVariableId=".$this->db->escape($capturedVariableId);
+    public function getDynamicAdsVariableValuesMaster($capturedVariableId)
+    {
+        $sql = "SELECT * FROM `tbl_dynamicadsvariablemaster` WHERE capturedVariableId=" . $this->db->escape($capturedVariableId);
         $query = $this->db->query($sql);
         $DynamicAdsVariableValuesMaster = $query->result_array();
         return $DynamicAdsVariableValuesMaster;
@@ -457,23 +501,30 @@ class Backend_model extends CI_Model
 
 
     // Start Dynamic Input Master
-    public function createDynamicInputMaster($dynamicInputMasterArray){
-        $sql = "INSERT INTO tbl_dynamicinputmaster (dynamicInputName, dynamicInputType, active, createdAt, fromIp) " . "VALUES (" . $this->db->escape($dynamicInputMasterArray['dynamicInputName']). "," .$this->db->escape($dynamicInputMasterArray['dynamicInputType']). "," . $this->db->escape($dynamicInputMasterArray['active']) . "," . $this->db->escape($dynamicInputMasterArray['createdAt']) . "," . $this->db->escape($dynamicInputMasterArray['fromIp']) . ")";
+    public function createDynamicInputMaster($dynamicInputMasterArray)
+    {
+        $sql = "INSERT INTO tbl_dynamicinputmaster (dynamicInputName, dynamicInputType, active, createdAt, fromIp) " . "VALUES (" . $this->db->escape($dynamicInputMasterArray['dynamicInputName']) . "," . $this->db->escape($dynamicInputMasterArray['dynamicInputType']) . "," . $this->db->escape($dynamicInputMasterArray['active']) . "," . $this->db->escape($dynamicInputMasterArray['createdAt']) . "," . $this->db->escape($dynamicInputMasterArray['fromIp']) . ")";
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function updateDynamicInputMaster($dynamicInputMasterArray){
-        $sql = "UPDATE tbl_dynamicinputmaster set dynamicInputName = ".$this->db->escape($dynamicInputMasterArray['dynamicInputName']).", dynamicInputType= ".$this->db->escape($dynamicInputMasterArray['dynamicInputType'])." WHERE dynamicInputId=".$this->db->escape($dynamicInputMasterArray['dynamicInputId']);
+
+    public function updateDynamicInputMaster($dynamicInputMasterArray)
+    {
+        $sql = "UPDATE tbl_dynamicinputmaster set dynamicInputName = " . $this->db->escape($dynamicInputMasterArray['dynamicInputName']) . ", dynamicInputType= " . $this->db->escape($dynamicInputMasterArray['dynamicInputType']) . " WHERE dynamicInputId=" . $this->db->escape($dynamicInputMasterArray['dynamicInputId']);
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function deleteDynamicInputMaster($dynamicInputMasterArray){
+
+    public function deleteDynamicInputMaster($dynamicInputMasterArray)
+    {
         $active = "deleted";
-        $sql = "UPDATE tbl_dynamicinputmaster set active=".$this->db->escape($active)." WHERE dynamicInputId=".$this->db->escape($dynamicInputMasterArray['dynamicInputId']);
+        $sql = "UPDATE tbl_dynamicinputmaster set active=" . $this->db->escape($active) . " WHERE dynamicInputId=" . $this->db->escape($dynamicInputMasterArray['dynamicInputId']);
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function getDynamicInputMasterList($actionId, $dynamicInputType){
+
+    public function getDynamicInputMasterList($actionId, $dynamicInputType)
+    {
 
         $sql = "SELECT t.dynamicInputId, t.dynamicInputName, t.dynamicInputType, t.active, t.fromIp, t.createdAt FROM `tbl_dynamicinputmaster` t WHERE t.active = 'active' ";
         if ($actionId != "" && $actionId != null && $actionId != "0" && $actionId != 0) {
@@ -490,23 +541,30 @@ class Backend_model extends CI_Model
     // End Dynamic Input Master
 
     // Start Dynamic Input Value Master
-    public function createDynamicInputValue($dynamicInputValueMasterArray){
-        $sql = "INSERT INTO tbl_dynamicinputvaluemaster (dynamicInputValue, dynamicInputId, active, createdAt, fromIp) " . "VALUES (" . $this->db->escape($dynamicInputValueMasterArray['dynamicInputValue']). "," . $this->db->escape($dynamicInputValueMasterArray['dynamicInputId']). "," . $this->db->escape($dynamicInputValueMasterArray['active']) . "," . $this->db->escape($dynamicInputValueMasterArray['createdAt']) . "," . $this->db->escape($dynamicInputValueMasterArray['fromIp']) . ")";
+    public function createDynamicInputValue($dynamicInputValueMasterArray)
+    {
+        $sql = "INSERT INTO tbl_dynamicinputvaluemaster (dynamicInputValue, dynamicInputId, active, createdAt, fromIp) " . "VALUES (" . $this->db->escape($dynamicInputValueMasterArray['dynamicInputValue']) . "," . $this->db->escape($dynamicInputValueMasterArray['dynamicInputId']) . "," . $this->db->escape($dynamicInputValueMasterArray['active']) . "," . $this->db->escape($dynamicInputValueMasterArray['createdAt']) . "," . $this->db->escape($dynamicInputValueMasterArray['fromIp']) . ")";
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function updateDynamicInputValue($dynamicInputValueMasterArray){
-        $sql = "UPDATE tbl_dynamicinputvaluemaster set dynamicInputValue= ".$this->db->escape($dynamicInputValueMasterArray['dynamicInputValue']).", dynamicInputId=".$this->db->escape($dynamicInputValueMasterArray['dynamicInputId'])." WHERE dynamicInputValueId=".$this->db->escape($dynamicInputValueMasterArray['dynamicInputValueId']);
+
+    public function updateDynamicInputValue($dynamicInputValueMasterArray)
+    {
+        $sql = "UPDATE tbl_dynamicinputvaluemaster set dynamicInputValue= " . $this->db->escape($dynamicInputValueMasterArray['dynamicInputValue']) . ", dynamicInputId=" . $this->db->escape($dynamicInputValueMasterArray['dynamicInputId']) . " WHERE dynamicInputValueId=" . $this->db->escape($dynamicInputValueMasterArray['dynamicInputValueId']);
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function deleteDynamicInputValue($dynamicInputValueMasterArray){
+
+    public function deleteDynamicInputValue($dynamicInputValueMasterArray)
+    {
         $active = "deleted";
-        $sql = "UPDATE tbl_dynamicinputvaluemaster set active=".$this->db->escape($active)." WHERE dynamicInputValueId=".$this->db->escape($dynamicInputValueMasterArray['dynamicInputValueId']);
+        $sql = "UPDATE tbl_dynamicinputvaluemaster set active=" . $this->db->escape($active) . " WHERE dynamicInputValueId=" . $this->db->escape($dynamicInputValueMasterArray['dynamicInputValueId']);
         $successMsg = $this->db->query($sql);
         return $successMsg;
     }
-    public function getDynamicInputValueList($actionId, $dynamicInputId){
+
+    public function getDynamicInputValueList($actionId, $dynamicInputId)
+    {
         $sql = "SELECT t.dynamicInputValueId, t.dynamicInputValue, t.dynamicInputId, t.active, t.fromIp, t.createdAt, s.dynamicInputName, s.dynamicInputType FROM `tbl_dynamicinputvaluemaster` t LEFT JOIN tbl_dynamicinputmaster s on s.dynamicInputId=t.dynamicInputId WHERE t.active = 'active' ";
         if ($actionId != "" && $actionId != null && $actionId != "0" && $actionId != 0) {
             $sql .= " and t.dynamicInputValueId = '" . $actionId . "' ";
@@ -522,7 +580,8 @@ class Backend_model extends CI_Model
     }
 
     // End Dynamic Input Value Master
-    public function getIpAddress(){
+    public function getIpAddress()
+    {
         $ipAddress = $_SERVER['REMOTE_ADDR'];
         return $ipAddress;
     }
@@ -750,27 +809,27 @@ class Backend_model extends CI_Model
 
     public function getUsersList($actionId, $activeStatus, $orderBy, $start, $end, $stateId, $districtId)
     {
-        $sql = "SELECT * FROM `tbl_user` t WHERE t.active =".$this->db->escape($activeStatus);
+        $sql = "SELECT * FROM `tbl_user` t WHERE t.active =" . $this->db->escape($activeStatus);
 
         $searchQuery = "";
         if ($actionId != "" && $actionId != null && $actionId != "0" && $actionId != 0) {
-            $searchQuery .= " and t.userid = ".$this->db->escape($actionId);
+            $searchQuery .= " and t.userid = " . $this->db->escape($actionId);
         }
-        if($start!="" && $start!=null && $end!="" && $end!=null){
-            $searchQuery = " and createdat > ".$this->db->escape($start)." and createdat < ".$this->db->escape($end);
+        if ($start != "" && $start != null && $end != "" && $end != null) {
+            $searchQuery = " and createdat > " . $this->db->escape($start) . " and createdat < " . $this->db->escape($end);
         }
-        if($stateId!="" && $stateId!=null && $stateId != "0" && $stateId != 0){
-            $searchQuery = " and stateId = ".$this->db->escape($stateId);
+        if ($stateId != "" && $stateId != null && $stateId != "0" && $stateId != 0) {
+            $searchQuery = " and stateId = " . $this->db->escape($stateId);
         }
-        if($districtId!="" && $districtId!=null && $districtId != "0" && $districtId != 0){
-            $searchQuery = " and districtId = ".$this->db->escape($districtId);
+        if ($districtId != "" && $districtId != null && $districtId != "0" && $districtId != 0) {
+            $searchQuery = " and districtId = " . $this->db->escape($districtId);
         }
 
-        if($searchQuery!="" && $searchQuery!=null){
+        if ($searchQuery != "" && $searchQuery != null) {
             $sql .= $searchQuery;
         }
 
-        $sql = $sql . " order by t.userid ".$orderBy;
+        $sql = $sql . " order by t.userid " . $orderBy;
         $userQuery = $this->db->query($sql);
 
         $membershipPackage = $userQuery->result_array();
@@ -778,18 +837,19 @@ class Backend_model extends CI_Model
         return $membershipPackage;
     }
 
-    public function getContactUsList($actionId, $orderBy){
+    public function getContactUsList($actionId, $orderBy)
+    {
         $sql = "SELECT t.`id`, t.`name`, t.`email`, t.`mobileNumber`, t.`categoryId`, t.`description`, t.`active`, t.`fromIp`, t.`createdAt`, c.category FROM `tbl_contactus` t LEFT JOIN tbl_category c on c.categoryId=t.categoryId WHERE t.active = 'active' ";
 
         $searchQuery = "";
         if ($actionId != "" && $actionId != null && $actionId != "0" && $actionId != 0) {
-            $searchQuery .= " and t.userid = ".$this->db->escape($actionId);
+            $searchQuery .= " and t.userid = " . $this->db->escape($actionId);
         }
-        if($searchQuery!="" && $searchQuery!=null){
+        if ($searchQuery != "" && $searchQuery != null) {
             $sql .= $searchQuery;
         }
 
-        if($orderBy!="" && $orderBy!=null){
+        if ($orderBy != "" && $orderBy != null) {
             $sql .= $orderBy;
         }
 
@@ -800,8 +860,9 @@ class Backend_model extends CI_Model
 
     }
 
-    public function runUpdateQuery($updateBatchSql){
-        if($updateBatchSql!="" && $updateBatchSql!=null){
+    public function runUpdateQuery($updateBatchSql)
+    {
+        if ($updateBatchSql != "" && $updateBatchSql != null) {
             $userQuery = $this->db->query($updateBatchSql);
         }
     }
