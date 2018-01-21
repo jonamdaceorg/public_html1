@@ -1,6 +1,16 @@
 </div>
-<div class="col-md-2 categories">
-    <SCRIPT charset="utf-8" type="text/javascript" src="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT>
+<div class="col-md-2 categories text-center">
+<!--    <SCRIPT charset="utf-8" type="text/javascript" src="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT>-->
+    <?php //print_r($adBannerArray);
+    if(count($adBannerArray)>0){
+        for($i=0; $i<count($adBannerArray); $i++){
+            $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
+            if($typeOfPosition == "Right"){
+                echo $adsCode = $adBannerArray[$i]['adsCode'];
+            }
+        }
+    }
+    ?>
     <!--21 dec end --->
 </div>
 </div>

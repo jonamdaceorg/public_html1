@@ -42,7 +42,7 @@ class Frontend extends CI_Controller
         $dataheader['title'] = "1StepShop";
         $dataheader['categoryArray'] = $categoryArray;
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Frontend_index');
         $this->load->view('layout/Frontend_footer');
 //		$this->users_model->migrationCountryStateCity();
@@ -64,7 +64,7 @@ class Frontend extends CI_Controller
         $categoryArray = $this->Backend_model->getCategoryList($actionId, $orderBy);
         $dataheader['categoryArray'] = $categoryArray;
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/contactUs');
         $this->load->view('layout/Frontend_footer');
     }
@@ -102,7 +102,7 @@ class Frontend extends CI_Controller
         $dataheader['succesMsg'] = $succesMsg;
         $dataheader['title'] = "About Us";
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('layout/Frontend_menu');
         $this->load->view('Frontend/aboutUs');
         $this->load->view('layout/Frontend_footer');
@@ -131,7 +131,7 @@ class Frontend extends CI_Controller
         $dataheader['cookieRememberMe'] = $cookieRememberMe;
         //End of Remember me block of code functionality
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Frontend_login');
 //        $this->load->view('layout/Frontend_login_footer');
         $this->load->view('layout/Frontend_footer');
@@ -153,7 +153,7 @@ class Frontend extends CI_Controller
         $succesMsg = $this->users_model->getSuccessMsg($output);
         $dataheader['succesMsg'] = $succesMsg;
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Frontend_register');
 //        $this->load->view('layout/Frontend_login_footer');
         $this->load->view('layout/Frontend_footer');
@@ -247,7 +247,7 @@ class Frontend extends CI_Controller
         $succesMsg = $this->users_model->getSuccessMsg($output);
         $dataheader['succesMsg'] = $succesMsg;
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/activateProfile');
         $this->load->view('layout/Frontend_login_footer');
     }
@@ -320,7 +320,7 @@ class Frontend extends CI_Controller
         $dataheader['title'] = "OTP Confirmation";
         $dataheader['confirmOtpUrl'] = base_url() . "forgotPassword";
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/forgotPassword');
         $this->load->view('layout/Frontend_login_footer');
     }
@@ -467,7 +467,7 @@ class Frontend extends CI_Controller
         $dataheader['title'] = "My Account";
         $dataheader['userArray'] = $userArray;
         $dataheader['userid'] = $userid;
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
 //		$this->load->view('layout/Frontend_menu');
         $this->load->view('Frontend/myAccount');
         $this->load->view('layout/Frontend_footer');
@@ -499,7 +499,7 @@ class Frontend extends CI_Controller
         $dataheader['stateArray'] = $stateArray;
         $dataheader['getCommonJsonDataUrl'] = base_url() . "Frontend/getCommonJsonData";
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Frontend_posting');
         $this->load->view('layout/Frontend_footer');
     }
@@ -1120,7 +1120,7 @@ class Frontend extends CI_Controller
         }
 	$categoriesTitle=str_replace("&","and",$categoriesTitle);
         $dataheader['title'] = $categoriesTitle;
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         //$this->load->view('layout/Frontend_menu');
 
         $this->load->view('Frontend/categories');
@@ -1320,7 +1320,7 @@ class Frontend extends CI_Controller
         $dataheader['selectedSubcategoryId'] = $selectedSubcategoryId;
         $dataheader['$selectedcity'] = $selectedcity;
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/adsList', $dataheader);
         $this->load->view('layout/Frontend_footer');
 
@@ -1413,7 +1413,7 @@ class Frontend extends CI_Controller
 
 
         $dataheader['title'] = "singleItem";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         //$this->load->view('layout/Frontend_menu');
         $this->load->view('Frontend/singleItem');
         $this->load->view('layout/Frontend_footer');
@@ -1665,7 +1665,7 @@ class Frontend extends CI_Controller
         $dataheader['succesMsg'] = $succesMsg;
         $dataheader['updatePasswordUrl'] = base_url() . "updatePassword";
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/changePassword');
         $this->load->view('layout/Frontend_footer');
     }
@@ -1753,7 +1753,7 @@ class Frontend extends CI_Controller
         $dataheader['stateArray'] = $stateArray;
         $dataheader['getCommonSelectBoxUrl'] = base_url() . "Backend/getCommonSelectBox";
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/editMyProfile');
         $this->load->view('layout/Frontend_footer');
     }
@@ -1919,7 +1919,7 @@ class Frontend extends CI_Controller
         //History Management End
 
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/viewAllMyAds');
         $this->load->view('layout/Frontend_footer');
 
@@ -1944,7 +1944,7 @@ class Frontend extends CI_Controller
         //History Management End
 
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/nearByYouAds');
         $this->load->view('layout/Frontend_footer');
 
@@ -1968,7 +1968,7 @@ class Frontend extends CI_Controller
         $this->users_model->insertHistory($historyArray);*/
         //History Management End
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('layout/frontEndDataTable');
         $this->load->view('Frontend/viewHistory');
         $this->load->view('layout/Frontend_footer');
@@ -1991,7 +1991,7 @@ class Frontend extends CI_Controller
         $this->users_model->insertHistory($historyArray);
         //History Management End
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/viewBookmarked');
         $this->load->view('layout/Frontend_footer');
     }
@@ -2126,7 +2126,7 @@ class Frontend extends CI_Controller
 
 
         $dataheader['title'] = "Edit My Ads";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/editMyAds');
         $this->load->view('layout/Frontend_footer');
     }
@@ -2143,56 +2143,56 @@ class Frontend extends CI_Controller
 
     public function howitworks(){
         $dataheader['title'] = "How it works";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function faq(){
         $dataheader['title'] = "FAQ";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function feedback(){
         $dataheader['title'] = "Feedback";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function locatinsMap(){
         $dataheader['title'] = "Locations Map";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function terms(){
         $dataheader['title'] = "Terms";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/terms');
 //        echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function privacy(){
         $dataheader['title'] = "Privacy";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/privacy');
         $this->load->view('layout/Frontend_footer');
     }
     public function typography(){
         $dataheader['title'] = "short codes";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function popularSearch(){
         $dataheader['title'] = "Popular Search";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
     public function sitemap(){
         $dataheader['title'] = "Site Map";
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         echo "<div class='banner container'>Under construction...</div>";
         $this->load->view('layout/Frontend_footer');
     }
@@ -2259,7 +2259,7 @@ class Frontend extends CI_Controller
         $dataheader['stateArray'] = $stateArray;
         $dataheader['getCommonJsonDataUrl'] = base_url() . "Frontend/getCommonJsonData";
 
-        $this->load->view('layout/Frontend_header', $dataheader);
+	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
         $this->load->view('Frontend/Migration_posting');
         $this->load->view('layout/Frontend_footer');
 

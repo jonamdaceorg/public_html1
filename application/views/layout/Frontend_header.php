@@ -261,10 +261,20 @@ var infolinks_wsid = 0;
 <body>
 <div class="container-fluid ">
 <div class="row ">
-    <div class="col-md-2 categories">
+    <div class="col-md-2 categories text-center">
         <!--21 dec start -->
-        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=myosssite-21&marketplace=amazon&region=IN&placement=B01LTHND2O&asins=B01LTHND2O&linkId=75dc2bb84a61556a1dea8aa65e17ef35&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
-        </iframe>
+        <?php //print_r($adBannerArray);
+            if(count($adBannerArray)>0){
+                for($i=0; $i<count($adBannerArray); $i++){
+                    $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
+                    if($typeOfPosition == "Left"){
+                        echo $adsCode = $adBannerArray[$i]['adsCode'];
+                    }
+                }
+            }
+        ?>
+<!--        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=myosssite-21&marketplace=amazon&region=IN&placement=B01LTHND2O&asins=B01LTHND2O&linkId=75dc2bb84a61556a1dea8aa65e17ef35&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">-->
+<!--        </iframe>-->
 
     </div>
     <div class="col-md-8">
