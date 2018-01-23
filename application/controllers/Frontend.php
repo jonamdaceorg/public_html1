@@ -2411,4 +2411,12 @@ class Frontend extends CI_Controller
         }
     }
 
+    public function getAdsBanner(){
+
+        $position = $this->input->get_post('position');
+        $adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active');
+        print_r($adBannerArray);
+
+    }
+
 }

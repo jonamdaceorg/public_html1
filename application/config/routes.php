@@ -88,6 +88,7 @@ $route['reportAboutAdsList'] = 'Backend/reportAboutAdsList';
 
 //Frontend
 
+$route['getAdsBanner'] = 'Frontend/getAdsBanner';
 $route['login'] = 'Frontend/login';
 $route['register'] = 'Frontend/register';
 $route['activateProfile'] = 'Frontend/activateProfile';
