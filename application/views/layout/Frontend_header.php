@@ -279,7 +279,48 @@ var infolinks_wsid = 0;
     </div>
     <div class="col-md-8">
 
-<style>
+        <!----- amazon ads start ----->
+        <?php if(count($adBannerArray)>0){
+            for($i=0; $i<count($adBannerArray); $i++){
+                $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
+                if($typeOfPosition == "Top"){ ?>
+
+
+                    <div class="content">
+                        <div class="categories">
+                            <div class="">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <?php
+                                            echo $adsCode = $adBannerArray[$i]['adsCode'];
+
+                                            ?>
+                                            <!--
+                                            <script type="text/javascript" language="javascript">
+                                                var aax_size='728x90';
+                                                var aax_pubname = 'myosssite-21';
+                                                var aax_src='302';
+                                            </script>
+                                            <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>-->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            }
+
+        }
+        ?>
+        <!---- ads end -->
+
+        <style>
     body{
         margin-top: 50px !important;
     }
