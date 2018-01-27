@@ -12,7 +12,7 @@
         <h3 class="panel-title"><?php echo $actionType . " " . $title; ?></h3>
     </div>
     <div class="panel-body">
-        <form class="form-horizontal group-border-dashed" action="<?php echo $insertOrUpdateMasterUrl; ?>" method="POST"
+        <form class="form-horizontal group-border-dashed" action="<?php echo $insertOrUpdateMasterUrl; ?>" method="POST" enctype='multipart/form-data'
               name="addOrEditUserDetailsForm" id="addOrEditUserDetailsForm" data-parsley-validate novalidate>
             <input type="hidden" name="actionType" id="actionType" value="<?php echo $actionType; ?>">
             <input type="hidden" name="actionId" id="actionId" value="<?php echo $actionId; ?>">
@@ -149,27 +149,27 @@
 
             if (count($adBannerArray) > 0) {
 
-                    $adBannerDetailsArray = $adBannerArray[0];
+                $adBannerDetailsArray = $adBannerArray[0];
 
-                    $bannerTitle = $adBannerDetailsArray['title'];
-                    $description = $adBannerDetailsArray['description'];
-                    $bannerType = $adBannerDetailsArray['bannerType'];
-                    $bannerImage = $adBannerDetailsArray['bannerImage'];
-                    $bannerImageUrl = $adBannerDetailsArray['bannerImageUrl'];
-                    $bannerAdsCode = $adBannerDetailsArray['adsCode'];
-                    $bannerLinkURL = $adBannerDetailsArray['bannerLinkURL'];
-                    $typeOfPosition = $adBannerDetailsArray['typeOfPosition'];
-                    $startDate = $adBannerDetailsArray['startDate'];
-                    $endDate = $adBannerDetailsArray['endDate'];
-                    $height = $adBannerDetailsArray['height'];
-                    $width = $adBannerDetailsArray['width'];
-                    $isMobileView = $adBannerDetailsArray['isMobileView'];
-                    $status = $adBannerDetailsArray['active'];
-                    $noOfDaysToActive = "";
+                $bannerTitle = $adBannerDetailsArray['title'];
+                $description = $adBannerDetailsArray['description'];
+                $bannerType = $adBannerDetailsArray['bannerType'];
+                $bannerImage = $adBannerDetailsArray['bannerImage'];
+                $bannerImageUrl = $adBannerDetailsArray['bannerImageUrl'];
+                $bannerAdsCode = $adBannerDetailsArray['adsCode'];
+                $bannerLinkURL = $adBannerDetailsArray['bannerLinkURL'];
+                $typeOfPosition = $adBannerDetailsArray['typeOfPosition'];
+                $startDate = $adBannerDetailsArray['startDate'];
+                $endDate = $adBannerDetailsArray['endDate'];
+                $height = $adBannerDetailsArray['height'];
+                $width = $adBannerDetailsArray['width'];
+                $isMobileView = $adBannerDetailsArray['isMobileView'];
+                $status = $adBannerDetailsArray['active'];
+                $noOfDaysToActive = "";
 
 
-                }
-                ?>
+            }
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Banner Title</label>
@@ -184,7 +184,7 @@
                         <label class="col-sm-3 control-label">Description</label>
                         <div class="col-sm-6">
                             <textarea class="form-control" id="description" name="description" required
-                                   data-parsley-name="description" placeholder="Description" ><?php echo $description; ?></textarea>
+                                      data-parsley-name="description" placeholder="Description" ><?php echo $description; ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                         <label class="col-sm-3 control-label">Banner Ads Code</label>
                         <div class="col-sm-6">
                             <textarea class="form-control" id="bannerAdsCode" name="bannerAdsCode"
-                                   data-parsley-name="bannerAdsCode" placeholder="Banner Ads Code" ><?php echo $bannerAdsCode; ?></textarea>
+                                      data-parsley-name="bannerAdsCode" placeholder="Banner Ads Code" ><?php echo $bannerAdsCode; ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -291,15 +291,15 @@
                         </div>
                     </div>
                 </div>
-<!--                <div class="form-group">-->
-<!--                    <div class="row">-->
-<!--                        <label class="col-sm-3 control-label">No Of Days Active</label>-->
-<!--                        <div class="col-sm-6">-->
-<!--                            <input type="text" class="form-control" id="noOfDaysToActive" name="noOfDaysToActive" required-->
-<!--                                   data-parsley-name="noOfDaysToActive" placeholder="no Of Days To Active" value="--><?php //echo $catgory; ?><!--"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="form-group">-->
+                <!--                    <div class="row">-->
+                <!--                        <label class="col-sm-3 control-label">No Of Days Active</label>-->
+                <!--                        <div class="col-sm-6">-->
+                <!--                            <input type="text" class="form-control" id="noOfDaysToActive" name="noOfDaysToActive" required-->
+                <!--                                   data-parsley-name="noOfDaysToActive" placeholder="no Of Days To Active" value="--><?php //echo $catgory; ?><!--"/>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Is MobileView</label>
@@ -435,17 +435,17 @@
                     </div>
                 </div>
             <?php }else if ($title == "Item Master") {
-                $item = "";
-                $subCategoryId = "";
-                $categoryId = "";
+            $item = "";
+            $subCategoryId = "";
+            $categoryId = "";
 
-                if (count($itemArray) > 0) {
-                    $item = $itemArray[0]['item'];
-                    $subCategoryId = $itemArray[0]['subCategoryId'];
-                    $categoryId = $itemArray[0]['categoryId'];
-                }
+            if (count($itemArray) > 0) {
+                $item = $itemArray[0]['item'];
+                $subCategoryId = $itemArray[0]['subCategoryId'];
+                $categoryId = $itemArray[0]['categoryId'];
+            }
 
-                ?>
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Category</label>
@@ -506,13 +506,13 @@
                     </div>
                 </div>
             <?php } else if ($title == "Country Master") {
-                $country = "";
+            $country = "";
 
-                if (count($countryArray) > 0) {
-                    $country = $countryArray[0]["country"];
-                }
+            if (count($countryArray) > 0) {
+                $country = $countryArray[0]["country"];
+            }
 
-                ?>
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Country</label>
@@ -536,15 +536,15 @@
                     </div>
                 </div>
             <?php } else if ($title == "State Master") {
-                $state = "";
-                $countryId = "";
+            $state = "";
+            $countryId = "";
 
-                if (count($stateArray) > 0) {
-                    $state = $stateArray[0]['state'];
-                    $countryId = $stateArray[0]['countryId'];
-                }
+            if (count($stateArray) > 0) {
+                $state = $stateArray[0]['state'];
+                $countryId = $stateArray[0]['countryId'];
+            }
 
-                ?>
+            ?>
 
 
                 <div class="form-group">
@@ -588,16 +588,16 @@
                     </div>
                 </div>
             <?php } else if ($title == "District Master") {
-                $stateId = "";
-                $countryId = "";
-                $district = "";
+            $stateId = "";
+            $countryId = "";
+            $district = "";
 
-                if (count($districtArray) > 0) {
-                    $stateId = $districtArray[0]['stateId'];
-                    $countryId = $districtArray[0]['countryId'];
-                    $district = $districtArray[0]['district'];
-                }
-                ?>
+            if (count($districtArray) > 0) {
+                $stateId = $districtArray[0]['stateId'];
+                $countryId = $districtArray[0]['countryId'];
+                $district = $districtArray[0]['district'];
+            }
+            ?>
 
                 <div class="form-group">
                     <div class="row">
@@ -660,18 +660,18 @@
 
 
             <?php } else if ($title == "Sub District Master") {
-                $stateId = "";
-                $countryId = "";
-                $districtId = "";
-                $subDistrict = "";
+            $stateId = "";
+            $countryId = "";
+            $districtId = "";
+            $subDistrict = "";
 
-                if (count($subDistrictArray) > 0) {
-                    $stateId = $subDistrictArray[0]['stateId'];
-                    $countryId = $subDistrictArray[0]['countryId'];
-                    $districtId = $subDistrictArray[0]['districtId'];
-                    $subDistrict = $subDistrictArray[0]['subDistrict'];
-                }
-                ?>
+            if (count($subDistrictArray) > 0) {
+                $stateId = $subDistrictArray[0]['stateId'];
+                $countryId = $subDistrictArray[0]['countryId'];
+                $districtId = $subDistrictArray[0]['districtId'];
+                $subDistrict = $subDistrictArray[0]['subDistrict'];
+            }
+            ?>
 
                 <div class="form-group">
                     <div class="row">
@@ -751,13 +751,13 @@
 
 
             <?php } else if ($title == "Reporting Master") {
-                $adsReporting = "";
+            $adsReporting = "";
 
-                if (count($adsReportingArray) > 0) {
-                    $adsReporting = $adsReportingArray[0]["reportingType"];
-                }
+            if (count($adsReportingArray) > 0) {
+                $adsReporting = $adsReportingArray[0]["reportingType"];
+            }
 
-                ?>
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Reporting Type</label>
@@ -784,15 +784,15 @@
 
 
             <?php } else if ($title == "Membership Package Master") {
-                $membershippackage = "";
-                $packageAmount = "";
-                $noOfDaysToActive = "";
-                if (count($membershipPackageArray) > 0) {
-                    $membershippackage = $membershipPackageArray[0]['membershipPackageTitle'];
-                    $noOfDaysToActive = $membershipPackageArray[0]['noOfDaysToActive'];
-                    $packageAmount = $membershipPackageArray[0]['packageAmount'];
-                }
-                ?>
+            $membershippackage = "";
+            $packageAmount = "";
+            $noOfDaysToActive = "";
+            if (count($membershipPackageArray) > 0) {
+                $membershippackage = $membershipPackageArray[0]['membershipPackageTitle'];
+                $noOfDaysToActive = $membershipPackageArray[0]['noOfDaysToActive'];
+                $packageAmount = $membershipPackageArray[0]['packageAmount'];
+            }
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Package Name</label>
@@ -840,19 +840,19 @@
                 </div>
             <?php } else if ($title == "User Profile") {
 
-                $address = "";
-                $email = "";
-                $mobile = "";
-                $password = "";
-                
-                if(count($profileArray)>0){
-                    $address = $profileArray['address'];
-                    $email = $profileArray['email'];
-                    $mobile = $profileArray['mobile'];
-                    $password = $profileArray['password'];
-                }
+            $address = "";
+            $email = "";
+            $mobile = "";
+            $password = "";
 
-                ?>
+            if(count($profileArray)>0){
+                $address = $profileArray['address'];
+                $email = $profileArray['email'];
+                $mobile = $profileArray['mobile'];
+                $password = $profileArray['password'];
+            }
+
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Email</label>
@@ -911,25 +911,25 @@
 
             <?php } else if ($title == "Users"  || $title == "Users Master") {
 
-                $name = "";
-                $email = "";
-                $mobile = "";
-                $password = "";
-                $address = "";
-                $districtId = "";
-                $stateId = "";
+            $name = "";
+            $email = "";
+            $mobile = "";
+            $password = "";
+            $address = "";
+            $districtId = "";
+            $stateId = "";
 
-                if(count($usersArray)>0){
-                    $name = $usersArray[0]['name'];
-                    $email = $usersArray[0]['email'];
-                    $mobile = $usersArray[0]['mobile'];
-                    $password = $usersArray[0]['password'];
-                    $address = $usersArray[0]['address'];
-                    $districtId = $usersArray[0]['districtId'];
-                    $stateId = $usersArray[0]['stateId'];
-                }
+            if(count($usersArray)>0){
+                $name = $usersArray[0]['name'];
+                $email = $usersArray[0]['email'];
+                $mobile = $usersArray[0]['mobile'];
+                $password = $usersArray[0]['password'];
+                $address = $usersArray[0]['address'];
+                $districtId = $usersArray[0]['districtId'];
+                $stateId = $usersArray[0]['stateId'];
+            }
 
-                ?>
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Mobile Number</label>
@@ -1006,37 +1006,37 @@
                         </div>
                     </div>
                 </div>
-                <?php
+            <?php
 
-                    if($stateId!=""){ ?>
-			<script>
-                            getCommonSelectBox("<?php echo $stateId; ?>", 'districtInAddOrEditDiv');
-                            alert("Loading...");
-                            var cityId = "<?php echo $districtId; ?>";
-                            $("#districtId").val(cityId);
-                        </script>                    
-                        <?php
-                    }
-                ?>
+            if($stateId!=""){ ?>
+                <script>
+                    getCommonSelectBox("<?php echo $stateId; ?>", 'districtInAddOrEditDiv');
+                    alert("Loading...");
+                    var cityId = "<?php echo $districtId; ?>";
+                    $("#districtId").val(cityId);
+                </script>
+            <?php
+            }
+            ?>
 
             <?php } else if ($title == "Dynamic Fields") {
-                    $dynamicInputType = "";
-                    $capturedvariablename = "";
-                    $categoryId = "";
-                    $dynamicInputId = "";
-                    $isSearchable = "";
-                    $searchType = "";
-                    if(count($dynamicAdsVariableList)>0){
-                        $dynamicInputType = $dynamicAdsVariableList[0]['dynamicInputType'];
-                        $capturedvariablename = $dynamicAdsVariableList[0]['capturedvariablename'];
-                        $categoryId = $dynamicAdsVariableList[0]['categoryId'];
-                        $subCategoryId = $dynamicAdsVariableList[0]['subCategoryId'];
-                        $dynamicInputId = $dynamicAdsVariableList[0]['dynamicInputId'];
-                        $isSearchable = $dynamicAdsVariableList[0]['isSearchable'];
-                        $searchType = $dynamicAdsVariableList[0]['searchType'];
+            $dynamicInputType = "";
+            $capturedvariablename = "";
+            $categoryId = "";
+            $dynamicInputId = "";
+            $isSearchable = "";
+            $searchType = "";
+            if(count($dynamicAdsVariableList)>0){
+                $dynamicInputType = $dynamicAdsVariableList[0]['dynamicInputType'];
+                $capturedvariablename = $dynamicAdsVariableList[0]['capturedvariablename'];
+                $categoryId = $dynamicAdsVariableList[0]['categoryId'];
+                $subCategoryId = $dynamicAdsVariableList[0]['subCategoryId'];
+                $dynamicInputId = $dynamicAdsVariableList[0]['dynamicInputId'];
+                $isSearchable = $dynamicAdsVariableList[0]['isSearchable'];
+                $searchType = $dynamicAdsVariableList[0]['searchType'];
 
-                    }
-                    ?>
+            }
+            ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-sm-3 control-label">Category</label>
@@ -1155,13 +1155,13 @@
                 </script>
             <?php } else if ($title == "Dynamic Input") {
 
-                $dynamicSelectBox = "";
-                $dynamicInputType = "";
+            $dynamicSelectBox = "";
+            $dynamicInputType = "";
 
-                if(count($dynamicSelectBoxList)>0){
-                    $dynamicSelectBox = $dynamicSelectBoxList[0]['dynamicInputName'];
-                    $dynamicInputType = $dynamicSelectBoxList[0]['dynamicInputType'];
-                }
+            if(count($dynamicSelectBoxList)>0){
+                $dynamicSelectBox = $dynamicSelectBoxList[0]['dynamicInputName'];
+                $dynamicInputType = $dynamicSelectBoxList[0]['dynamicInputType'];
+            }
             ?>
                 <div class="form-group">
                     <div class="row">
@@ -1204,15 +1204,15 @@
                 </script>
             <?php } else if ($title == "Dynamic Input Value") {
 
-//                $categoryId = "";
-                $dynamicInputId = "";
-                $dynamicInputValue = "";
+            //                $categoryId = "";
+            $dynamicInputId = "";
+            $dynamicInputValue = "";
 
-                if(count($dynamicSelectBoxValueList)>0){
+            if(count($dynamicSelectBoxValueList)>0){
 //                    $categoryId =  $dynamicSelectBoxValueList[0]['categoryId'];
-                    $dynamicInputId =  $dynamicSelectBoxValueList[0]['dynamicInputId'];
-                    $dynamicInputValue =  $dynamicSelectBoxValueList[0]['dynamicInputValue'];
-                }
+                $dynamicInputId =  $dynamicSelectBoxValueList[0]['dynamicInputId'];
+                $dynamicInputValue =  $dynamicSelectBoxValueList[0]['dynamicInputValue'];
+            }
 
             ?>
                 <div class="form-group">
@@ -1223,15 +1223,15 @@
                                     required>
                                 <option value="">Select Dynamic Input Name</option>
                                 <?php
-                                    for($d=0; $d<count($dynamicSelectBoxList); $d++){
-                                        $dynamicSelectBox = $dynamicSelectBoxList[$d]['dynamicInputName'];
-                                        $dynamicInputType = $dynamicSelectBoxList[$d]['dynamicInputType'];
-                                        $dynamicInputIdValue = $dynamicSelectBoxList[$d]['dynamicInputId'];
-                                        if($dynamicInputIdValue == $dynamicInputId){
-                                            echo '<option value="'.$dynamicInputIdValue.'" selected="selected">'.$dynamicSelectBox.'</option>';
-                                        } else {
-                                            echo '<option value="'.$dynamicInputIdValue.'">'.$dynamicSelectBox.'</option>';
-                                        }
+                                for($d=0; $d<count($dynamicSelectBoxList); $d++){
+                                    $dynamicSelectBox = $dynamicSelectBoxList[$d]['dynamicInputName'];
+                                    $dynamicInputType = $dynamicSelectBoxList[$d]['dynamicInputType'];
+                                    $dynamicInputIdValue = $dynamicSelectBoxList[$d]['dynamicInputId'];
+                                    if($dynamicInputIdValue == $dynamicInputId){
+                                        echo '<option value="'.$dynamicInputIdValue.'" selected="selected">'.$dynamicSelectBox.'</option>';
+                                    } else {
+                                        echo '<option value="'.$dynamicInputIdValue.'">'.$dynamicSelectBox.'</option>';
+                                    }
 
                                 } ?>
                             </select>
@@ -1262,7 +1262,7 @@
 
                 <script>
                     $("#dynamicInputId").select2();
-//                    getDynamicInputMasterList("<?php //echo $dynamicInputId; ?>//");
+                    //                    getDynamicInputMasterList("<?php //echo $dynamicInputId; ?>//");
                 </script>
 
                 <script>
@@ -1273,4 +1273,3 @@
         </form>
     </div>
 </div>
-

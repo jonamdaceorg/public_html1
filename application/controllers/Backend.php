@@ -635,7 +635,7 @@ class Backend extends CI_Controller
             $bannerTitle = $this->input->post('bannerTitle');
             $description = $this->input->post('description');
             $bannerType = $this->input->post('bannerType');
-            $bannerImage = $this->input->post('bannerImage');
+//            $bannerImage = $this->input->post('bannerImage');
             $bannerImageUrl = $this->input->post('bannerImageUrl');
             $bannerAdsCode = $this->input->post('bannerAdsCode');
             $bannerLinkURL = $this->input->post('bannerLinkURL');
@@ -646,6 +646,35 @@ class Backend extends CI_Controller
             $width = $this->input->post('width');
             $isMobileView = $this->input->post('isMobileView');
             $status = $this->input->post('status');
+
+            $bannerImage = "";
+            if(isset($_POST['submit']) && count($_FILES)>0){
+
+                $name = $_FILES['bannerImage']['name'];
+                $target_dir = "uploads/files/adbanners/";
+                $target_file = $target_dir . basename($name);
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $extensions_arr = array("jpg","jpeg","png","gif");
+
+                if( in_array($imageFileType,$extensions_arr) ) {
+                    //$image_base64 = base64_encode(file_get_contents($_FILES['bannerImage']['tmp_name']) );
+                    //$image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+                    //echo $image;
+
+                    $uploadPath = 'uploads/files/adbanners/';
+                    $config['upload_path'] = $uploadPath;
+                    $config['allowed_types'] = 'gif|jpeg|jpg|png';
+
+                    $this->load->library('upload', $config);
+                    $this->upload->initialize($config);
+                    if ($this->upload->do_upload('bannerImage')) {
+                        $fileData = $this->upload->data();
+                        $bannerImage = $fileData['file_name'];
+                    }
+//                    echo $this->upload->display_errors();
+//                    move_uploaded_file($_FILES['bannerImage']['tmp_name'],$target_dir.$name);
+                }
+            }
 
             $adBannerDetailsArray = array('status' => $status, 'bannerTitle' => $bannerTitle,'isMobileView' => $isMobileView,'description'=>$description,'bannerType'=>$bannerType, 'bannerImage'=>$bannerImage, 'bannerImageUrl'=>$bannerImageUrl, 'bannerAdsCode'=>$bannerAdsCode, 'bannerLinkURL'=>$bannerLinkURL, 'typeOfPosition'=> $typeOfPosition, 'startDate'=>$startDate, 'endDate'=>$endDate, 'height'=>$height, 'width'=>$width, 'adBannerId' => $actionId, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
 
@@ -1078,7 +1107,7 @@ class Backend extends CI_Controller
 
         } else if ($submit == "Dynamic Input Value") {
             $dynamicInputId = $this->input->get_post('dynamicInputId');
-           echo $dynamicInputValue = $this->input->get_post('dynamicInputValue');
+            echo $dynamicInputValue = $this->input->get_post('dynamicInputValue');
             $dynamicInputValueMasterArray  = array("dynamicInputValueId" => $actionId, 'dynamicInputValue'=>$dynamicInputValue, 'dynamicInputId'=>$dynamicInputId, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
 
             if ($actionType == "Edit" && $actionId != "0" && $actionId != "" && $actionId != null) {
