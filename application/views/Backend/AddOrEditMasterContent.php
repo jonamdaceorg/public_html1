@@ -145,6 +145,7 @@
             $width = "";
             $isMobileView = "";
             $noOfDaysToActive = "";
+            $status = "";
 
             if (count($adBannerArray) > 0) {
 
@@ -163,6 +164,7 @@
                     $height = $adBannerDetailsArray['height'];
                     $width = $adBannerDetailsArray['width'];
                     $isMobileView = $adBannerDetailsArray['isMobileView'];
+                    $status = $adBannerDetailsArray['active'];
                     $noOfDaysToActive = "";
 
 
@@ -315,6 +317,18 @@
                 </div>
                 <div class="form-group">
                     <div class="row">
+                        <label class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-6">
+                            <select name="status" id="status" class="form-control select2">
+                                <option value="active" <?php if($status == "active"){ echo "selected"; } ?>>active</option>
+                                <option value="deleted" <?php if($status == "deleted"){ echo "selected"; } ?>>deleted</option>
+                                <option value="expired" <?php if($status == "expired"){ echo "selected"; } ?>>expired</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
                         <div class="col-sm-offset-3 col-sm-9 m-t-15">
                             <button type="submit" value="<?php echo $title; ?>" id="submit" name="submit"
                                     class="btn btn-primary waves-effect waves-light">
@@ -337,6 +351,7 @@
                     });
                     $("#bannerType").select2();
                     $("#typeOfPosition").select2();
+                    $("#status").select2();
                     loadBannerImageDiv("");
                     function loadBannerImageDiv(bannerType){
                         if(bannerType == "") {

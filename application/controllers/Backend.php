@@ -196,6 +196,7 @@ class Backend extends CI_Controller
         $this->load->view('layout/Backend_footer');
     }
 
+
     public function getMastersList()
     {
         $dataheader['title'] = "Master List";
@@ -206,6 +207,7 @@ class Backend extends CI_Controller
         $title = $this->input->get_post("title");
         $actionId = $this->input->get_post("actionId");
         $getGenerateExcel = $this->input->get_post("getGenerateExcel");
+        $searchStatus = $this->input->get_post("searchStatus");
 
 
         $categoryArray = array();
@@ -232,8 +234,13 @@ class Backend extends CI_Controller
             $orderBy = " order by orders ASC";
             $categoryArray = $this->Backend_model->getCategoryList($actionId, $orderBy);
         }  else if ($title == "Ad Banner Master") {
+
+            if($searchStatus == ""){
+                $searchStatus = "active";
+            }
+
             $orderBy = " order by adBannerId DESC";
-            $adBannerArray = $this->Backend_model->getAdBannerList($actionId, $orderBy, 'active');
+            $adBannerArray = $this->Backend_model->getAdBannerList($actionId, $orderBy, $searchStatus);
         } else if ($title == "Sub Category Master") {
             $categoryId = "0";
             $orderBy = " order by s.subCategory ASC";
@@ -399,12 +406,14 @@ class Backend extends CI_Controller
                 $categoryArray = $this->Backend_model->getCategoryList($actionId, $orderBy);
             }
         }
+
         if ($title == "Ad Banner Master") {
             if ($actionType == "Edit") {
                 $orderBy = " order by adBannerId DESC";
                 $adBannerArray = $this->Backend_model->getAdBannerList($actionId, $orderBy, '');
             }
         }
+
         if ($title == "Sub Category Master") {
             $orderBy = " order by categoryId DESC";
             $categoryArray = $this->Backend_model->getCategoryList("0", $orderBy);
@@ -546,7 +555,6 @@ class Backend extends CI_Controller
 
         $dataheader['categoryArray'] = $categoryArray;
         $dataheader['adBannerArray'] = $adBannerArray;
-
         $dataheader['subCategoryArray'] = $subCategoryArray;
         $dataheader['itemArray'] = $itemArray;
         $dataheader['countryArray'] = $countryArray;
@@ -587,9 +595,7 @@ class Backend extends CI_Controller
 
         $createdAt = date("Y-m-d H:i:s");
         $fromIp = $this->Backend_model->getIpAddress();
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
+
         if ($submit == "Category Master") {
 
             $category = $this->input->post('category');
@@ -639,8 +645,9 @@ class Backend extends CI_Controller
             $height = $this->input->post('height');
             $width = $this->input->post('width');
             $isMobileView = $this->input->post('isMobileView');
+            $status = $this->input->post('status');
 
-            $adBannerDetailsArray = array('bannerTitle' => $bannerTitle,'isMobileView' => $isMobileView,'description'=>$description,'bannerType'=>$bannerType, 'bannerImage'=>$bannerImage, 'bannerImageUrl'=>$bannerImageUrl, 'bannerAdsCode'=>$bannerAdsCode, 'bannerLinkURL'=>$bannerLinkURL, 'typeOfPosition'=> $typeOfPosition, 'startDate'=>$startDate, 'endDate'=>$endDate, 'height'=>$height, 'width'=>$width, 'adBannerId' => $actionId, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
+            $adBannerDetailsArray = array('status' => $status, 'bannerTitle' => $bannerTitle,'isMobileView' => $isMobileView,'description'=>$description,'bannerType'=>$bannerType, 'bannerImage'=>$bannerImage, 'bannerImageUrl'=>$bannerImageUrl, 'bannerAdsCode'=>$bannerAdsCode, 'bannerLinkURL'=>$bannerLinkURL, 'typeOfPosition'=> $typeOfPosition, 'startDate'=>$startDate, 'endDate'=>$endDate, 'height'=>$height, 'width'=>$width, 'adBannerId' => $actionId, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
 
             $output = array('status' => "3", 'message' => "Invalid Request");
             if ($actionType == "Edit" && $actionId != "0" && $actionId != "" && $actionId != null) {

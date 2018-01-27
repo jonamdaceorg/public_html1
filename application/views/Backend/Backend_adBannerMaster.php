@@ -44,6 +44,26 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-6"><label for="">Status</label></div>
+								<div class="col-md-6">
+									<select name="searchStatus" id="searchStatus" class="form-control select2" onchange="getSearchList(this.value)">
+										<option value="active">active</option>
+										<option value="deleted">deleted</option>
+										<option value="expired">expired</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
 					<div class="col-md-12">
 						<div id="usersListDiv"></div>
 					</div>
@@ -68,7 +88,12 @@
 <input type="hidden" name="getMastersListUrl" id="getMastersListUrl" value="<?php echo $getMastersListUrl; ?>">
 <input type="hidden" name="title" id="title" value="<?php echo $title; ?>">
 <script>
-	var postData = "title="+$("#title").val();
+	var postData = "title="+$("#title").val()+"&searchStatus="+$("#searchStatus").val();
 	loadMastersList(postData, $("#getMastersListUrl").val());
+
+	function getSearchList(value){
+		var postData = "title="+$("#title").val()+"&searchStatus="+value;
+		loadMastersList(postData, $("#getMastersListUrl").val());
+	}
 </script>
 

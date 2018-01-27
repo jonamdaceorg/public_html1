@@ -55,8 +55,9 @@ class Backend_model extends CI_Model
         $width = $adBannerDetailsArray['width'];
         $adBannerId = $adBannerDetailsArray['adBannerId'];
         $isMobileView = $adBannerDetailsArray['isMobileView'];
+        $status = $adBannerDetailsArray['status'];
 
-        $sql = "UPDATE tbl_adbanner set title = " . $this->db->escape($bannerTitle) . ", isMobileView = " . $this->db->escape($isMobileView) . ", description = " . $this->db->escape($description) . " , bannerType = " . $this->db->escape($bannerType) . " , bannerImage = " . $this->db->escape($bannerImage) . " , bannerImageUrl = " . $this->db->escape($bannerImageUrl) . " , adsCode = " . $this->db->escape($bannerAdsCode) . " , bannerLinkURL = " . $this->db->escape($bannerLinkURL) . ", typeOfPosition = " . $this->db->escape($typeOfPosition) . ", startDate = " . $this->db->escape($startDate) . " , endDate= " . $this->db->escape($endDate) . ", width= " . $this->db->escape($width) . ", height= " . $this->db->escape($height) . " where adBannerId = " . $this->db->escape($adBannerId);
+        $sql = "UPDATE tbl_adbanner set title = " . $this->db->escape($bannerTitle) . ",active = " . $this->db->escape($status) . ", isMobileView = " . $this->db->escape($isMobileView) . ", description = " . $this->db->escape($description) . " , bannerType = " . $this->db->escape($bannerType) . " , bannerImage = " . $this->db->escape($bannerImage) . " , bannerImageUrl = " . $this->db->escape($bannerImageUrl) . " , adsCode = " . $this->db->escape($bannerAdsCode) . " , bannerLinkURL = " . $this->db->escape($bannerLinkURL) . ", typeOfPosition = " . $this->db->escape($typeOfPosition) . ", startDate = " . $this->db->escape($startDate) . " , endDate= " . $this->db->escape($endDate) . ", width= " . $this->db->escape($width) . ", height= " . $this->db->escape($height) . " where adBannerId = " . $this->db->escape($adBannerId);
         return $this->db->query($sql);
     }
 
