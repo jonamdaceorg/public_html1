@@ -1412,11 +1412,19 @@ class Frontend extends CI_Controller
 
 
 
+        $returnFormat = $this->input->get_post('rf');
         $dataheader['title'] = "singleItem";
-	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
-        //$this->load->view('layout/Frontend_menu');
-        $this->load->view('Frontend/singleItem');
-        $this->load->view('layout/Frontend_footer');
+
+        if($returnFormat == "json"){
+            print_r(json_encode($dataheader));
+        } else {
+            $adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active');
+            $dataheader['adBannerArray'] = $adBannerArray;
+            $this->load->view('layout/Frontend_header', $dataheader);
+            //$this->load->view('layout/Frontend_menu');
+            $this->load->view('Frontend/singleItem');
+            $this->load->view('layout/Frontend_footer');
+        }
     }
 
     public function searchAdsAjax()
