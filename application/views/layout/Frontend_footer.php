@@ -6,7 +6,33 @@
         for($i=0; $i<count($adBannerArray); $i++){
             $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
             if($typeOfPosition == "Right"){
-                echo $adsCode = $adBannerArray[$i]['adsCode'];
+
+                $bannerType = $adBannerArray[$i]['bannerType'];
+                $bannerLinkURL = $adBannerArray[$i]['bannerLinkURL'];
+
+                if($bannerLinkURL != ""){
+                    echo "<a href='".$bannerLinkURL."'>";
+                }
+
+                if($bannerType == 'adsCode') {
+                    echo $adsCode = $adBannerArray[$i]['adsCode'];
+                } else if($bannerType == "bannerImage" || $bannerType == "bannerImageUrl"){
+                    if($bannerType == "bannerImageUrl"){
+                        $bannerImageUrl = $adBannerArray[$i]['bannerImageUrl'];
+                    } else {
+                        $bannerImage = $adBannerArray[$i]['bannerImage'];
+                        $bannerImageUrl = "uploads/files/adbanners/" . $bannerImage;
+                    }
+                    $height = $adBannerArray[$i]['height'];
+                    $width = $adBannerArray[$i]['width'];
+                    if($width == "" || $width == "0") $width = "100%";
+                    echo "<img src='".$bannerImageUrl."' height='".$height."' width='".$width."' />";
+                }
+
+                if($bannerLinkURL != ""){
+                    echo "</a>";
+                }
+               // echo $adsCode = $adBannerArray[$i]['adsCode'];
             }
         }
     }
