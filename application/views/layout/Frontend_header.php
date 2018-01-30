@@ -276,7 +276,7 @@ var infolinks_wsid = 0;
                             echo "<a href='".$bannerLinkURL."'>";
                         }
 
-                        if($bannerType == 'adsCode') {
+                        if($bannerType == 'bannerAdsCode') {
                             echo $adsCode = $adBannerArray[$i]['adsCode'];
                         } else if($bannerType == "bannerImage" || $bannerType == "bannerImageUrl"){
                             if($bannerType == "bannerImageUrl"){
@@ -327,7 +327,7 @@ var infolinks_wsid = 0;
                                                 echo "<a href='".$bannerLinkURL."'>";
                                             }
 
-                                            if($bannerType == 'adsCode') {
+                                            if($bannerType == 'bannerAdsCode') {
                                                 echo $adsCode = $adBannerArray[$i]['adsCode'];
                                             } else if($bannerType == "bannerImage" || $bannerType == "bannerImageUrl"){
                                                 if($bannerType == "bannerImageUrl"){
