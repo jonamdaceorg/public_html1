@@ -69,13 +69,14 @@ class Frontend extends CI_Controller
         $this->load->view('layout/Frontend_footer');
     }
 
-    public function sendContactUsDetails()
-    {
+    public function sendContactUsDetails(){
+
         $mobileNumber = $this->input->get_post('mobileNumber');
         $email = $this->input->get_post('email');
         $name = $this->input->get_post('name');
         $categoryId = $this->input->get_post('categoryId');
         $description = $this->input->get_post('description');
+        $returnFormat = $this->input->get_post('rf');
 
         $active = "active";
         $createdAt = date("Y-m-d H:i:s");
@@ -89,9 +90,14 @@ class Frontend extends CI_Controller
         } else {
             $output = array('status' => "2", 'message' => "Please try again later!");
         }
-        $this->session->set_flashdata('output', $output);
 
-        redirect(base_url() . "contactUs");
+        if($returnFormat != "json"){
+            $this->session->set_flashdata('output', $output);
+            redirect(base_url() . "contactUs");
+        } else {
+            print_r(json_encode($output));
+        }
+
     }
 
     public function aboutUs()
@@ -169,7 +175,7 @@ class Frontend extends CI_Controller
         $stateId = $this->input->get_post('stateId');
         $districtId = $this->input->get_post('districtId');
         $address = $this->input->get_post('address');
-
+        $returnFormat = $this->input->get_post('rf');
 
         $countryId = "1";
         $fromIp = $_SERVER['SERVER_ADDR'];
@@ -182,12 +188,20 @@ class Frontend extends CI_Controller
             $this->session->set_flashdata('activateUser', $activateUser);
 
             $output = array('status' => "1", 'message' => "Please enter the OTP to Activate your profile");
-            $this->session->set_flashdata('output', $output);
-            redirect(base_url() . "activateProfile");
+            if($returnFormat != "json"){
+                $this->session->set_flashdata('output', $output);
+                redirect(base_url() . "activateProfile");
+            } else {
+                print_r(json_encode($output));
+            }
         } else {
             $output = array('status' => "2", 'message' => "Your Mobile Number is already registered!!");
-            $this->session->set_flashdata('output', $output);
-            redirect(base_url() . "register");
+            if($returnFormat != "json"){
+                $this->session->set_flashdata('output', $output);
+                redirect(base_url() . "register");
+            } else {
+                print_r(json_encode($output));
+            }
         }
     }
 
@@ -1518,6 +1532,9 @@ class Frontend extends CI_Controller
         $searchUserId = $this->input->get_post('searchUserId');
         if($getListFromPage == "View All My Ads"){
             $searchUserId = $this->session->userdata('userid');
+            if($returnFormat == "json"){
+                $searchUserId = $this->input->get_post('searchUserId');
+            }
         }
         $bookmarkArray = array();
         if($getListFromPage == "View My Bookmarked List"){
@@ -1681,12 +1698,19 @@ class Frontend extends CI_Controller
     public function  updatePassword()
     {
         $sessionUserIdIsset = $this->session->has_userdata('userid');
-        if ($sessionUserIdIsset != 1) {
+        $returnFormat = $this->input->get_post('rf');
+
+        if ($sessionUserIdIsset != 1 && $returnFormat != "json") {
             redirect(base_url() . "logout");
         }
         $successMsg = "Please try again later!";
         $output = array('status' => "2", 'message' => $successMsg);
         $userid = $this->session->userdata('userid');
+
+        if($returnFormat == "json"){
+            $userid = $this->input->get_post('userid');
+        }
+
         $userDataArray = $this->Backend_model->getUsersList($userid, "active", "", "", "", "", "");
         if (count($userDataArray) > 0) {
             $mobileNumber = $userDataArray[0]['mobile'];
@@ -1725,13 +1749,17 @@ class Frontend extends CI_Controller
         $description = "Response : ".$successMsg;
         $pageName = "Change Password";
         $pageUrl = 'updatePassword';
-        $userid = $this->session->userdata('userid');
         $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $action, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
         $this->users_model->insertHistory($historyArray);
         //Password Update End
 
-        $this->session->set_flashdata('output', $output);
-        redirect(base_url() . "changePassword");
+        if ($returnFormat != "json") {
+            $this->session->set_flashdata('output', $output);
+            redirect(base_url() . "changePassword");
+        } else {
+            print_r(json_encode($output));
+        }
+
     }
 
     public function  editMyProfile()
@@ -1769,13 +1797,21 @@ class Frontend extends CI_Controller
     public function  updateMyProfile()
     {
         $sessionUserIdIsset = $this->session->has_userdata('userid');
-        if ($sessionUserIdIsset != 1) {
+        $returnFormat = $this->input->get_post('rf');
+        if ($sessionUserIdIsset != 1 && $returnFormat != "json") {
             redirect(base_url() . "logout");
         }
         $successMsg = "Please try again later!";
         $historyMsg = "";
         $output = array('status' => "2", 'message' => $successMsg);
+
         $userid = $this->session->userdata('userid');
+
+        if($returnFormat == "json"){
+            $userid = $this->input->get_post('userid');
+        }
+
+
         $userDataArray = $this->Backend_model->getUsersList($userid, "active", "", "", "", "", "");
         if (count($userDataArray) > 0) {
             $historyMsg = " Changes : ";
@@ -1792,48 +1828,51 @@ class Frontend extends CI_Controller
             $address = $this->input->get_post('address');
             $districtId = $this->input->get_post('districtId');
 
-            // Upload Profile photo
-            $selectedFileName = $_FILES['userFile']['name'];
-            $selectedFileTempName = $_FILES['userFile']['tmp_name'];
-            $userCode = $userDataArray[0]['userCode'];
-
             $profilePhotoName = "";
-            if ($selectedFileName != "" && $selectedFileTempName != "") {
+            if(array_key_exists("userFile", $_FILES)){
+                if(array_key_exists("name", $_FILES['userFile']) && array_key_exists("tmp_name", $_FILES['userFile'])){
+                    $selectedFileName = $_FILES['userFile']['name'];
+                    $selectedFileTempName = $_FILES['userFile']['tmp_name'];
+                    $userCode = $userDataArray[0]['userCode'];
 
-                $uploadPath = 'uploads/files/userprofiles/';
-                $uploadPath = $uploadPath . $userCode;
-                if (!is_dir($uploadPath)) {
-                    mkdir($uploadPath, 0777, TRUE);
-                }
-                $config['upload_path'] = $uploadPath;
-                //$config['allowed_types'] = 'gif|jpg|png';
-                $config['allowed_types'] = 'gif|jpeg|jpg|png';
-                $config['encrypt_name'] = TRUE;
+                    if ($selectedFileName != "" && $selectedFileTempName != "") {
 
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if ($this->upload->do_upload('userFile')) {
-                    $fileData = $this->upload->data();
-                    $profilePhotoName = $uploadData['file_name'] = $fileData['file_name'];
-                    $historyMsg .= " Profile photo uploaded <a href='".base_url().$uploadPath."/".$profilePhotoName."'>".$profilePhotoName."</a>, ";
-                    $uploadData['createdAt'] = date("Y-m-d H:i:s");
-                    $uploadData['active'] = $active;
-                    $uploadData['fromIp'] = $_SERVER['REMOTE_ADDR'];
+                        $uploadPath = 'uploads/files/userprofiles/';
+                        $uploadPath = $uploadPath . $userCode;
+                        if (!is_dir($uploadPath)) {
+                            mkdir($uploadPath, 0777, TRUE);
+                        }
+                        $config['upload_path'] = $uploadPath;
+                        //$config['allowed_types'] = 'gif|jpg|png';
+                        $config['allowed_types'] = 'gif|jpeg|jpg|png';
+                        $config['encrypt_name'] = TRUE;
 
-                    $image_data = $fileData;
-                    $config["manipulation"]['source_image'] = $image_data['full_path'];
-                    $this->load->library('image_lib', $config["manipulation"]);
-                    $config["manipulation"]['wm_text'] = '1stepshop.in';
-                    $config["manipulation"]['wm_type'] = 'text';
-                    $this->image_lib->initialize($config["manipulation"]);
-                    $this->image_lib->watermark();
+                        $this->load->library('upload', $config);
+                        $this->upload->initialize($config);
+                        if ($this->upload->do_upload('userFile')) {
+                            $fileData = $this->upload->data();
+                            $profilePhotoName = $uploadData['file_name'] = $fileData['file_name'];
+                            $historyMsg .= " Profile photo uploaded <a href='".base_url().$uploadPath."/".$profilePhotoName."'>".$profilePhotoName."</a>, ";
+                            $uploadData['createdAt'] = date("Y-m-d H:i:s");
+                            $uploadData['active'] = $active;
+                            $uploadData['fromIp'] = $_SERVER['REMOTE_ADDR'];
 
-                } else {
-                    $message = $this->upload->display_errors();
-                    $status = "2";
-                    $output = array('status' => $status, 'message' => $message);
-                    $this->session->set_flashdata('output', $output);
+                            $image_data = $fileData;
+                            $config["manipulation"]['source_image'] = $image_data['full_path'];
+                            $this->load->library('image_lib', $config["manipulation"]);
+                            $config["manipulation"]['wm_text'] = '1stepshop.in';
+                            $config["manipulation"]['wm_type'] = 'text';
+                            $this->image_lib->initialize($config["manipulation"]);
+                            $this->image_lib->watermark();
 
+                        } else {
+                            $message = $this->upload->display_errors();
+                            $status = "2";
+                            $output = array('status' => $status, 'message' => $message);
+                            $this->session->set_flashdata('output', $output);
+
+                        }
+                    }
                 }
             }
 
@@ -1890,14 +1929,16 @@ class Frontend extends CI_Controller
         $description = "Response : ".$successMsg.", ". $historyMsg;
         $pageName = "Edit My Profile";
         $pageUrl = 'updateMyProfile';
-        $userid = $this->session->userdata('userid');
         $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $action, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
         $this->users_model->insertHistory($historyArray);
         //History Management End
 
-
-        $this->session->set_flashdata('output', $output);
-        redirect(base_url() . "editMyProfile");
+        if($returnFormat != "json"){
+            $this->session->set_flashdata('output', $output);
+            redirect(base_url() . "editMyProfile");
+        } else {
+            print_r(json_encode($output));
+        }
     }
 
     public function viewAllMyAds()
