@@ -2242,7 +2242,8 @@ class Frontend extends CI_Controller
     public function sitemap(){
         $dataheader['title'] = "Site Map";
 	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
-        echo "<div class='banner container'>Under construction...</div>";
+        $this->load->view('Frontend/sitemap');
+
         $this->load->view('layout/Frontend_footer');
     }
     public function updateAdsStatus()
