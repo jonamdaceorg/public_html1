@@ -151,6 +151,7 @@ $route['getLoginFromApps'] = 'Apps/getLoginFromApps';
 $route['confirmUserAndSendOtpFromApps'] = 'Apps/confirmUserAndSendOtpFromApps';
 $route['updateMyPasswordFromApps'] = 'Apps/updateMyPasswordFromApps';
 $route['getCategoryListFromApps'] = 'Apps/getCategoryListFromApps';
+$route['getUserDetailsFromApps'] = 'Apps/getUserDetailsFromApps';
 
 //$route['home'] = 'Frontend/home';
 

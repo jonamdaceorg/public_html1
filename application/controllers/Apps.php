@@ -22,6 +22,36 @@ class Apps extends CI_Controller {
 		print_r(json_encode($userCredential));
 	}
 
+	public function getUserDetailsFromApps()
+	{
+		$userid = $this->input->get_post('userid');
+		$userArray = array();
+		if($userid != "" && $userid!=null){
+			$detailsArray = $this->users_model->getFrontendUsers($userid, "");
+			if(count($detailsArray)>0){
+				$userArray = $detailsArray[0];
+				$stateName = "";
+				$cityName = "";
+				$orderBy = " order by s.state ASC";
+				$stateArray = $this->Backend_model->getStateList($userArray['stateId'], "1", $orderBy);
+				if(count($stateArray)>0){
+					$stateName = $stateArray[0]['state'];
+				}
+
+				$orderBy = " order by s.district ASC";
+				$districtArray = $this->Backend_model->getDistrictList($userArray['districtId'], "", "", $orderBy);
+				if(count($districtArray)>0){
+					$cityName = $districtArray[0]['district'];
+				}
+
+				$userArray['stateName'] = $stateName;
+				$userArray['cityName'] = $cityName;
+			}
+		}
+		print_r(json_encode($userArray));
+
+	}
+
 	public function confirmUserAndSendOtpFromApps()
 	{
 		$mobileNumber = $this->input->get_post('mobileNumber');
