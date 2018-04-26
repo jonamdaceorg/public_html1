@@ -2320,12 +2320,10 @@ class Frontend extends CI_Controller
         $userid = 0;
         $userCode = "";
         $mobileNumber = $this->input->get_post('mobileNumber');
-        print_r($_POST);
-        if ($mobileNumber > 0) {
+        $returnFormat = $this->input->get_post('rf');
 
-            $password = "Welcome123";
-            $name = $this->input->get_post('name');
-            $email = $this->input->get_post('email');
+        //        print_r($_POST);
+        if ($mobileNumber > 0) {
 
             $stateId = $this->input->get_post('stateId');
             $districtId = $this->input->get_post('districtId');
@@ -2336,11 +2334,20 @@ class Frontend extends CI_Controller
             $fromIp = $_SERVER['SERVER_ADDR'];
             $newdate = new DateTime("now");
             $createdAt = date_format($newdate, "Y-m-d H:i:s");
-            $usersProfileArray = array('mobile' => $mobileNumber, 'username'=> $mobileNumber, 'password' => $password, 'userpassword' => $password, 'name' => $name, 'email' => $email, 'countryId' => $countryId, 'stateId' => $stateId, 'districtId' => $districtId, 'address' => $address, 'active' => 'InActive', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
-            $userCreatedArray = $this->users_model->createFrontendUsersProfileForMigrationWithoutOTP($usersProfileArray);
 
-            $userid = $userCreatedArray['userId'];
-            $userCode = $userCreatedArray['userCode'];
+            if($returnFormat == "json"){
+                $userid = $this->input->get_post('userId');
+                $userCode = $this->input->get_post('userCode');
+            } else {
+                $email = $this->input->get_post('email');
+                $name = $this->input->get_post('name');
+                $password = "Welcome123";
+                $usersProfileArray = array('mobile' => $mobileNumber, 'username'=> $mobileNumber, 'password' => $password, 'userpassword' => $password, 'name' => $name, 'email' => $email, 'countryId' => $countryId, 'stateId' => $stateId, 'districtId' => $districtId, 'address' => $address, 'active' => 'InActive', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
+                $userCreatedArray = $this->users_model->createFrontendUsersProfileForMigrationWithoutOTP($usersProfileArray);
+
+                $userid = $userCreatedArray['userId'];
+                $userCode = $userCreatedArray['userCode'];
+            }
 
 
             $adsTitle = $this->input->get_post('adsTitle');
@@ -2458,6 +2465,10 @@ class Frontend extends CI_Controller
             $this->users_model->insertHistory($historyArray);
             //History Update End
 //        redirect(base_url() . "posting");
+
+            if($returnFormat == "json"){
+                print_r(json_encode($output));
+            }
         }
     }
 
