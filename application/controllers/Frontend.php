@@ -1539,6 +1539,9 @@ class Frontend extends CI_Controller
         $bookmarkArray = array();
         if($getListFromPage == "View My Bookmarked List"){
             $searchUserId = $this->session->userdata('userid');
+            if($returnFormat == "json"){
+                $searchUserId = $this->input->get_post('searchUserId');
+            }
         }
         $loggedUserId = $this->session->userdata('userid');
         $bookmarkArrayList = $this->users_model->getMyBookMarkList($loggedUserId);
