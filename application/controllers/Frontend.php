@@ -2098,6 +2098,12 @@ class Frontend extends CI_Controller
         $rec_limit = 100;
         $page = $this->input->get_post('page');
         $userid = $this->session->userdata('userid');
+        $returnFormat = $this->input->get_post('rf');
+
+        if($returnFormat == "json"){
+            $userid = $this->input->get_post('userid');
+            $rec_limit = $this->input->get_post('rec_limit');
+        }
 
         $paginationArray = $this->users_model->getAllUsersHistory($userid, 'active', $page, $rec_limit);
         $left_rec = $paginationArray['left_rec'];
@@ -2109,7 +2115,13 @@ class Frontend extends CI_Controller
         $dataheader['page'] = $page;
         $dataheader['rec_limit'] = $rec_limit;
 
-        $this->load->view('Frontend/getHistoryList', $dataheader);
+//        $this->load->view('Frontend/getHistoryList', $dataheader);
+
+        if($returnFormat == "json"){
+            print_r(json_encode($dataheader));
+        } else {
+            $this->load->view('Frontend/getHistoryList', $dataheader);
+        }
     }
 
     public function samplevalidation(){
