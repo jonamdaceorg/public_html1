@@ -152,6 +152,7 @@ $route['confirmUserAndSendOtpFromApps'] = 'Apps/confirmUserAndSendOtpFromApps';
 $route['updateMyPasswordFromApps'] = 'Apps/updateMyPasswordFromApps';
 $route['getCategoryListFromApps'] = 'Apps/getCategoryListFromApps';
 $route['getUserDetailsFromApps'] = 'Apps/getUserDetailsFromApps';
+$route['getDynamicFieldsforAdPostFromApps'] = 'Apps/getDynamicFieldsforAdPostFromApps';
 
 //$route['home'] = 'Frontend/home';
 

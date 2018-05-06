@@ -112,4 +112,133 @@ class Apps extends CI_Controller {
 		print_r(json_encode($categoryArray));
 
 	}
+
+	public function getDynamicFieldsforAdPostFromApps(){
+		$categoryId = $this->input->get_post('categoryId');
+		$subCategoryId = $this->input->get_post('subCategoryId');
+
+		$action = $this->input->get_post('action');
+		$adsId = $this->input->get_post('adsId');
+		$actualPrice = "";
+		$offerPrice = "";
+		$myDynamicDetails = array();
+		if($action == "Edit"){
+			$adsId = $this->users_model->encryptor('decrypt',$adsId);//s2
+			$paginationArray = $this->users_model->getadsList($adsId, "", "", "", "", "", "", "", "", "", "", "", "","","","","","","", "","", 1);
+			$editAdsArray = $paginationArray['resultArrayData'];
+			if(count($editAdsArray)>0){
+				$adsArray = $editAdsArray[0];
+				$actualPrice = $adsArray['actualPrice'];
+				$offerPrice = $adsArray['offerPrice'];
+				$dynamicAdsDetails = $this->users_model->getSingleAdsDynamicDetails($adsId);
+				foreach($dynamicAdsDetails as $dynamicAdsDetailsSingle){
+					$myDynamicDetails[$dynamicAdsDetailsSingle['capturedvariablename']][] = $dynamicAdsDetailsSingle['capturedVariableValue'];
+				}
+			}
+		}
+
+		$actionId = "0";
+		$dynamicFieldsforAdPostArray = $this->Backend_model->getDynamicFieldsforAdPost($actionId, $categoryId, $subCategoryId);
+
+		$isAmountRequired="";
+		$isOfferAmountRequired="";
+		$categoryArray = $this->Backend_model->getCategoryList($categoryId, "");
+		if (count($categoryArray) > 0) {
+			$isAmountRequired = $categoryArray[0]['isAmountRequired'];
+			$isOfferAmountRequired = $categoryArray[0]['isOfferAmountRequired'];
+		}
+
+
+		$returnJson = array();
+		$elementJson = array();
+
+		$contentString = "";
+		if ($isAmountRequired == "Required" || $isOfferAmountRequired == "Required" ) {
+			if ($isAmountRequired == "Required") {
+
+				$elementJson = array(
+					"isStatic" => "yes",
+					"capturedVariableId" => "actualPrice",
+					"dynamicInputType" => "Input Box",
+					"capturedvariablename" => "Price",
+					"dynamicInputId" => "",
+					"value" => $actualPrice,
+					"existingSelectedValuearray" => "",
+					"optionsList" => ""
+				);
+				array_push($returnJson, $elementJson);
+			}
+			if ($isOfferAmountRequired == "Required") {
+
+				$elementJson = array(
+					"isStatic" => "yes",
+					"capturedVariableId" => "offerPrice",
+					"dynamicInputType" => "Input Box",
+					"capturedvariablename" => "Offer Price",
+					"dynamicInputId" => "",
+					"value" => $offerPrice,
+					"existingSelectedValuearray" => "",
+					"optionsList" => ""
+				);
+				array_push($returnJson, $elementJson);
+			}
+		}
+
+		for ($n = 0; $n < count($dynamicFieldsforAdPostArray); $n++) {
+			$capturedVariableId = $dynamicFieldsforAdPostArray[$n]['capturedVariableId'];
+			$capturedvariabletype = $dynamicFieldsforAdPostArray[$n]['dynamicInputType'];
+			$capturedvariablename = $dynamicFieldsforAdPostArray[$n]['capturedvariablename'];
+			$dynamicInputId = $dynamicFieldsforAdPostArray[$n]['dynamicInputId'];
+
+			$existingSelectedValue = "";
+			$existingSelectedValuearray = array();
+
+			if(array_key_exists($capturedvariablename, $myDynamicDetails)){
+				if(count($myDynamicDetails[$capturedvariablename])==1) {
+					$existingSelectedValue = $myDynamicDetails[$capturedvariablename][0];
+				}
+				else if(count($myDynamicDetails[$capturedvariablename])>1) {
+					$existingSelectedValue = $myDynamicDetails[$capturedvariablename];
+					$existingSelectedValuearray = $myDynamicDetails[$capturedvariablename];
+				}
+			}
+
+			$elementJson = array();
+
+			if ($capturedvariabletype != "Input Box" && $capturedvariabletype != "Textarea") {
+
+				$getDynamicInputValuesMaster = $this->Backend_model->getDynamicInputValueList("", $dynamicInputId);
+				$elementJson = array(
+					"isStatic" => "No",
+					"capturedVariableId" => $capturedVariableId,
+					"dynamicInputType" => $capturedvariabletype,
+					"capturedvariablename" => $capturedvariablename,
+					"dynamicInputId" => $dynamicInputId,
+					"value" => $existingSelectedValue,
+					"existingSelectedValuearray" => $existingSelectedValuearray,
+					"optionsList" => $getDynamicInputValuesMaster
+				);
+
+			} else if ($capturedvariabletype == "Input Box" || $capturedvariabletype == "Textarea") {
+
+				$elementJson = array(
+					"isStatic" => "No",
+					"capturedVariableId" => $capturedVariableId,
+					"dynamicInputType" => $capturedvariabletype,
+					"capturedvariablename" => $capturedvariablename,
+					"dynamicInputId" => $dynamicInputId,
+					"value" => $offerPrice,
+					"existingSelectedValuearray" => "",
+					"optionsList" => ""
+				);
+
+			}
+			array_push($returnJson, $elementJson);
+		}
+
+        echo "<pre>";
+        print_r($returnJson);
+        echo "</pre>";
+	}
+
 }
