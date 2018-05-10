@@ -236,9 +236,9 @@ class Apps extends CI_Controller {
 			array_push($returnJson, $elementJson);
 		}
 
-        echo "<pre>";
-        print_r($returnJson);
-        echo "</pre>";
+        //echo "<pre>";
+		print_r(json_encode($returnJson));
+        //echo "</pre>";
 	}
 
 }
