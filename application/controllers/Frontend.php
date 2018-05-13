@@ -2051,6 +2051,12 @@ class Frontend extends CI_Controller
     public function addToMyBookmark(){
 
         $userid = $this->session->userdata('userid');
+
+        $returnFormat = $this->input->get_post('rf');
+        if($returnFormat == "json"){
+            $userid = $this->input->get_post('userid');
+        }
+
         $createdAt = date("Y-m-d H:i:s");
         $fromIp = $this->Backend_model->getIpAddress();
         $adsId = $this->input->get_post('adsId');
@@ -2067,14 +2073,26 @@ class Frontend extends CI_Controller
             $adsBookmarkArray = array('adsId' => $adsId, 'userId' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
             $this->users_model->insertAdsBookmark($adsBookmarkArray);
             //echo "<span class='updateMsg'><span class='glyphicon glyphicon-star'></span> Bookmark added!</span>";
-            echo '<a href="javascript:void(0)" onclick="addToBookMark('.$adsId.',\'remove\')" class="updateMsg" ><span class="glyphicon glyphicon-star"></span> Remove from Bookmark</a>';
+            if($returnFormat == "json"){
+                $successMsg = "Ads Successfully added!";
+                $output = array('status' => "1", 'message' => $successMsg);
+                print_r(json_encode($output));
+            } else{
+                echo '<a href="javascript:void(0)" onclick="addToBookMark('.$adsId.',\'remove\')" class="updateMsg" ><span class="glyphicon glyphicon-star"></span> Remove from Bookmark</a>';
+            }
 
             $description = 'Bookmark Added : Ads - <a href="'.base_url().'singleItem/'.$adsId.'">'.$adsCode.'</a>';
         } else if($action == "remove"){
             $adsBookmarkArray = array('adsId' => $adsId, 'userId' => $userid, 'active' => 'removed', 'fromIp' => $fromIp, 'createdAt' => $createdAt);
             $this->users_model->deleteAdsBookmark($adsBookmarkArray);
 //            echo "<span class='updateMsg'><span class='glyphicon glyphicon-star'></span> Bookmark added!</span>";
-            echo '<a href="javascript:void(0)" onclick="addToBookMark('.$adsId.',\'add\')" ><span class="glyphicon glyphicon-star"></span> Add to Bookmark</a>';
+            if($returnFormat == "json"){
+                $successMsg = "Ads Successfully removed!";
+                $output = array('status' => "1", 'message' => $successMsg);
+                print_r(json_encode($output));
+            } else{
+                echo '<a href="javascript:void(0)" onclick="addToBookMark('.$adsId.',\'add\')" ><span class="glyphicon glyphicon-star"></span> Add to Bookmark</a>';
+            }
 
             $description = 'Bookmark Removed : Ads - <a href="'.base_url().'singleItem/'.$adsId.'">'.$adsCode.'</a>';
 
@@ -2085,10 +2103,10 @@ class Frontend extends CI_Controller
         $fromIp = $this->Backend_model->getIpAddress();
         $pageName = "Add Bookmark";
         $pageUrl = 'addToMyBookmark';
-        $userid = $this->session->userdata('userid');
         $historyArray = array('actionId' => '0', 'description' => $description, 'action' => $action, 'userid' => $userid, 'active' => 'active', 'fromIp' => $fromIp, 'createdAt' => $createdAt, 'pageName' => $pageName, 'pageUrl' => $pageUrl);
         $this->users_model->insertHistory($historyArray);
         //History Management End
+
 
     }
 
