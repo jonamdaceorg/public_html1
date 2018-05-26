@@ -312,7 +312,7 @@ class Frontend extends CI_Controller
                             $output = array('status' => "2", 'message' => "Incorrect OTP Details");
                         }
                     } else {
-                        $output = array('status' => "2", 'message' => "Mismatch Password Details");
+                        $output = array('status' => "2", 'message' => "Password mismatch");
                     }
                 }
             } else {
@@ -1737,7 +1737,7 @@ class Frontend extends CI_Controller
                 $successMsg = "Your password was successfully updated!";
                 $output = array('status' => "1", 'message' => $successMsg);
             } else {
-                $successMsg = "You Entered Mis-matched Password!";
+                $successMsg = "Password mismatch";
                 $output = array('status' => "2", 'message' => $successMsg);
             }
         } else {

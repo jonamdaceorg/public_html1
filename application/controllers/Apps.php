@@ -90,7 +90,7 @@ class Apps extends CI_Controller {
 							$output = array('status' => "2", 'message' => "Incorrect OTP Details");
 						}
 					} else {
-						$output = array('status' => "2", 'message' => "Mismatch Password Details");
+						$output = array('status' => "2", 'message' => "Password mismatch");
 					}
 				}
 			} else {
