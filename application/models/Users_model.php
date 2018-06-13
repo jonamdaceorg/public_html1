@@ -438,7 +438,7 @@ class Users_model extends CI_Model
         return $returnArray;
     }
 
-    public function updateFreeAdPost($adsId, $editAdsEncryptedId, $postedAdsArray){
+    public function updateFreeAdPost($adsId, $editAdsEncryptedId, $postedAdsArray, $returnFormat){
 
         $historyString = "";
         $paginationArray = self::getadsList($adsId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1);
@@ -649,7 +649,8 @@ class Users_model extends CI_Model
             self::insertHistory($historyArray);
         }
 
-        redirect(base_url() . "editMyAds/".$editAdsEncryptedId);
+        if($returnFormat != "json")
+            redirect(base_url() . "editMyAds/".$editAdsEncryptedId);
 
     }
 

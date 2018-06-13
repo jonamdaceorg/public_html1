@@ -1544,6 +1544,10 @@ class Frontend extends CI_Controller
             }
         }
         $loggedUserId = $this->session->userdata('userid');
+        if($returnFormat == "json"){
+            $loggedUserId = $this->input->get_post('userid');
+        }
+
         $bookmarkArrayList = $this->users_model->getMyBookMarkList($loggedUserId);
         for ($n = 0; $n < count($bookmarkArrayList); $n++) {
             $bookmarkArray[$n] = $bookmarkArrayList[$n]['adsId'];
@@ -2184,6 +2188,7 @@ class Frontend extends CI_Controller
 
         $orderBy = " order by s.state ASC";
         $stateArray = $this->Backend_model->getStateList("0", "1", $orderBy);
+        $returnFormat = $this->input->get_post('rf');
 
         $output = $this->session->flashdata('output');
         $succesMsg = $this->users_model->getSuccessMsg($output);
@@ -2197,7 +2202,8 @@ class Frontend extends CI_Controller
         $dataheader['getCommonJsonDataUrl'] = base_url() . "Frontend/getCommonJsonData";
 
 
-        $adsId = $this->users_model->encryptor('decrypt',$adsId);
+        if($returnFormat != "json")
+            $adsId = $this->users_model->encryptor('decrypt',$adsId);
         //Get My ads
         $paginationArray = $this->users_model->getadsList($adsId, "", "", "", "", "", "", "", "", "", "", "", "","","","","","","","","", 1);
         $editAdsArray = $paginationArray['resultArrayData'];
@@ -2208,20 +2214,40 @@ class Frontend extends CI_Controller
 
 
         $dataheader['title'] = "Edit My Ads";
-	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
-        $this->load->view('Frontend/editMyAds');
-        $this->load->view('layout/Frontend_footer');
+        if($returnFormat == "json"){
+//            echo "<pre>";
+            print_r(json_encode($dataheader));
+//            echo "</pre>";
+        } else {
+            $adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
+            $this->load->view('Frontend/editMyAds');
+            $this->load->view('layout/Frontend_footer');
+
+        }
     }
 
     public function updateAdPost(){
         $editAdsId =$this->input->get_post('editAdsId');
-        $adsId = $this->users_model->encryptor('decrypt', $editAdsId);
+        $returnFormat = $this->input->get_post('rf');
+
+        if($returnFormat != "json")
+            $adsId = $this->users_model->encryptor('decrypt', $editAdsId);
+        else
+            $adsId = $this->input->get_post('adsId');
+
+
 
         if($adsId>0){
             $postedAdsArray = $_REQUEST;
-            $this->users_model->updateFreeAdPost($adsId, $editAdsId, $postedAdsArray);
+            $this->users_model->updateFreeAdPost($adsId, $editAdsId, $postedAdsArray, $returnFormat);
         }
-   }
+
+        if($returnFormat == "json"){
+                $output = array('status' => "1", 'message' => "Successfully updated");
+
+                print_r(json_encode($output));
+            }
+    }
 
     public function howitworks(){
         $dataheader['title'] = "How it works";

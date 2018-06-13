@@ -117,13 +117,15 @@ class Apps extends CI_Controller {
 		$categoryId = $this->input->get_post('categoryId');
 		$subCategoryId = $this->input->get_post('subCategoryId');
 
+		$returnFormat = $this->input->get_post('rf');
 		$action = $this->input->get_post('action');
 		$adsId = $this->input->get_post('adsId');
 		$actualPrice = "";
 		$offerPrice = "";
 		$myDynamicDetails = array();
 		if($action == "Edit"){
-			$adsId = $this->users_model->encryptor('decrypt',$adsId);//s2
+			if($returnFormat != "json")
+				$adsId = $this->users_model->encryptor('decrypt',$adsId);//s2
 			$paginationArray = $this->users_model->getadsList($adsId, "", "", "", "", "", "", "", "", "", "", "", "","","","","","","", "","", 1);
 			$editAdsArray = $paginationArray['resultArrayData'];
 			if(count($editAdsArray)>0){
