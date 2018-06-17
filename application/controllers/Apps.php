@@ -187,6 +187,7 @@ class Apps extends CI_Controller {
 		}
 
 		for ($n = 0; $n < count($dynamicFieldsforAdPostArray); $n++) {
+
 			$capturedVariableId = $dynamicFieldsforAdPostArray[$n]['capturedVariableId'];
 			$capturedvariabletype = $dynamicFieldsforAdPostArray[$n]['dynamicInputType'];
 			$capturedvariablename = $dynamicFieldsforAdPostArray[$n]['capturedvariablename'];
@@ -221,7 +222,8 @@ class Apps extends CI_Controller {
 					"optionsList" => $getDynamicInputValuesMaster
 				);
 
-			} else if ($capturedvariabletype == "Input Box" || $capturedvariabletype == "Textarea") {
+			} else if (($capturedvariabletype == "Input Box" || $capturedvariabletype == "Textarea")) {
+
 
 				$elementJson = array(
 					"isStatic" => "No",
@@ -229,7 +231,7 @@ class Apps extends CI_Controller {
 					"dynamicInputType" => $capturedvariabletype,
 					"capturedvariablename" => $capturedvariablename,
 					"dynamicInputId" => $dynamicInputId,
-					"value" => $offerPrice,
+					"value" => $existingSelectedValue,
 					"existingSelectedValuearray" => "",
 					"optionsList" => ""
 				);
