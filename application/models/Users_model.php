@@ -347,9 +347,9 @@ class Users_model extends CI_Model
         }
 
         if ($mobileNumber != "") {
-            $sendUrl = $baseUrl . "sendSMS?";
-            $sendData = "to=" . $mobileNumber . "&msg=OTP for 1stepshop.in registration is " . $otp;
-            $output = self::curlPost($sendUrl, $sendData);
+//            $sendUrl = $baseUrl . "sendSMS?";
+//            $sendData = "to=" . $mobileNumber . "&msg=OTP for 1stepshop.in registration is " . $otp;
+            self::curlSMSPost($mobileNumber, "OTP for 1stepshop.in registration is " . $otp);
         }
         return $otp;
     }
@@ -375,9 +375,9 @@ class Users_model extends CI_Model
             $this->db->query($insertSql);
         }
         if ($mobileNumber != "") {
-            $sendUrl = $baseUrl . "sendSMS?";
-            $sendData = "to=" . $mobileNumber . "&msg=OTP for 1stepshop.in Forgot Password is " . $otp;
-            $output = self::curlPost($sendUrl, $sendData);
+//            $sendUrl = $baseUrl . "sendSMS?";
+//            $sendData = "to=" . $mobileNumber . "&msg=OTP for 1stepshop.in Forgot Password is " . $otp;
+            self::curlSMSPost($mobileNumber,"OTP for 1stepshop.in Forgot Password is " . $otp);
         }
         return $otp;
     }
@@ -399,18 +399,18 @@ class Users_model extends CI_Model
         }
     }
 
-    function curlPost($url, $post)
+    function curlSMSPost($to, $msg)
     {
+        /*
         $ckfile = tempnam("/tmp", "CURLCOOKIE");
         $proxy = '';
-        $ref = '';
+        $ref = $url;
         $ch = curl_init();
         $agent = $_SERVER['HTTP_USER_AGENT'];
-        if ($ref == '')
-            $ref = $url;
+
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_USERAGENT, $agent);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: application/x-www-form-urlencoded", "Accept: */*"));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: application/x-www-form-urlencoded", "Accept: /*"));
         curl_setopt($ch, CURLOPT_COOKIEJAR, "$ckfile");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
@@ -420,6 +420,26 @@ class Users_model extends CI_Model
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
         curl_setopt($ch, CURLOPT_REFERER, $ref);
         return curl_exec($ch);
+        */
+
+        // Authorisation details.
+        $username = "1stepshop.in@gmail.com";
+        $hash = "ee0d4f20c3e75cf251603cc2de2b756f309446f8d4d5fe6fc382aa57fc88e432";
+        $test = "0";
+        $sender = "TXTLCL"; // This is who the message appears to be from.
+        $numbers = "91".$to; // A single number or a comma-seperated list of numbers
+        $message = $msg;
+        $message = urlencode($message);
+        $data = "username=" . $username . "&hash=" . $hash . "&message=" . $message . "&sender=" . $sender . "&numbers=" . $numbers . "&test=" . $test;
+        $ch = curl_init('http://api.textlocal.in/send/?');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);     ////// i was missing this line.
+        $result = curl_exec($ch); // This is the result from the API
+        curl_close($ch);
+        return $result;
+
     }
 
     public function createFreeAdPost($adsTitle, $description, $noOfDaysToActive, $startDate, $endDate, $categoryId, $subCategoryId, $itemId, $countryId, $stateId, $cityId, $address, $userid, $active, $fromIp, $createdAt,$actualPrice,$offerPrice,  $latitude, $longitude)

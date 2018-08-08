@@ -1576,9 +1576,9 @@ class Backend extends CI_Controller
                         $mobile = $userDataArray[0]['mobile'];
                         $sendMessage = "Your 1stepshop.in Ads Code : ". $adsCode ." was activated successfully";
                         $baseUrl = base_url();
-                        $sendUrl = $baseUrl . "sendSMS?";
-                        $sendData = "to=" . $mobile . "&msg=" . $sendMessage;
-                        $this->users_model->curlPost($sendUrl, $sendData);
+//                        $sendUrl = $baseUrl . "sendSMS?";
+//                        $sendData = "to=" . $mobile . "&msg=" . $sendMessage;
+                        $this->users_model->curlSMSPost($mobile, $sendMessage);
                     }
                 }
             }
