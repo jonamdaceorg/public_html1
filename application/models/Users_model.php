@@ -426,7 +426,7 @@ class Users_model extends CI_Model
         $username = "1stepshop.in@gmail.com";
         $hash = "ee0d4f20c3e75cf251603cc2de2b756f309446f8d4d5fe6fc382aa57fc88e432";
         $test = "0";
-        $sender = "TXTLCL"; // This is who the message appears to be from.
+        $sender = "TXTOSS"; // This is who the message appears to be from.
         $numbers = "91".$to; // A single number or a comma-seperated list of numbers
         $message = $msg;
         $message = urlencode($message);
