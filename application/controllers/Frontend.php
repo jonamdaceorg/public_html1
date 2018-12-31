@@ -1914,13 +1914,13 @@ class Frontend extends CI_Controller
             }
             if($districtId!=$userDataArray[0]['districtId']){
 
-                $cityArray = $this->Backend_model->getDistrictList($districtId, '', '');
+                $cityArray = $this->Backend_model->getDistrictList($districtId, '', '', '');
                 $city = "";
                 if(count($cityArray)){
                     $city = $cityArray[0]['district'];
                 }
 
-                $cityExistArray = $this->Backend_model->getDistrictList($userDataArray[0]['districtId'], '', '');
+                $cityExistArray = $this->Backend_model->getDistrictList($userDataArray[0]['districtId'], '', '', '');
                 $existCity = "";
                 if(count($cityExistArray)){
                     $existCity = $cityExistArray[0]['district'];
