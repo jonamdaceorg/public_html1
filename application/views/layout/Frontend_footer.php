@@ -1,11 +1,12 @@
 </div>
 <div class="col-md-2  sideComericalads">
-    <!-- <SCRIPT charset="utf-8" type="text/javascript" src="//ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="//ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT> -->
+<!-- <SCRIPT charset="utf-8" type="text/javascript" src="//ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="//ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Fmyosssite-21%2F8001%2F681e333e-224b-40ba-9209-44ebe89aedb8&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT> -->
 <?php //print_r($adBannerArray);
     if(count($adBannerArray)>0){
         for($i=0; $i<count($adBannerArray); $i++){
             $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
             if($typeOfPosition == "Right"){
+
 
                 $bannerType = $adBannerArray[$i]['bannerType'];
                 $bannerLinkURL = $adBannerArray[$i]['bannerLinkURL'];
@@ -32,7 +33,7 @@
                 if($bannerLinkURL != ""){
                     echo "</a>";
                 }
-               // echo $adsCode = $adBannerArray[$i]['adsCode'];
+//                echo $adsCode = $adBannerArray[$i]['adsCode'];
             }
         }
     }
@@ -74,6 +75,10 @@
                         <li class="footer-grid-text">1StepShop App is the <span>Easiest</span> way for Selling and buying goods</li>
                     </ul>
                     <div class="app-buttons">
+
+<div class="copyrights ">
+<a   target="_blank" href="https://play.google.com/store/apps/details?id=com.onestepshop"><img src="<?php echo base_url(); ?>assets/images/google-play-badge.png"  class="img-responsive img-thumbnail "  alt="playstore"></a>
+      </div> 
                         <div class="app-button">
 <!--                            <a href="#"><img src="--><?php //echo base_url(); ?><!--assets/web/images/1.png" alt=""></a>-->
                         </div>
@@ -113,7 +118,12 @@
 <!--            <div class="footer-logo">-->
 <!--                <a href="--><?php //echo base_url(); ?><!--"><   n>1Step</span>Shop</a>-->
 <!--            </div>-->
-            <div class="footer-social-icons">
+<div class="copyrights" align="center" >
+<p style="font-size: 11px !important;" >1stepshop is a Free classified sites in Inida which is 100 % Free service. 1stepshop is a free online clasified site where you can post free ads in India without registration. Free real estate advertising , Free job classifieds, Online free classifieds. 1stepshop is easy in accessing and posting free ads. Your buying, selling and advertising needs will be 100% done with this online free classifieds site. 1stepshop is complete classified ad sites, you can post your ads on free of cost. you can't find a better service of free online classifieds in india which are 1stepshop provides.Top free classifiles also available in 1stepshop site, you can post free ads online anywhere , any time. Job classifieds, Free real estate advertising , Online free classifieds - 1stepshop.in. we simplify - Real estate advertising , job classifieds, Online classifieds at free of cost.</p>
+</div>
+
+  
+   <div class="footer-social-icons">
                 <ul>
                     <li><a class="iconcss"  target="_blank" href="https://twitter.com/1stepshop"><i class="fa fa-twitter" style=" margin-top: 5px" aria-hidden="true"></i> <span>Twitter</span></a></li>
                     <li><a class="iconcss"   href="javascript:void(0)" onclick="gotoLink()"><i class="fa fa-linkedin" style="margin-top: 5px" aria-hidden="true"></i> <span>Linkedin</span></a></li>

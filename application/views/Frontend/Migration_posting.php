@@ -139,7 +139,7 @@
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <!--<div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-6 textlabel">No.of Days to Active <span class="redColor">*</span></div>
                                 <div class="col-sm-6">
@@ -147,7 +147,9 @@
                                            data-parsley-name="No.of Days to Active">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+<input type="hidden" class="selectboxWidth" name="noOfDaysToActive" id="noOfDaysToActive" value="30" placeholder="No.of days to be displayed on the site..."  required
+                                           data-parsley-name="No.of Days to Active">
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-6 textlabel">Start Date <span class="redColor">*</span></div>

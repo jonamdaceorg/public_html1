@@ -883,7 +883,7 @@ class Users_model extends CI_Model
 
 //        if($getListFromPage != "View All My Ads" && $getListFromPage != "View My Bookmarked List" && $getListFromPage!="adsMaster" && $getListFromPage!="viewAds"){
         if($getListFromPage == "adsList"){
-            $conditionQuery .= " and ta.startDate <= '" . $currentDate . "' and ta.endDate >=  '" . $currentDate . "' ";
+            //$conditionQuery .= " and ta.startDate <= '" . $currentDate . "' and ta.endDate >=  '" . $currentDate . "' ";
         }
 
 

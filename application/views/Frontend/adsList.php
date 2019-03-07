@@ -39,6 +39,7 @@
         <form name="adsSearchForm" id="adsSearchForm" method="post">
             <input type="hidden" name="getListFromPage" id="getListFromPage" value="adsList"/>
 
+
             <div class="select-box">
                 <div class="select-city-for-local-ads ads-list">
                     <label>Select your city to see local ads</label>

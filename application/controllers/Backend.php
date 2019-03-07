@@ -1588,6 +1588,7 @@ class Backend extends CI_Controller
 
         redirect(base_url()."Backend/viewAds?adsId=".$adsId);
     }
+
     public function reportAboutAdsList(){
 
         $dataheader['title'] = "Report About Ads";

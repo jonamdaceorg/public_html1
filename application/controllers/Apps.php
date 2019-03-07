@@ -22,6 +22,33 @@ class Apps extends CI_Controller {
 		print_r(json_encode($userCredential));
 	}
 
+	public function getStateAndCityFromApps(){
+		$returnArray = array();
+		$citylist = array();
+
+		$actionId = "0";
+		$countryId = "1";
+		$orderBy = " order by s.state ASC";
+		$stateArray = $this->Backend_model->getStateList($actionId, $countryId, $orderBy);
+		$stateId = "0";
+		$orderBy = " order by s.district ASC";
+		$districtArray = $this->Backend_model->getDistrictList($actionId, $countryId, $stateId, $orderBy);
+
+		for ($i = 0; $i < count($districtArray); $i++) {
+			$citylist[$districtArray[$i]["stateId"]]["cityName"][] = $districtArray[$i]["district"];
+			$citylist[$districtArray[$i]["stateId"]]["cityId"][] = $districtArray[$i]["districtId"];
+
+
+		}
+
+		$returnArray['citylist'] = $citylist;
+		$returnArray['stateArray'] = $stateArray;
+
+
+		print_r(json_encode($returnArray));
+
+	}
+
 	public function getUserDetailsFromApps()
 	{
 		$userid = $this->input->get_post('userid');
@@ -246,3 +273,4 @@ class Apps extends CI_Controller {
 	}
 
 }
+

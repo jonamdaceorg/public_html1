@@ -84,7 +84,7 @@
 
                         <?php } ?>
                         <p class="catpath"><?php echo $searchData[$i]['category']; ?> » <?php echo $searchData[$i]['subCategory']; ?></p>
-                        <p><a href="<?php echo base_url(); ?>singleItem/<?php echo $searchData[$i]['adsId']; ?>">View More Details <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+                        <p><a href="<?php echo base_url(); ?>singleItem/<?php echo urlencode($searchData[$i]['adsTitle']); ?>/<?php echo $searchData[$i]['adsId']; ?>">View More Details <span class="glyphicon glyphicon-arrow-right"></span></a></p>
                     </section>
                     <section class="list-right">
                         <?php if($getListFromPage == "View My Bookmarked List"  || $getListFromPage == "View All My Ads") { ?>
@@ -132,7 +132,7 @@
             <div class="clearfix"></div>
             <ul class="list">
                 <?php for ($i = 0; $i < count($searchData); $i++) { ?>
-                    <a href="<?php echo base_url(); ?>singleItem/<?php echo $searchData[$i]['adsId']; ?>">
+                    <a href="<?php echo base_url(); ?>singleItem/<?php echo urlencode($searchData[$i]['adsTitle']); ?>/<?php echo $searchData[$i]['adsId']; ?>">
                         <li>
                             <img src="images/m1.jpg" title="" alt=""/>
                             <section class="list-left">

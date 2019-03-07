@@ -16,9 +16,13 @@ Author URL: http://1stepshop.in
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/logo/21.jpg">
+
 
 	<meta name="keywords" content="Classifieds, Free classifieds, Online Classifieds, free online classifieds, free ads , jobs, house, rent, events online ads,<?php echo $title; ?>" />
-    <?php
+	
+	<!--<meta name="description" content="Free online classified ads. Sell, Buy, Find - faster and easier: flats, apartments, houses, PG, jobs, cars, bikes, motorcycles, mobiles, computers, tuition.- 1stepshop.in, <?php //echo $title; ?>" />-->
+<?php
         $titleContent = "Classifieds, Free classifieds, Online Classifieds, free online classifieds, free ads , jobs, house, rent, events online ads, ".$title;
         $titleContent = substr($titleContent, -155);
     ?>
@@ -30,7 +34,6 @@ Author URL: http://1stepshop.in
     <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!--//fonts-->
-
 <!-- infolinks started -->
 <script type="text/javascript">
 var infolinks_pid = 3050491;
@@ -39,9 +42,10 @@ var infolinks_wsid = 0;
 <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
 <!-- infolinks end -->
 
-    <!-- js -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/web/js/jquery.min.js"></script>
-    <!-- js -->
+ 
+
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/web/js/jquery.min.js"></script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<?php echo base_url(); ?>assets/web/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/web/js/bootstrap-select.js"></script>
@@ -124,7 +128,7 @@ var infolinks_wsid = 0;
             $requestURI = $_SERVER['REQUEST_URI'];
             $requestURIArray = explode("/", $requestURI);
 
-            if(count($requestURIArray)>3) { ?>
+            if(count($requestURIArray)>=3) { ?>
                 <style>
                     @font-face {
                         font-family: myFirstFont;
@@ -261,13 +265,14 @@ var infolinks_wsid = 0;
 <body>
 <div class="container-fluid ">
 <div class="row ">
-    <div class="col-md-2 categories text-center">
+    <div class="col-md-2 sideComericalads text-center">
         <!--21 dec start -->
         <?php //print_r($adBannerArray);
             if(count($adBannerArray)>0){
                 for($i=0; $i<count($adBannerArray); $i++){
                     $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
                     if($typeOfPosition == "Left"){
+
 
                         $bannerType = $adBannerArray[$i]['bannerType'];
                         $bannerLinkURL = $adBannerArray[$i]['bannerLinkURL'];
@@ -295,30 +300,32 @@ var infolinks_wsid = 0;
                             echo "</a>";
                         }
 //                        echo $adsCode = $adBannerArray[$i]['adsCode'];
+//                        echo $adsCode = $adBannerArray[$i]['adsCode'];
                     }
                 }
             }
         ?>
-<!--        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=myosssite-21&marketplace=amazon&region=IN&placement=B01LTHND2O&asins=B01LTHND2O&linkId=75dc2bb84a61556a1dea8aa65e17ef35&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">-->
-<!--        </iframe>-->
+      <!-- <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=myosssite-21&marketplace=amazon&region=IN&placement=B01LTHND2O&asins=B01LTHND2O&linkId=75dc2bb84a61556a1dea8aa65e17ef35&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+        </iframe>-->
 
     </div>
     <div class="col-md-8">
 
-        <!----- amazon ads start ----->
-        <?php if(count($adBannerArray)>0){
-            for($i=0; $i<count($adBannerArray); $i++){
-                $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
-                if($typeOfPosition == "Top"){ ?>
+<!----- amazon ads start ----->
+<?php if(count($adBannerArray)>0){ 
+                for($i=0; $i<count($adBannerArray); $i++){
+                    $typeOfPosition = $adBannerArray[$i]['typeOfPosition'];
+                    if($typeOfPosition == "Top"){ ?>
 
 
-                    <div class="content">
-                        <div class="categories">
-                            <div class="">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <?php
+<div class="content">
+    <div class="categories">
+        <div class="">
+ <div class="form-group">
+			<div class="row">
+				<div class="col-sm-12">
+
+<?php
 
                                             $bannerType = $adBannerArray[$i]['bannerType'];
                                             $bannerLinkURL = $adBannerArray[$i]['bannerLinkURL'];
@@ -346,31 +353,31 @@ var infolinks_wsid = 0;
                                                 echo "</a>";
                                             }
                                             ?>
-                                            <!--
-                                            <script type="text/javascript" language="javascript">
-                                                var aax_size='728x90';
-                                                var aax_pubname = 'myosssite-21';
-                                                var aax_src='302';
-                                            </script>
-                                            <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>-->
+<!--
+<script type="text/javascript" language="javascript">
+    var aax_size='728x90';
+    var aax_pubname = 'myosssite-21';
+    var aax_src='302';
+</script>
+<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>-->
 
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
 
-                    <?php
+<?php   
+                    }
                 }
-            }
 
-        }
+         }
         ?>
-        <!---- ads end -->
+<!---- ads end -->
 
-        <style>
+<style>
     body{
         margin-top: 50px !important;
     }
@@ -414,3 +421,4 @@ var infolinks_wsid = 0;
     }
 
 </style>
+

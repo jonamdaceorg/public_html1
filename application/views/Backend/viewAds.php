@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="row">
                             <div class="col-md-3">
                                 <p class="text-muted m-b-20 note-fontsize-10">Start Date</p>
@@ -71,7 +71,7 @@
                                 <?php echo $adsArray[0]['endDate']; ?>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-3">

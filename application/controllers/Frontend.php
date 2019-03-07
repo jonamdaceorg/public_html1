@@ -39,7 +39,7 @@ class Frontend extends CI_Controller
         $categoryArray = $this->Backend_model->getCategoryList("0", $orderBy);
 
         $dataheader['succesMsg'] = $succesMsg;
-        $dataheader['title'] = "1StepShop";
+        $dataheader['title'] = "Post free ads online in India. Local Classified advertising";
         $dataheader['categoryArray'] = $categoryArray;
 
 	$adBannerArray = $this->Backend_model->getAdBannerList("", " order by adBannerId DESC", 'active'); 	$dataheader['adBannerArray'] = $adBannerArray; 	$this->load->view('layout/Frontend_header', $dataheader);
@@ -1193,7 +1193,7 @@ class Frontend extends CI_Controller
     public function adsList()
     {
 
-//        $dataheader['title'] = "adsList";
+//        $dataheader['title'] = "Search in India Buy sell advertise rent services mobile computers used cars bikes";
 
         //$this->load->view('layout/Frontend_menu');
         $encryptparam= $this->input->get_post('param');
@@ -1242,7 +1242,7 @@ class Frontend extends CI_Controller
         $subCategoryArray = $this->Backend_model->getSubCategoryList($actionId, $categoryId, $orderBy);
 
 
-        $categoriesTitle = "Ads List";
+        $categoriesTitle = "Search in India Buy sell advertise rent services mobile computers used cars bikes";
         if($selectedCategoryId!=""){
             for($i=0; $i<count($categoryArray); $i++){
                 if($categoryArray[$i]['categoryId'] == $selectedCategoryId){
@@ -1341,7 +1341,7 @@ class Frontend extends CI_Controller
 
     }
 
-    public function singleItem($adsId)
+    public function singleItem($title,$adsId)
     {
         // $selectedAdsId = $this->input->get_post('adsId');
         $selectedAdsId = $adsId;
@@ -1428,6 +1428,10 @@ class Frontend extends CI_Controller
 
         $returnFormat = $this->input->get_post('rf');
         $dataheader['title'] = "singleItem";
+        
+        if(count($adsDetails)>0){
+       $dataheader['title'] = $adsDetails[0]['adsTitle'];
+         }
 
         if($returnFormat == "json"){
             print_r(json_encode($dataheader));
@@ -1560,7 +1564,7 @@ class Frontend extends CI_Controller
         $withphoto = $this->input->get_post('withphoto');
 
         $page = $this->input->get_post('page');
-        $rec_limit = 5;
+        $rec_limit = 14;
         $galleryStatus = "";
         $myLatitude = $this->input->get_post('myLatitude');
         $myLongitude = $this->input->get_post('myLongitude');
@@ -2356,7 +2360,7 @@ class Frontend extends CI_Controller
         $succesMsg = $this->users_model->getSuccessMsg($output);
         $dataheader['userid'] = "";
         $dataheader['succesMsg'] = $succesMsg;
-        $dataheader['title'] = "Post an Ad";
+        $dataheader['title'] = " Free ads in india buy sell rent advertise Online";
 
         $orderBy = " order by s.state ASC";
         $stateArray = $this->Backend_model->getStateList("0", "1", $orderBy);
@@ -2540,3 +2544,4 @@ class Frontend extends CI_Controller
     }
 
 }
+

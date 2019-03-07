@@ -194,7 +194,7 @@
 
 					?>
 					<div class="col-md-3 biseller-column">
-						<a href="<?php echo base_url(); ?>singleItem/<?php echo $similaradsArray[$i]['adsId']; ?>">
+						<a href="<?php echo base_url(); ?>singleItem/<?php echo urlencode($similaradsArray[$i]['adsTitle']); ?>/<?php echo $similaradsArray[$i]['adsId']; ?>">
 							<img src="<?php echo $filename; ?>"/>
 							<?php if($isAmountRequired=="Required" ){ ?>	<span class="price">
 

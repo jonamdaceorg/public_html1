@@ -626,8 +626,8 @@
                 <th>Title</th>
                 <th>Status</th>
                 <th>No Of Days To Active</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
+                <!-- <th>StartDate</th>
+                <th>EndDate</th> -->
                 <th>CreatedAt</th>
                 <th>Category</th>
                 <th>SubCategory</th>
@@ -653,8 +653,8 @@
                     <td><?php echo $adsArray[$i]['adsTitle']; ?></td>
                     <td><?php echo $adsArray[$i]['active']; ?></td>
                     <td><?php echo $adsArray[$i]['noOfDaysToActive']; ?></td>
-                    <td><?php echo $adsArray[$i]['startDate']; ?></td>
-                    <td><?php echo $adsArray[$i]['endDate']; ?></td>
+                    <!-- <td><?php echo $adsArray[$i]['startDate']; ?></td>
+                    <td><?php echo $adsArray[$i]['endDate']; ?></td> -->
                     <td><?php echo $adsArray[$i]['createdAt']; ?></td>
                     <td><?php echo $adsArray[$i]['category']; ?></td>
                     <td><?php echo $adsArray[$i]['subCategory']; ?></td>

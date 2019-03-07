@@ -87,7 +87,6 @@ $route['reportAboutAdsList'] = 'Backend/reportAboutAdsList';
 
 
 //Frontend
-
 $route['getAdsBanner'] = 'Frontend/getAdsBanner';
 $route['login'] = 'Frontend/login';
 $route['register'] = 'Frontend/register';
@@ -110,7 +109,7 @@ $route['getDynamicFieldsforAdPost'] = 'Frontend/getDynamicFieldsforAdPost';
 $route['getDynamicFieldsforSearchAds'] = 'Frontend/getDynamicFieldsforSearchAds';
 $route['categories'] = 'Frontend/categories';
 $route['adsList'] = 'Frontend/adsList';
-$route['singleItem/(:any)'] = 'Frontend/singleItem/$1';
+$route['singleItem/(:any)/(:any)'] = 'Frontend/singleItem/$1/$2';
 $route['getStates'] = 'Frontend/getStates';
 $route['sendSMS'] = 'Frontend/sendSMS';
 $route['getCommonJssudo apt-get install sbtonData'] = 'Frontend/getCommonJsonData';
@@ -146,13 +145,18 @@ $route['popularSearch'] = 'Frontend/popularSearch';
 $route['sitemap'] = 'Frontend/sitemap';
 $route['updateAdsStatus'] = 'Frontend/updateAdsStatus';
 
+
+
 //Apps Routings
 $route['getLoginFromApps'] = 'Apps/getLoginFromApps';
 $route['confirmUserAndSendOtpFromApps'] = 'Apps/confirmUserAndSendOtpFromApps';
 $route['updateMyPasswordFromApps'] = 'Apps/updateMyPasswordFromApps';
 $route['getCategoryListFromApps'] = 'Apps/getCategoryListFromApps';
+
 $route['getUserDetailsFromApps'] = 'Apps/getUserDetailsFromApps';
+$route['getStateAndCityFromApps'] = 'Apps/getStateAndCityFromApps';
 $route['getDynamicFieldsforAdPostFromApps'] = 'Apps/getDynamicFieldsforAdPostFromApps';
+
 
 //$route['home'] = 'Frontend/home';
 

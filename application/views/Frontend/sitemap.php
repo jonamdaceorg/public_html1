@@ -141,12 +141,7 @@
                         <li class="lpage"><a href="https://www.1stepshop.in/terms" title="Terms">Terms</a></li>
                         <li class="lpage"><a href="https://www.1stepshop.in/privacy" title="Privacy">Privacy</a></li>
                     </ul>
-    <!--
-Please note:
-You are not allowed to remove the copyright notice below.
-Thank you!
-www.xml-sitemaps.com
--->
+    
 </div></div></div>
 </body>
 

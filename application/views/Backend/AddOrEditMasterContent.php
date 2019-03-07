@@ -233,8 +233,8 @@
                     <div class="row">
                         <label class="col-sm-3 control-label">Banner Link URL</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="bannerLinkURL" name="bannerLinkURL"
-                                   placeholder="Banner Link URL" value="<?php echo $bannerLinkURL; ?>"/>
+                            <input type="text" class="form-control" id="bannerLinkURL" name="bannerLinkURL" required
+                                   data-parsley-name="bannerLinkURL" placeholder="Banner Link URL" value="<?php echo $bannerLinkURL; ?>"/>
                         </div>
                     </div>
                 </div>
@@ -283,8 +283,8 @@
                                                data-parsley-name="height" placeholder="height" value="<?php echo $height; ?>"/>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="width" name="width"
-                                               placeholder="width" value="<?php echo $width; ?>"/>
+                                        <input type="text" class="form-control" id="width" name="width" required
+                                               data-parsley-name="width" placeholder="width" value="<?php echo $width; ?>"/>
                                     </div>
                                 </div>
                             </div>

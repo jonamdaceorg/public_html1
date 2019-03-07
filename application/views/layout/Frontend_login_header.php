@@ -23,13 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!--//fonts-->
-    <!-- js -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <!-- js -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-
 
 <!-- infolinks started -->
 <script type="text/javascript">
@@ -39,6 +32,14 @@ var infolinks_wsid = 0;
 <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
 <!-- infolinks end -->
 
+
+    <!-- js -->
+<!--    <script type="text/javascript" src="js/jquery.min.js"></script> -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/web/js/jquery-3.2.1.min.js"></script>
+    <!-- js -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
     <script>
         $(document).ready(function () {
             var mySelect = $('#first-disabled2');
